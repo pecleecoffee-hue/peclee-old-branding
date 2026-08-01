@@ -57,8 +57,8 @@ html[dir="rtl"] .body{line-height:1.95}
 .mk b:nth-child(1){grid-area:1/1}.mk b:nth-child(2){grid-area:1/2}.mk b:nth-child(3){grid-area:1/3}
 .mk b:nth-child(4){grid-area:2/3}.mk b:nth-child(5){grid-area:2/4}.mk b:nth-child(6){grid-area:2/5}
 .logo .wm{font-size:16px;font-weight:500;letter-spacing:-.02em;font-family:var(--sans)}
-.logo-img{height:38px;width:auto;display:block}
-.hd.stuck .logo-img{height:26px;transition:height .3s}
+.logo-img{height:54px;width:auto;display:block}
+.hd.stuck .logo-img{height:36px;transition:height .3s}
 .ft .logo-img{height:clamp(70px,10vw,130px);filter:brightness(0) invert(1)}
 .tag-lock{font-size:9.5px;letter-spacing:.2em;opacity:.45;padding-inline-start:12px;margin-inline-start:12px;
   border-inline-start:1px solid var(--line);white-space:nowrap}
@@ -384,27 +384,6 @@ html[dir="rtl"] .ty .rec dt{font-family:var(--arab);letter-spacing:0;font-size:1
 .ft{background:var(--brick);color:var(--paper);padding:var(--sec) 0 32px}
 .ft-news{display:grid;grid-template-columns:1fr auto;gap:clamp(20px,3vw,48px);align-items:center;
   padding-bottom:clamp(36px,5vw,60px);margin-bottom:clamp(36px,5vw,60px);border-bottom:1px solid rgba(250,247,239,.28)}
-.ft-brew{width:74px;height:40px;opacity:.85}
-.ft-brew svg{width:100%;height:100%}
-.ft-brew .drop{fill:var(--paper);opacity:0;animation:brewDrop 2.6s cubic-bezier(.55,0,.85,.35) infinite}
-.ft-brew .ripple{fill:none;stroke:var(--paper);stroke-width:1.4;opacity:0;transform-origin:60px 44px}
-.ft-brew .r1{animation:brewRipple 2.6s ease-out infinite}
-.ft-brew .r2{animation:brewRipple 2.6s ease-out infinite;animation-delay:.28s}
-@keyframes brewDrop{
-  0%{transform:translateY(0);opacity:0}
-  8%{opacity:.95}
-  62%{transform:translateY(32px);opacity:.95}
-  66%{opacity:0}
-  100%{opacity:0}
-}
-@keyframes brewRipple{
-  0%,60%{opacity:0;transform:scale(.25)}
-  64%{opacity:.75;transform:scale(.3)}
-  100%{opacity:0;transform:scale(1.9)}
-}
-@media (prefers-reduced-motion:reduce){
-  .ft-brew .drop,.ft-brew .ripple{animation:none;opacity:0}
-}
 .ft h4{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;opacity:.6;margin-bottom:18px;font-weight:400}
 html[dir="rtl"] .ft h4{font-family:var(--arab);letter-spacing:0;font-size:12px}
 .ft-news h4{margin-bottom:8px}
@@ -524,7 +503,7 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
 
   <section class="pad">
     <div class="wrap">
-      <div class="eyebrow rv"><h2 class="md" data-t="tl_h">The tools</h2><span class="mono dim" data-t="tl_n">01 — Drag to explore</span></div>
+      <div class="eyebrow rv"><h2 class="md" data-t="tl_h">The tools</h2></div>
     </div>
     <div class="rail rv" id="rail"><div class="rail-in" id="rail-in"></div></div>
     <div class="wrap" style="margin-top:clamp(28px,4vw,44px)">
@@ -536,7 +515,7 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
 
   <section class="pad">
     <div class="wrap">
-      <div class="eyebrow rv"><h2 class="md" data-t="dl_h">Find your grind</h2><span class="mono dim" data-t="dl_n">03 — Kivi</span></div>
+      <div class="eyebrow rv"><h2 class="md" data-t="dl_h">Find your grind</h2></div>
       <div class="dial-wrap">
         <div class="rv">
           <p class="body" data-t="dl_b">The Kivi dial moves in clicks, fine to coarse. Drag across to see where each brew method sits — then set it once and repeat it exactly.</p>
@@ -558,7 +537,7 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
 
   <section class="pad" style="background:var(--paper)">
     <div class="wrap">
-      <div class="eyebrow rv"><h2 class="md" data-t="wy_h">Why we make them</h2><span class="mono dim" data-t="wy_n">04 — Approach</span></div>
+      <div class="eyebrow rv"><h2 class="md" data-t="wy_h">Why we make them</h2></div>
       <div class="two">
         <div class="blk rv">
           <h3 data-t="wy_1h">Coffee as calm</h3>
@@ -576,7 +555,7 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
 
   <section class="pad drops">
     <div class="wrap">
-      <div class="eyebrow rv"><h2 class="md" data-t="dr_h">Drops</h2><span class="mono dim" data-t="dr_n">05 — Limited editions</span></div>
+      <div class="eyebrow rv"><h2 class="md" data-t="dr_h">Drops</h2></div>
       <div class="two">
         <p class="lg rv" data-t="dr_s">Made with artists, architects and studios we admire.</p>
         <div class="rv">
@@ -718,13 +697,6 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
       <div>
         <img src="images/logo-peclee.png" alt="Peclee" class="logo-img">
         <p class="lg" style="margin:24px 0 14px" data-t="ft_line">For the love of brewing</p>
-        <div class="ft-brew" aria-hidden="true">
-          <svg viewBox="0 0 120 56">
-            <circle class="drop" cx="60" cy="8" r="4.2"/>
-            <ellipse class="ripple r1" cx="60" cy="44" rx="9" ry="3.4"/>
-            <ellipse class="ripple r2" cx="60" cy="44" rx="9" ry="3.4"/>
-          </svg>
-        </div>
       </div>
       <div>
         <h4 data-t="nav1">Tools</h4>
@@ -742,6 +714,8 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
           <li><a href="#/contact" data-t="nav3">Contact</a></li>
           <li><a href="#/contact" data-t="ft_trade">Stockists &amp; trade</a></li>
           <li><a href="https://instagram.com/peclee.sa" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.tiktok.com/@peclee.com?_r=1&_t=ZS-98WOFpJO48t" data-social="tiktok" target="_blank" rel="noopener">TikTok</a></li>
+          <li><a href="https://snapchat.com/t/x8TEA4MD" data-social="snapchat" target="_blank" rel="noopener">Snapchat</a></li>
         </ul>
       </div>
       <div>
