@@ -58,7 +58,7 @@ html[dir="rtl"] .body{line-height:1.95}
 .mk b:nth-child(4){grid-area:2/3}.mk b:nth-child(5){grid-area:2/4}.mk b:nth-child(6){grid-area:2/5}
 .logo .wm{font-size:16px;font-weight:500;letter-spacing:-.02em;font-family:var(--sans)}
 .logo-img{height:22px;width:auto;display:block}
-.ft .logo-img{height:26px;filter:brightness(0) invert(1)}
+.ft .logo-img{height:clamp(70px,10vw,130px);filter:brightness(0) invert(1)}
 .tag-lock{font-size:9.5px;letter-spacing:.2em;opacity:.45;padding-inline-start:12px;margin-inline-start:12px;
   border-inline-start:1px solid var(--line);white-space:nowrap}
 html[dir="rtl"] .tag-lock{letter-spacing:0;font-size:11px}
@@ -116,7 +116,7 @@ html[dir="rtl"] .cta{font-family:var(--arab);letter-spacing:0;font-size:12px}
 
 /* ── photo slots ── */
 .slot{position:relative;width:100%;height:100%;display:grid;place-items:center}
-.slot img{width:100%;height:100%;object-fit:contain}
+.slot img{width:100%;height:100%;object-fit:cover}
 .slot-ph{display:none;position:absolute;inset:0;place-items:center}
 .slot.empty img{display:none}
 .slot.empty .slot-ph{display:grid}
@@ -201,12 +201,6 @@ html[dir="rtl"] .tcard .pr{font-family:var(--arab);letter-spacing:0}
   text-transform:uppercase;opacity:.45;direction:ltr}
 html[dir="rtl"] .zones{font-family:var(--arab);letter-spacing:0;font-size:10.5px}
 .zones span{text-align:center}
-.cred{border-top:1px solid var(--line);margin-top:clamp(32px,4vw,52px);padding-top:24px;
-  display:flex;gap:clamp(16px,3vw,40px);flex-wrap:wrap}
-.cred div{flex:1 1 220px}
-.cred dt{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;opacity:.45;margin-bottom:6px}
-html[dir="rtl"] .cred dt{font-family:var(--arab);letter-spacing:0;font-size:11px}
-.cred dd{font-size:14.5px;opacity:.82;line-height:1.6}
 .drops{background:var(--ink);color:var(--cream)}
 .drops .body{opacity:.72}
 .drops .eyebrow{border-color:rgba(244,239,227,.2)}
@@ -233,13 +227,13 @@ html[dir="rtl"] .prow-name{letter-spacing:0;line-height:1.15}
 .prow-tag{margin-top:12px;font-size:clamp(13px,1.2vw,16px);opacity:.62;max-width:26ch}
 .prow-idx{font-family:var(--mono);font-size:11px;letter-spacing:.18em;opacity:.45}
 html[dir="rtl"] .prow-idx{font-family:var(--arab);letter-spacing:0}
-.segs{position:absolute;inset-inline:var(--pad);bottom:22px;display:flex;gap:5px;pointer-events:none}
-.segs i{flex:1;height:2px;background:rgba(23,19,16,.14);transition:background .18s}
-.segs i.on{background:var(--brick)}
-.hint{position:absolute;inset-inline-end:var(--pad);bottom:34px;font-family:var(--mono);font-size:10px;
-  letter-spacing:.16em;text-transform:uppercase;opacity:0;transition:opacity .3s;pointer-events:none}
-html[dir="rtl"] .hint{font-family:var(--arab);letter-spacing:0}
-.prow:hover .hint{opacity:.5}
+.prow-sw{display:flex;gap:9px;margin-top:16px;pointer-events:auto}
+.csw{width:24px;height:24px;border-radius:100px;border:1px solid var(--line);padding:2px;cursor:pointer;
+  transition:transform .25s,border-color .25s;pointer-events:auto}
+.csw i{display:block;width:100%;height:100%;border-radius:100px}
+.csw:hover{transform:scale(1.12)}
+.csw.on{border-color:var(--ink);transform:scale(1.1)}
+.frames .slot img,.p-stage .slot img{object-fit:contain}
 .panel{position:fixed;inset:0;z-index:150;background:var(--cream);transform:translateY(101%);
   transition:transform .68s cubic-bezier(.76,0,.24,1);overflow-y:auto;overscroll-behavior:contain}
 .panel.open{transform:none}
@@ -274,6 +268,10 @@ html[dir="rtl"] .spec dt{font-family:var(--arab);letter-spacing:0;font-size:12.5
 
 /* ══ ABOUT ══ */
 .open-sec{min-height:90svh;display:flex;align-items:flex-end;padding-bottom:clamp(40px,6vw,80px);position:relative;overflow:hidden}
+.ab-ghost{position:absolute;top:50%;right:clamp(-10%,-2vw,4%);transform:translateY(-52%) rotate(-6deg);
+  width:clamp(420px,52vw,900px);opacity:.055;pointer-events:none;z-index:0;mix-blend-mode:multiply}
+.ab-ghost svg{width:100%;height:auto;display:block}
+@media (max-width:900px){.ab-ghost{width:78vw;right:-18vw;opacity:.05}}
 .open-sec .wrap{position:relative;width:100%}
 .sig{margin-top:clamp(32px,5vw,56px);border-top:1px solid var(--line);padding-top:22px;
   display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
@@ -384,6 +382,27 @@ html[dir="rtl"] .ty .rec dt{font-family:var(--arab);letter-spacing:0;font-size:1
 .ft{background:var(--brick);color:var(--paper);padding:var(--sec) 0 32px}
 .ft-news{display:grid;grid-template-columns:1fr auto;gap:clamp(20px,3vw,48px);align-items:center;
   padding-bottom:clamp(36px,5vw,60px);margin-bottom:clamp(36px,5vw,60px);border-bottom:1px solid rgba(250,247,239,.28)}
+.ft-brew{width:74px;height:40px;opacity:.85}
+.ft-brew svg{width:100%;height:100%}
+.ft-brew .drop{fill:var(--paper);opacity:0;animation:brewDrop 2.6s cubic-bezier(.55,0,.85,.35) infinite}
+.ft-brew .ripple{fill:none;stroke:var(--paper);stroke-width:1.4;opacity:0;transform-origin:60px 44px}
+.ft-brew .r1{animation:brewRipple 2.6s ease-out infinite}
+.ft-brew .r2{animation:brewRipple 2.6s ease-out infinite;animation-delay:.28s}
+@keyframes brewDrop{
+  0%{transform:translateY(0);opacity:0}
+  8%{opacity:.95}
+  62%{transform:translateY(32px);opacity:.95}
+  66%{opacity:0}
+  100%{opacity:0}
+}
+@keyframes brewRipple{
+  0%,60%{opacity:0;transform:scale(.25)}
+  64%{opacity:.75;transform:scale(.3)}
+  100%{opacity:0;transform:scale(1.9)}
+}
+@media (prefers-reduced-motion:reduce){
+  .ft-brew .drop,.ft-brew .ripple{animation:none;opacity:0}
+}
 .ft h4{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;opacity:.6;margin-bottom:18px;font-weight:400}
 html[dir="rtl"] .ft h4{font-family:var(--arab);letter-spacing:0;font-size:12px}
 .ft-news h4{margin-bottom:8px}
@@ -454,7 +473,6 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
 <header class="hd" id="hd">
   <a href="#/" class="logo" aria-label="Peclee">
     <img src="images/logo-peclee.png" alt="Peclee" class="logo-img">
-    <span class="tag-lock mono" data-t="tagline">Coffee, Your Way</span>
   </a>
   <div class="hd-r">
     <nav class="mono">
@@ -558,8 +576,6 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
           <p class="body" data-t="wy_2b">Peclee exists to close that gap. We're a design brand that happens to work in coffee.</p>
         </div>
       </div>
-      <dl class="cred rv" id="cred"></dl>
-      <div class="rv" style="margin-top:clamp(28px,4vw,44px)"><a href="#/about" class="cta" data-t="wy_cta">Read the full story</a></div>
     </div>
   </section>
 
@@ -584,27 +600,16 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
     <div class="wrap">
       <p class="mono dim" style="margin-bottom:24px" data-t="tp_l">The tools — four pieces</p>
       <h1 class="xl" style="font-size:clamp(2.3rem,7vw,6.2rem)" data-t="tp_h">Everything you need.<br>Nothing you don't.</h1>
-      <div class="intro-b">
-        <p class="body" data-t="tp_b">A kettle, a grinder and two scales. Each one built around usability, durability and thoughtful design — in that order.</p>
-        <p class="mono dim" data-t="tp_n">Move across a product to turn it</p>
-      </div>
     </div>
   </section>
   <div class="rows" id="rows"></div>
-  <div class="seam" data-seam="cream" aria-hidden="true"></div>
-  <section class="pad" style="text-align:center">
-    <div class="wrap">
-      <p class="mono dim" style="margin-bottom:26px" data-t="tp_wl">Trade</p>
-      <p class="lg rv" style="max-width:24ch;margin:0 auto 36px" data-t="tp_ws">Interested in stocking Peclee?</p>
-      <a href="#/contact" class="cta fill rv" data-t="tp_wc">Talk to us</a>
-    </div>
-  </section>
 </div>
 
 <!-- ══════════ ABOUT ══════════ -->
 <div class="route" id="v-about">
   <section class="open-sec" id="aopen">
     <div class="grid" aria-hidden="true"></div>
+    <div class="ab-ghost" id="abGhost" aria-hidden="true"></div>
     <div class="wrap">
       <p class="mono dim" style="margin-bottom:clamp(28px,5vw,60px)" data-t="ab_l">About Peclee</p>
       <h1 class="xl" style="font-size:clamp(2.2rem,7vw,6.6rem)" data-t="ab_h">A design brand that happens to work in coffee.</h1>
@@ -781,7 +786,13 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
       <div>
         <img src="images/logo-peclee.png" alt="Peclee" class="logo-img">
         <p class="lg" style="margin:24px 0 14px" data-t="ft_line">For the love of brewing</p>
-        <p class="mono" style="opacity:.6" data-t="tagline">Coffee, Your Way</p>
+        <div class="ft-brew" aria-hidden="true">
+          <svg viewBox="0 0 120 56">
+            <circle class="drop" cx="60" cy="8" r="4.2"/>
+            <ellipse class="ripple r1" cx="60" cy="44" rx="9" ry="3.4"/>
+            <ellipse class="ripple r2" cx="60" cy="44" rx="9" ry="3.4"/>
+          </svg>
+        </div>
       </div>
       <div>
         <h4 data-t="nav1">Tools</h4>
@@ -808,7 +819,6 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
     </div>
     <div class="ft-base mono">
       <span id="ft-legal">—</span>
-      <span data-t="tagline">Coffee, Your Way</span>
     </div>
   </div>
 </footer>
@@ -905,7 +915,6 @@ en:{
  wy_2h:'Design that means something',
  wy_2a:'Third-wave cafés got everything right — the architecture, the packaging, the ritual. Then you look at the kettle on someone\'s kitchen counter and the story falls apart.',
  wy_2b:"Peclee exists to close that gap. We're a design brand that happens to work in coffee.",
- wy_cta:'Read the full story',
  dr_h:'Drops',dr_n:'04 — Limited editions',dr_s:'Made with artists, architects and studios we admire.',
  dr_b:"Alongside the standard line we release limited runs — a new pattern, a new palette, a new form. Not a logo on someone else's product. Something neither of us could have made alone.",
  dr_cta:'Hear about the next drop',
@@ -955,7 +964,6 @@ ar:{
  wy_2h:'تصميم له معنى',
  wy_2a:'أتقنت مقاهي الموجة الثالثة كل شيء — العمارة، والتغليف، والطقس اليومي. ثم تنظر إلى الغلاية على رخامة المطبخ فتنكسر الحكاية.',
  wy_2b:'وُجدت بيكلي لتسدّ هذه الفجوة. نحن علامة تصميم تعمل في مجال القهوة.',
- wy_cta:'اقرأ القصة كاملة',
  dr_h:'إصدارات محدودة',dr_n:'٠٤ — إصدارات محدودة',dr_s:'بالتعاون مع فنانين ومعماريين واستوديوهات نُقدّرها.',
  dr_b:'إلى جانب الخط الأساسي، نُصدر دفعات محدودة — نمط جديد، لوحة ألوان جديدة، شكل جديد. ليس شعارًا على منتج شخص آخر، بل شيء لم يكن أي منا قادرًا على صنعه وحده.',
  dr_cta:'اعرف بالإصدار القادم',
@@ -1044,14 +1052,6 @@ const FIN=[{c:NAVY,f:'orphe-01.webp',n:{en:'Midnight navy',ar:'كحلي داكن
 const NUMS=[['600',{en:'ml — Orphe capacity',ar:'مل — سعة أورفي'}],['2000',{en:'g — Peso maximum',ar:'غرام — أقصى سعة بيسو'}],
             ['0.1',{en:'g — precision',ar:'غرام — الدقة'}],['38',{en:'mm — Flow38™ burr',ar:'مم — شفرة Flow38™'}],
             ['1.2',{en:'cm — PESOmini thickness',ar:'سم — سماكة بيسوميني'}]];
-
-const CRED=[
- {en:['Designed by','A licensed Q Grader with SCA certifications in roasting, brewing and sensory skills.'],
-  ar:['التصميم','حامل رخصة Q Grader وشهادات SCA في التحميص والتحضير والتقييم الحسي.']},
- {en:['Tested on','Working café and roastery equipment, every day, before anything ships.'],
-  ar:['الاختبار','على معدات مقاهٍ ومحامص عاملة، يوميًا، قبل أي إصدار.']},
- {en:['Made for','⚠ Gulf kitchens and café bars first: 220 V, hard water, real heat.'],
-  ar:['التصنيع لأجل','⚠ مطابخ وبارات المقاهي في الخليج أولًا: ٢٢٠ فولت، ماء قاسٍ، حرارة حقيقية.']}];
 
 const CHAPS=[
  {l:'P',en:['Chapter one','The gap we noticed',
@@ -1146,9 +1146,6 @@ function render(){
   document.getElementById('zones').innerHTML=ZONES[L].map((z,i)=>
     `<span style="flex:${[9,5,3,7,3,3][i]}">${z}</span>`).join('');
   drawDial();
-  /* cred */
-  document.getElementById('cred').innerHTML=CRED.map(x=>
-    `<div><dt>${x[L][0]}</dt><dd>${x[L][1]}</dd></div>`).join('');
 
   /* tools rows */
   document.getElementById('rows').innerHTML=P.map((p,i)=>`
@@ -1157,11 +1154,13 @@ function render(){
         <div class="frames">${p.shots.map((s,j)=>{const a=s.split(',');
           return `<div class="${j===0?'on':''}">${SLOT(a[0],'Peclee '+p.name.en,a[1],A[a[2]](a[3]))}</div>`}).join('')}</div>
         <div class="prow-label"><div><div class="prow-name">${p.name[L]}</div>
-        <div class="prow-tag">${p.tagline[L]}</div></div>
+        <div class="prow-tag">${p.tagline[L]}</div>
+        <div class="prow-sw">${p.shots.slice(0,3).map((s,j)=>{const a=s.split(',');
+          const cname=a[1].split('·')[0].trim();
+          return `<button type="button" class="csw${j===0?' on':''}" data-idx="${j}" aria-label="${cname}" title="${cname}"><i style="background:${a[3]}"></i></button>`;
+        }).join('')}</div></div>
         <div class="prow-idx">${String(i+1).padStart(2,'0')} / ${p.kind[L]}</div></div>
       </div>
-      <div class="segs">${p.shots.map((_,j)=>`<i class="${j===0?'on':''}"></i>`).join('')}</div>
-      <span class="hint">${t('tp_n')}</span>
     </button>`).join('');
   bindRows();
 
@@ -1172,6 +1171,8 @@ function render(){
       <h2>${c[L][1]}</h2>${c[L][2].map(p=>`<p class="body">${p}</p>`).join('')}
     </article>`).join('');
   bindChapters();
+  const ghost=document.getElementById('abGhost');
+  if(ghost)ghost.innerHTML=A.kettle('#171310');
   document.getElementById('trio').innerHTML=TRIO.map(x=>
     `<div class="rv"><h3>${x[L][0]}</h3><p class="body">${x[L][1]}</p></div>`).join('');
 
@@ -1211,11 +1212,9 @@ function render(){
 
   /* footer contact + legal */
   document.getElementById('ft-contact').innerHTML=
-    `<li><a href="mailto:${INFO.email}" class="ltr">${INFO.email}</a></li>
-     <li><a href="tel:+${INFO.phoneRaw}" class="ltr">${INFO.phone}</a></li>
-     <li>${INFO.city[L]}${L==='en'?', ':'، '}${INFO.country[L]}</li>`;
+    `<li><a href="mailto:${INFO.email}" class="ltr">${INFO.email}</a></li>`;
   document.getElementById('ft-legal').textContent=
-    '© '+new Date().getFullYear()+' '+INFO.company[L]+' · '+INFO.city[L]+(L==='en'?', ':'، ')+INFO.country[L];
+    '© '+new Date().getFullYear()+' Peclee Futureworks';
 
   tick(); seams(); reveal();
 }
@@ -1250,10 +1249,10 @@ document.getElementById('range').addEventListener('input',drawDial);
 
 function bindRows(){
   document.querySelectorAll('.prow').forEach(row=>{
-    const fr=[...row.querySelectorAll('.frames > div')],sg=[...row.querySelectorAll('.segs i')],n=fr.length;
+    const fr=[...row.querySelectorAll('.frames > div')],n=fr.length;
     let cur=0,moved=0,x0=0,drag=false;
-    const show=i=>{if(i===cur)return;fr[cur].classList.remove('on');sg[cur].classList.remove('on');
-      fr[i].classList.add('on');sg[i].classList.add('on');cur=i};
+    const show=i=>{if(i===cur)return;fr[cur].classList.remove('on');fr[i].classList.add('on');cur=i;
+      row.querySelectorAll('.csw').forEach(b=>b.classList.toggle('on',+b.dataset.idx===i))};
     const scrub=e=>{const r=row.getBoundingClientRect();
       let p=(e.clientX-r.left)/r.width; if(L==='ar')p=1-p;
       show(Math.floor(Math.min(.9999,Math.max(0,p))*n))};
@@ -1262,6 +1261,10 @@ function bindRows(){
     row.onpointerup=()=>{drag=false};
     row.onpointerleave=()=>show(0);
     row.onclick=()=>{if(moved<8)location.hash='#/tools/'+P[+row.dataset.i].id};
+    row.querySelectorAll('.csw').forEach(b=>{
+      b.addEventListener('pointerdown',e=>e.stopPropagation());
+      b.addEventListener('click',e=>{e.stopPropagation();show(+b.dataset.idx)});
+    });
   });
 }
 let chIO;
