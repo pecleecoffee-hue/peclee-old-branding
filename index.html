@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Peclee — Coffee, Your Way</title>
+<title>Peclee · Coffee, Your Way</title>
 <meta name="description" content="Coffee, your way. Kettles, grinders and scales for people who enjoy making their own cup.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ══════════════════════════════════════════════════════════
-   PECLEE — full site preview, bilingual EN / AR
+   PECLEE · full site preview, bilingual EN / AR
    Routes: #/  #/tools  #/about  #/contact  #/tools/kivi
-   Brand site — no prices, no checkout.
+   Brand site, no prices, no checkout.
    ══════════════════════════════════════════════════════════ */
 :root{
   --cream:#F4EFE3;--paper:#FAF7EF;--brick:#A32724;--ink:#171310;--green:#2C5040;
@@ -57,8 +57,8 @@ html[dir="rtl"] .body{line-height:1.95}
 .mk b:nth-child(1){grid-area:1/1}.mk b:nth-child(2){grid-area:1/2}.mk b:nth-child(3){grid-area:1/3}
 .mk b:nth-child(4){grid-area:2/3}.mk b:nth-child(5){grid-area:2/4}.mk b:nth-child(6){grid-area:2/5}
 .logo .wm{font-size:16px;font-weight:500;letter-spacing:-.02em;font-family:var(--sans)}
-.logo-img{height:54px;width:auto;display:block}
-.hd.stuck .logo-img{height:36px;transition:height .3s}
+.logo-img{height:108px;width:auto;display:block}
+.hd.stuck .logo-img{height:72px;transition:height .3s}
 .ft .logo-img{height:clamp(70px,10vw,130px);filter:brightness(0) invert(1)}
 .tag-lock{font-size:9.5px;letter-spacing:.2em;opacity:.45;padding-inline-start:12px;margin-inline-start:12px;
   border-inline-start:1px solid var(--line);white-space:nowrap}
@@ -117,7 +117,7 @@ html[dir="rtl"] .cta{font-family:var(--arab);letter-spacing:0;font-size:12px}
 
 /* ── photo slots ── */
 .slot{position:relative;width:100%;height:100%;display:grid;place-items:center}
-.slot img{width:100%;height:100%;object-fit:cover}
+.slot img{width:100%;height:100%;object-fit:contain}
 .slot-ph{display:none;position:absolute;inset:0;place-items:center}
 .slot.empty img{display:none}
 .slot.empty .slot-ph{display:grid}
@@ -141,6 +141,7 @@ html[dir="rtl"] .cta{font-family:var(--arab);letter-spacing:0;font-size:12px}
 .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;
   overflow:hidden;padding-bottom:clamp(32px,5vw,64px)}
 .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:var(--cream)}
+@media (max-width:760px){.hero-video{object-fit:contain;object-position:center 38%}}
 .hero-overlay{position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(180deg,rgba(23,19,16,.28) 0%,rgba(23,19,16,.06) 38%,rgba(244,239,227,.55) 72%,rgba(244,239,227,.97) 94%)}
 .hero .grid{z-index:2}
@@ -150,7 +151,7 @@ html[dir="rtl"] .cta{font-family:var(--arab);letter-spacing:0;font-size:12px}
 .hero.video-on .body{opacity:.9}
 .hero-meta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:clamp(24px,4vw,44px)}
 .hero h1{margin-bottom:clamp(28px,4vw,56px)}
-.hero h1 .w{display:block;overflow:hidden}
+.hero h1 .w{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em}
 .hero h1 .w i{display:block;font-style:normal;transform:translateY(105%);transition:transform 1.05s cubic-bezier(.22,.8,.24,1)}
 .ready .hero h1 .w i{transform:none}
 .ready .hero h1 .w:nth-child(2) i{transition-delay:.09s}
@@ -235,7 +236,6 @@ html[dir="rtl"] .prow-idx{font-family:var(--arab);letter-spacing:0}
 .csw i{display:block;width:100%;height:100%;border-radius:100px}
 .csw:hover{transform:scale(1.12)}
 .csw.on{border-color:var(--ink);transform:scale(1.1)}
-.frames .slot img,.p-stage .slot img{object-fit:contain}
 .panel{position:fixed;inset:0;z-index:150;background:var(--cream);transform:translateY(101%);
   transition:transform .68s cubic-bezier(.76,0,.24,1);overflow-y:auto;overscroll-behavior:contain}
 .panel.open{transform:none}
@@ -270,10 +270,6 @@ html[dir="rtl"] .spec dt{font-family:var(--arab);letter-spacing:0;font-size:12.5
 
 /* ══ ABOUT ══ */
 .open-sec{min-height:90svh;display:flex;align-items:flex-end;padding-bottom:clamp(40px,6vw,80px);position:relative;overflow:hidden}
-.ab-ghost{position:absolute;top:50%;right:clamp(-10%,-2vw,4%);transform:translateY(-52%) rotate(-6deg);
-  width:clamp(420px,52vw,900px);opacity:.055;pointer-events:none;z-index:0}
-.ab-ghost svg{width:100%;height:auto;display:block}
-@media (max-width:900px){.ab-ghost{width:78vw;right:-18vw;opacity:.05}}
 .open-sec .wrap{position:relative;width:100%}
 .sig{margin-top:clamp(32px,5vw,56px);padding-top:22px;
   display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
@@ -518,7 +514,7 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
       <div class="eyebrow rv"><h2 class="md" data-t="dl_h">Find your grind</h2></div>
       <div class="dial-wrap">
         <div class="rv">
-          <p class="body" data-t="dl_b">The Kivi dial moves in clicks, fine to coarse. Drag across to see where each brew method sits — then set it once and repeat it exactly.</p>
+          <p class="body" data-t="dl_b">The Kivi dial moves in clicks, fine to coarse. Drag across to see where each brew method sits, then set it once and repeat it exactly.</p>
           <a href="#/tools/kivi" class="cta" style="margin-top:32px" data-t="dl_cta">Kivi specifications</a>
         </div>
         <div class="dial rv">
@@ -541,12 +537,12 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
       <div class="two">
         <div class="blk rv">
           <h3 data-t="wy_1h">Coffee as calm</h3>
-          <p class="body" data-t="wy_1a">We don't treat coffee as a science project. We treat it as a moment — something that slows you down rather than speeds you up.</p>
+          <p class="body" data-t="wy_1a">We don't treat coffee as a science project. We treat it as a moment, something that slows you down rather than speeds you up.</p>
           <p class="body" data-t="wy_1b">The weight of a kettle in your hand. The click of a grinder dial. Every piece should make you want to brew, not make you anxious about doing it wrong.</p>
         </div>
         <div class="blk rv">
           <h3 data-t="wy_2h">Design that means something</h3>
-          <p class="body" data-t="wy_2a">Third-wave cafés got everything right — the architecture, the packaging, the ritual. Then you look at the kettle on someone's kitchen counter and the story falls apart.</p>
+          <p class="body" data-t="wy_2a">Third-wave cafés got everything right, the architecture, the packaging, the ritual. Then you look at the kettle on someone's kitchen counter and the story falls apart.</p>
           <p class="body" data-t="wy_2b">Peclee exists to close that gap. We're a design brand that happens to work in coffee.</p>
         </div>
       </div>
@@ -559,7 +555,7 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
       <div class="two">
         <p class="lg rv" data-t="dr_s">Made with artists, architects and studios we admire.</p>
         <div class="rv">
-          <p class="body" data-t="dr_b">Alongside the standard line we release limited runs — a new pattern, a new palette, a new form. Not a logo on someone else's product. Something neither of us could have made alone.</p>
+          <p class="body" data-t="dr_b">Alongside the standard line we release limited runs, a new pattern, a new palette, a new form. Not a logo on someone else's product. Something neither of us could have made alone.</p>
           <a href="#ft-email" class="cta" style="margin-top:32px" data-t="dr_cta">Hear about the next drop</a>
         </div>
       </div>
@@ -572,7 +568,7 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
   <section class="intro">
     <div class="grid" aria-hidden="true"></div>
     <div class="wrap">
-      <p class="mono dim" style="margin-bottom:24px" data-t="tp_l">The tools — four pieces</p>
+      <p class="mono dim" style="margin-bottom:24px" data-t="tp_l">The tools · four pieces</p>
       <h1 class="xl" style="font-size:clamp(2.3rem,7vw,6.2rem)" data-t="tp_h">Everything you need.<br>Nothing you don't.</h1>
     </div>
   </section>
@@ -583,12 +579,10 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
 <div class="route" id="v-about">
   <section class="open-sec" id="aopen">
     <div class="grid" aria-hidden="true"></div>
-    <div class="ab-ghost" id="abGhost" aria-hidden="true"></div>
     <div class="wrap">
-      <p class="mono dim" style="margin-bottom:clamp(28px,5vw,60px)" data-t="ab_l">About Peclee</p>
       <h1 class="xl" style="font-size:clamp(2.2rem,7vw,6.6rem)" data-t="ab_h">A design brand that happens to work in coffee.</h1>
       <div class="sig">
-        <p class="body" data-t="ab_b">Our competitors talk about temperature stability and pour rates. We talk about those things too — but we lead with how the object makes you feel, how it looks on your counter, and what story it tells.</p>
+        <p class="body" data-t="ab_b">Our competitors talk about temperature stability and pour rates. We talk about those things too, but we lead with how the object makes you feel, how it looks on your counter, and what story it tells.</p>
       </div>
     </div>
   </section>
@@ -607,14 +601,12 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
 
   <section class="statement">
     <div class="wrap">
-      <p class="mono" style="opacity:.6;margin-bottom:28px" data-t="ab_sl">What success looks like</p>
       <p class="lg" data-t="ab_ss">When someone sees a Peclee product on a counter, they should feel something.</p>
     </div>
   </section>
 
   <section class="pad">
     <div class="wrap">
-      <div class="eyebrow rv"><h2 class="md" data-t="ab_wh">What we make</h2><span class="mono dim" data-t="ab_wn">Two lines</span></div>
       <div class="trio" id="trio"></div>
     </div>
   </section>
@@ -637,10 +629,10 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
     <div class="grid" aria-hidden="true"></div>
     <div class="wrap">
       <div class="top-row">
-        <p class="clock" id="clock">—</p>
+        <p class="clock" id="clock">···</p>
       </div>
       <h1 class="xl" style="font-size:clamp(2.4rem,8vw,7rem)" data-t="ct_h">Say hello.</h1>
-      <div class="status" id="status" style="margin-top:clamp(24px,3vw,36px)"><i></i><span id="status-t">—</span></div>
+      <div class="status" id="status" style="margin-top:clamp(24px,3vw,36px)"><i></i><span id="status-t">···</span></div>
       <div class="ctop-b">
         <p class="body" data-t="ct_b">Reach us directly. Someone here reads every message.</p>
       </div>
@@ -657,16 +649,16 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
 <!-- ══════════ PRODUCT PANEL ══════════ -->
 <div class="panel" id="panel" role="dialog" aria-modal="true" aria-hidden="true">
   <div class="panel-bar">
-    <span class="mono dim" id="p-kind">—</span>
+    <span class="mono dim" id="p-kind">···</span>
     <button class="x" id="x"><span data-t="close">Close</span> <span aria-hidden="true">✕</span></button>
   </div>
   <div class="p-top">
     <div class="p-gal"><div class="p-stage" id="p-stage"></div><div class="p-thumbs" id="p-thumbs"></div></div>
     <div>
-      <p class="mono dim" id="p-code">—</p>
-      <h2 class="lg" id="p-name" style="margin-top:10px">—</h2>
-      <p class="p-tag" id="p-tagline">—</p>
-      <p class="body" id="p-desc" style="margin-bottom:36px">—</p>
+      <p class="mono dim" id="p-code">···</p>
+      <h2 class="lg" id="p-name" style="margin-top:10px">···</h2>
+      <p class="p-tag" id="p-tagline">···</p>
+      <p class="body" id="p-desc" style="margin-bottom:36px">···</p>
       <div class="p-buy">
         <a href="#/contact" class="cta fill" data-close data-t="p_reg">Register interest</a>
         <a href="#/contact" class="cta" data-close data-t="p_ask">Ask a question</a>
@@ -713,9 +705,6 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
           <li><a href="#/about" data-t="nav2">About</a></li>
           <li><a href="#/contact" data-t="nav3">Contact</a></li>
           <li><a href="#/contact" data-t="ft_trade">Stockists &amp; trade</a></li>
-          <li><a href="https://instagram.com/peclee.sa" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://www.tiktok.com/@peclee.com?_r=1&_t=ZS-98WOFpJO48t" data-social="tiktok" target="_blank" rel="noopener">TikTok</a></li>
-          <li><a href="https://snapchat.com/t/x8TEA4MD" data-social="snapchat" target="_blank" rel="noopener">Snapchat</a></li>
         </ul>
       </div>
       <div>
@@ -724,14 +713,14 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
       </div>
     </div>
     <div class="ft-base mono">
-      <span id="ft-legal">—</span>
+      <span id="ft-legal">···</span>
     </div>
   </div>
 </footer>
 
 <script>
 /* ═══════════════════════════════════════════════════════════
-   ⚠ EDIT THIS BLOCK — the only place your details live.
+   ⚠ EDIT THIS BLOCK, the only place your details live.
    ═══════════════════════════════════════════════════════════ */
 const INFO={
   city:{en:'⚠ CITY',ar:'⚠ المدينة'},
@@ -806,28 +795,28 @@ en:{
  h_1:'For the',h_2:'love of',h_3:'brewing',
  h_body:"Peclee was created for people who enjoy making their own cup of coffee. We believe good coffee doesn't have to be complicated. With the right tools and a little curiosity, anyone can brew something great at home.",
  h_cta1:'See the tools →',h_cta2:'Our story',
- band:'Designed for your daily brew ✳',
- tl_h:'The tools',tl_n:'01 — Drag to explore',tl_cta:'All four tools →',soon:'Coming soon',
- cw_h:'One kettle, three finishes',cw_n:'02 — Orphe',cw_t:'Control that feels effortless.',
+ band:'Designed for your daily brew',
+ tl_h:'The tools',tl_n:'01 · Drag to explore',tl_cta:'All four tools →',soon:'Coming soon',
+ cw_h:'One kettle, three finishes',cw_n:'02 · Orphe',cw_t:'Control that feels effortless.',
  cw_b:'A balanced handle, FlowSense™ gooseneck flow and a clean modern design help you pour with confidence from the very first brew.',
  cw_cta:'Orphe details',
- dl_h:'Find your grind',dl_n:'02 — Kivi',dl_u:'clicks',dl_cta:'Kivi specifications',
- dl_b:'The Kivi dial moves in clicks, fine to coarse. Drag across to see where each brew method sits — then set it once and repeat it exactly.',
- wy_h:'Why we make them',wy_n:'03 — Approach',
+ dl_h:'Find your grind',dl_n:'02 · Kivi',dl_u:'clicks',dl_cta:'Kivi specifications',
+ dl_b:'The Kivi dial moves in clicks, fine to coarse. Drag across to see where each brew method sits, then set it once and repeat it exactly.',
+ wy_h:'Why we make them',wy_n:'03 · Approach',
  wy_1h:'Coffee as calm',
- wy_1a:"We don't treat coffee as a science project. We treat it as a moment — something that slows you down rather than speeds you up.",
+ wy_1a:"We don't treat coffee as a science project. We treat it as a moment, something that slows you down rather than speeds you up.",
  wy_1b:'The weight of a kettle in your hand. The click of a grinder dial. Every piece should make you want to brew, not make you anxious about doing it wrong.',
  wy_2h:'Design that means something',
- wy_2a:'Third-wave cafés got everything right — the architecture, the packaging, the ritual. Then you look at the kettle on someone\'s kitchen counter and the story falls apart.',
+ wy_2a:'Third-wave cafés got everything right, the architecture, the packaging, the ritual. Then you look at the kettle on someone\'s kitchen counter and the story falls apart.',
  wy_2b:"Peclee exists to close that gap. We're a design brand that happens to work in coffee.",
- dr_h:'Drops',dr_n:'04 — Limited editions',dr_s:'Made with artists, architects and studios we admire.',
- dr_b:"Alongside the standard line we release limited runs — a new pattern, a new palette, a new form. Not a logo on someone else's product. Something neither of us could have made alone.",
+ dr_h:'Drops',dr_n:'04 · Limited editions',dr_s:'Made with artists, architects and studios we admire.',
+ dr_b:"Alongside the standard line we release limited runs, a new pattern, a new palette, a new form. Not a logo on someone else's product. Something neither of us could have made alone.",
  dr_cta:'Hear about the next drop',
- tp_l:'The tools — four pieces',tp_h:"Everything you need.<br>Nothing you don't.",
- tp_b:'A kettle, a grinder and two scales. Each one built around usability, durability and thoughtful design — in that order.',
+ tp_l:'The tools · four pieces',tp_h:"Everything you need.<br>Nothing you don't.",
+ tp_b:'A kettle, a grinder and two scales. Each one built around usability, durability and thoughtful design, in that order.',
  tp_n:'Move across a product to turn it',tp_wl:'Trade',tp_ws:'Interested in stocking Peclee?',tp_wc:'Talk to us',
  ab_l:'About Peclee',ab_h:'A design brand that happens to work in coffee.',
- ab_b:'Our competitors talk about temperature stability and pour rates. We talk about those things too — but we lead with how the object makes you feel, how it looks on your counter, and what story it tells.',
+ ab_b:'Our competitors talk about temperature stability and pour rates. We talk about those things too, but we lead with how the object makes you feel, how it looks on your counter, and what story it tells.',
  ab_n:'Six chapters ↓',ab_mk:'The mark completes as the story does',
  ab_sl:'What success looks like',ab_ss:'When someone sees a Peclee product on a counter, they should feel something.',
  ab_wh:'What we make',ab_wn:'Two lines',ab_end:'Coffee, your way.',ab_ec:'Get in touch',
@@ -837,13 +826,13 @@ en:{
  fm_q2:'And who are you?',fm_q3:'Tell us more.',
  fm_n:'Your name',fm_e:'Email',fm_c:'Café or store',fm_m:'Your message',
  fm_back:'← Back',fm_next:'Continue',fm_send:'Send it',
- ty_l:'Message received',ty_b:"We've got it. Expect a reply within two working days — sooner if it's a quick one.",
+ ty_l:'Message received',ty_b:"We've got it. Expect a reply within two working days, sooner if it's a quick one.",
  ty_1:'Enquiry',ty_2:'Replying to',ty_3:'Meanwhile',ty_again:'Send another',ty_thanks:'Thank you, ',
  nl_h:'Hear about drops first',nl_p:'Limited editions, new tools, and the occasional brew guide. No spam.',nl_b:'Join',
  ft_line:'For the love of brewing',ft_brand:'Brand',ft_reach:'Reach us',ft_trade:'Stockists & trade',
  ft_p1:'Orphe kettle',ft_p2:'Kivi grinder',ft_p3:'Peso scale',ft_p4:'PESOmini scale',
  p_reg:'Register interest',p_ask:'Ask a question',p_spec:'Specifications',
- open:'Open now — usually a same-day reply',shut:'Closed — back at 9.30',wknd:'Weekend — back Sunday 9.30',
+ open:'Open now, usually a same-day reply',shut:'Closed, back at 9.30',wknd:'Weekend, back Sunday 9.30',
  langBtn:'عربي'
 },
 ar:{
@@ -854,28 +843,28 @@ ar:{
  h_1:'لعشّاق',h_2:'تحضير',h_3:'القهوة',
  h_body:'أُنشئت بيكلي لمن يستمتع بتحضير فنجان قهوته بنفسه. نؤمن أن القهوة الجيدة لا تحتاج إلى تعقيد. مع الأدوات المناسبة وقليل من الشغف، يمكن لأي شخص أن يحضّر شيئًا رائعًا في منزله.',
  h_cta1:'تعرّف على الأدوات ←',h_cta2:'قصتنا',
- band:'مصمّمة لتحضيرك اليومي ✳',
- tl_h:'الأدوات',tl_n:'٠١ — اسحب للاستكشاف',tl_cta:'جميع الأدوات ←',soon:'قريبًا',
- cw_h:'غلاية واحدة، ثلاثة ألوان',cw_n:'٠٢ — أورفي',cw_t:'تحكم سهل.',
- cw_b:'بمقبض متوازن، وتدفق عنق إوزّة محكوم من FlowSense™، وتصميم حديث ونظيف — تساعدك على السكب بثقة من أول تحضير.',
+ band:'مصمّمة لتحضيرك اليومي',
+ tl_h:'الأدوات',tl_n:'٠١ · اسحب للاستكشاف',tl_cta:'جميع الأدوات ←',soon:'قريبًا',
+ cw_h:'غلاية واحدة، ثلاثة ألوان',cw_n:'٠٢ · أورفي',cw_t:'تحكم سهل.',
+ cw_b:'بمقبض متوازن، وتدفق عنق إوزّة محكوم من FlowSense™، وتصميم حديث ونظيف، تساعدك على السكب بثقة من أول تحضير.',
  cw_cta:'تفاصيل أورفي',
- dl_h:'اعرف درجة طحنك',dl_n:'٠٢ — كيفي',dl_u:'نقرات',dl_cta:'مواصفات كيفي',
- dl_b:'يتحرك قرص كيفي بالنقرات، من الناعم إلى الخشن. اسحب لترى موضع كل طريقة تحضير — ثم اضبطه مرة واحدة وكرّره بدقة.',
- wy_h:'لماذا نصنعها',wy_n:'٠٣ — منهجنا',
+ dl_h:'اعرف درجة طحنك',dl_n:'٠٢ · كيفي',dl_u:'نقرات',dl_cta:'مواصفات كيفي',
+ dl_b:'يتحرك قرص كيفي بالنقرات، من الناعم إلى الخشن. اسحب لترى موضع كل طريقة تحضير، ثم اضبطه مرة واحدة وكرّره بدقة.',
+ wy_h:'لماذا نصنعها',wy_n:'٠٣ · منهجنا',
  wy_1h:'القهوة لحظة هدوء',
- wy_1a:'لا نتعامل مع القهوة كتجربة علمية، بل كلحظة — شيء يُبطئ خطوتك بدل أن يسرّعها.',
+ wy_1a:'لا نتعامل مع القهوة كتجربة علمية، بل كلحظة، شيء يُبطئ خطوتك بدل أن يسرّعها.',
  wy_1b:'ثقل الغلاية في يدك. نقرة قرص المطحنة. كل قطعة يجب أن تجعلك ترغب في التحضير، لا أن تقلق من الخطأ.',
  wy_2h:'تصميم له معنى',
- wy_2a:'أتقنت مقاهي الموجة الثالثة كل شيء — العمارة، والتغليف، والطقس اليومي. ثم تنظر إلى الغلاية على رخامة المطبخ فتنكسر الحكاية.',
+ wy_2a:'أتقنت مقاهي الموجة الثالثة كل شيء، العمارة، والتغليف، والطقس اليومي. ثم تنظر إلى الغلاية على رخامة المطبخ فتنكسر الحكاية.',
  wy_2b:'وُجدت بيكلي لتسدّ هذه الفجوة. نحن علامة تصميم تعمل في مجال القهوة.',
- dr_h:'إصدارات محدودة',dr_n:'٠٤ — إصدارات محدودة',dr_s:'بالتعاون مع فنانين ومعماريين واستوديوهات نُقدّرها.',
- dr_b:'إلى جانب الخط الأساسي، نُصدر دفعات محدودة — نمط جديد، لوحة ألوان جديدة، شكل جديد. ليس شعارًا على منتج شخص آخر، بل شيء لم يكن أي منا قادرًا على صنعه وحده.',
+ dr_h:'إصدارات محدودة',dr_n:'٠٤ · إصدارات محدودة',dr_s:'بالتعاون مع فنانين ومعماريين واستوديوهات نُقدّرها.',
+ dr_b:'إلى جانب الخط الأساسي، نُصدر دفعات محدودة، نمط جديد، لوحة ألوان جديدة، شكل جديد. ليس شعارًا على منتج شخص آخر، بل شيء لم يكن أي منا قادرًا على صنعه وحده.',
  dr_cta:'اعرف بالإصدار القادم',
- tp_l:'الأدوات — أربع قطع',tp_h:'كل ما تحتاجه.<br>ولا شيء زائد.',
- tp_b:'غلاية، ومطحنة، وميزانان. كل قطعة مبنية على سهولة الاستخدام والمتانة والتصميم المدروس — بهذا الترتيب.',
+ tp_l:'الأدوات · أربع قطع',tp_h:'كل ما تحتاجه.<br>ولا شيء زائد.',
+ tp_b:'غلاية، ومطحنة، وميزانان. كل قطعة مبنية على سهولة الاستخدام والمتانة والتصميم المدروس، بهذا الترتيب.',
  tp_n:'مرّر فوق المنتج لتديره',tp_wl:'التجارة',tp_ws:'مهتم بتوفير بيكلي في متجرك؟',tp_wc:'تحدّث معنا',
  ab_l:'عن بيكلي',ab_h:'علامة تصميم تعمل في مجال القهوة.',
- ab_b:'يتحدث منافسونا عن ثبات الحرارة ومعدلات السكب. نتحدث عن ذلك أيضًا — لكننا نبدأ من شعورك تجاه القطعة، وشكلها على رخامتك، والحكاية التي ترويها.',
+ ab_b:'يتحدث منافسونا عن ثبات الحرارة ومعدلات السكب. نتحدث عن ذلك أيضًا، لكننا نبدأ من شعورك تجاه القطعة، وشكلها على رخامتك، والحكاية التي ترويها.',
  ab_n:'ستة فصول ↓',ab_mk:'يكتمل الشعار باكتمال الحكاية',
  ab_sl:'كيف يبدو النجاح',ab_ss:'حين يرى أحدهم منتج بيكلي على الرخامة، يجب أن يشعر بشيء.',
  ab_wh:'ماذا نصنع',ab_wn:'خطّان',ab_end:'قهوتك بطريقتك.',ab_ec:'تواصل معنا',
@@ -885,19 +874,19 @@ ar:{
  fm_q2:'ومن أنت؟',fm_q3:'أخبرنا المزيد.',
  fm_n:'اسمك',fm_e:'البريد الإلكتروني',fm_c:'اسم المقهى أو المتجر',fm_m:'رسالتك',
  fm_back:'→ رجوع',fm_next:'متابعة',fm_send:'إرسال',
- ty_l:'وصلت رسالتك',ty_b:'استلمناها. توقّع ردًا خلال يومي عمل — وأسرع إن كان السؤال سريعًا.',
+ ty_l:'وصلت رسالتك',ty_b:'استلمناها. توقّع ردًا خلال يومي عمل، وأسرع إن كان السؤال سريعًا.',
  ty_1:'نوع الطلب',ty_2:'سنرد على',ty_3:'في الأثناء',ty_again:'أرسل رسالة أخرى',ty_thanks:'شكرًا لك، ',
  nl_h:'كن أول من يعرف',nl_p:'إصدارات محدودة، أدوات جديدة، ودليل تحضير من وقت لآخر. بلا إزعاج.',nl_b:'انضم',
  ft_line:'لعشّاق تحضير القهوة',ft_brand:'العلامة',ft_reach:'للتواصل',ft_trade:'الموزّعون والتجارة',
  ft_p1:'غلاية أورفي',ft_p2:'مطحنة كيفي',ft_p3:'ميزان بيسو',ft_p4:'ميزان بيسوميني',
  p_reg:'سجّل اهتمامك',p_ask:'اسأل سؤالًا',p_spec:'المواصفات',
- open:'متاحون الآن — نرد عادةً في اليوم نفسه',shut:'مغلق — نعود ٩:٣٠ صباحًا',wknd:'عطلة نهاية الأسبوع — نعود الأحد ٩:٣٠',
+ open:'متاحون الآن، نرد عادةً في اليوم نفسه',shut:'مغلق، نعود ٩:٣٠ صباحًا',wknd:'عطلة نهاية الأسبوع، نعود الأحد ٩:٣٠',
  langBtn:'EN'
 }};
 
 /* ═══════════ PRODUCTS ═══════════ */
 const P=[
-{id:'orphe',art:'kettle',c:NAVY,code:'PC-ORPHE / 600 ML',
+{id:'orphe',art:'kettle',c:NAVY,code:'PC ORPHE · 600 ML',
  name:{en:'Orphe',ar:'أورفي'},kind:{en:'Electric kettle',ar:'غلاية كهربائية'},
  tagline:{en:'Control that feels effortless.',ar:'تحكم سهل.'},
  desc:{en:'Our kettle makes precision feel natural, even on your first pour. A balanced handle, FlowSense™ gooseneck flow and a clean modern design mean you can pour with confidence from the very first brew.',
@@ -910,7 +899,7 @@ const P=[
  specs:{en:[['Capacity','600 ml'],['Material','Stainless steel with heat-resistant coating'],['Heating type','Electronic'],['Weight','Lightweight, easy-pour design'],['Finishes','Midnight navy · forest green · brick red']],
         ar:[['السعة','٦٠٠ مل'],['المادة','ستانلس ستيل مع طبقة مقاومة للحرارة'],['نوع التسخين','إلكتروني'],['الوزن','خفيف وسهل السكب'],['الألوان','كحلي داكن · أخضر غابة · أحمر طوبي']]}},
 
-{id:'kivi',art:'grinder',c:NAVY,code:'PC-KIVI / 38 MM',
+{id:'kivi',art:'grinder',c:NAVY,code:'PC KIVI · 38 MM',
  name:{en:'Kivi',ar:'كيفي'},kind:{en:'Hand grinder',ar:'مطحنة يدوية'},
  tagline:{en:'Consistency starts at the core.',ar:'الثبات يبدأ من الأساس.'},
  desc:{en:'Powered by the Flow38™ 38 mm burr, Kivi delivers balanced, even particle distribution with every grind. A stable dual-bearing system and smooth operation make it the grinder for people who want simplicity without sacrificing precision.',
@@ -923,7 +912,7 @@ const P=[
  specs:{en:[['Burr type','38 mm stainless steel (Flow38™)'],['Materials','PP / 304 stainless steel'],['Weight','350 g'],['Capacity','Approximately 20 g of coffee beans'],['Dimensions','Body 150 × 45 mm · handle 160 mm · burr 38 mm'],['Grind range','Moka 10–14 clicks · pour-over 18–24 · French press 25–27']],
         ar:[['نوع الشفرة','ستانلس ستيل ٣٨ مم (Flow38™)'],['المواد','PP / ستانلس ستيل ٣٠٤'],['الوزن','٣٥٠ غرام'],['السعة','حوالي ٢٠ غرام من حبوب القهوة'],['الأبعاد','الهيكل ١٥٠ × ٤٥ مم · المقبض ١٦٠ مم · الشفرة ٣٨ مم'],['نطاق الطحن','الموكا ١٠–١٤ نقرة · الفلتر ١٨–٢٤ · الفرنش برس ٢٥–٢٧']]}},
 
-{id:'peso',art:'scale',c:BRICK,code:'PC-PESO / 2000 G',
+{id:'peso',art:'scale',c:BRICK,code:'PC PESO · 2000 G',
  name:{en:'Peso',ar:'بيسو'},kind:{en:'Brewing scale',ar:'ميزان تحضير'},
  tagline:{en:'Brew bigger. Brew smarter.',ar:'حضّر أكثر. حضّر بأذكى طريقة.'},
  desc:{en:'Peso is built for brewers who need more room, more stability and more control. A heat-resistant glass surface, wide platform and rigid ABS frame make it reliable for home brewers and café bars alike.',
@@ -936,11 +925,11 @@ const P=[
  specs:{en:[['Maximum capacity','2000 g (switchable weight limit)'],['Precision','0.1 g'],['Materials','ABS body · heat-resistant tempered glass · silicone anti-slip pad'],['Modes','Manual · Auto · Espresso · Power off'],['Body','124 × 130 × 23.5 mm'],['Battery','600 mAh rechargeable lithium'],['Charging','USB Type-C']],
         ar:[['السعة القصوى','٢٠٠٠ غرام (مع تبديل حد الوزن)'],['الدقة','٠٫١ غرام'],['المواد','هيكل ABS · زجاج مقاوم للحرارة · وسادة سيليكون'],['الأوضاع','يدوي · تلقائي · إسبريسو · إيقاف'],['الأبعاد','١٢٤ × ١٣٠ × ٢٣٫٥ مم'],['البطارية','ليثيوم ٦٠٠ ملّي أمبير'],['الشحن','USB Type-C']]}},
 
-{id:'pesomini',art:'mini',c:GREEN,code:'PC-PESOM / 1500 G',
+{id:'pesomini',art:'mini',c:GREEN,code:'PC PESOM · 1500 G',
  name:{en:'PESOmini',ar:'بيسوميني'},kind:{en:'Brewing scale',ar:'ميزان تحضير'},
  tagline:{en:'Accuracy that fits your pocket.',ar:'دقة تناسب جيبك.'},
- desc:{en:'Designed for brewers who value accuracy without complication, PESOmini combines ultra-precise weighing with intuitive smart modes — all inside a compact, travel-ready frame.',
-       ar:'مصمّم لعشّاق القهوة الذين يقدّرون الدقة دون التعقيد، يجمع بيسوميني بين قياس فائق الدقة وأوضاع ذكية — داخل تصميم مدمج وسهل الحمل.'},
+ desc:{en:'Designed for brewers who value accuracy without complication, PESOmini combines ultra-precise weighing with intuitive smart modes, all inside a compact, travel-ready frame.',
+       ar:'مصمّم لعشّاق القهوة الذين يقدّرون الدقة دون التعقيد، يجمع بيسوميني بين قياس فائق الدقة وأوضاع ذكية، داخل تصميم مدمج وسهل الحمل.'},
  shots:['pesomini-01.webp,Green · three-quarter,mini,'+GREEN,'pesomini-02.webp,Top-down · platform,mini,'+NAVY,
         'pesomini-03.webp,Side profile · thickness,mini,'+BRICK,'pesomini-04.webp,In use · cup on scale,mini,'+GREEN,
         'pesomini-05.webp,Display detail,mini,'+GREEN],
@@ -953,9 +942,9 @@ const FIN=[{c:NAVY,f:'orphe-01.webp',n:{en:'Midnight navy',ar:'كحلي داكن
            {c:GREEN,f:'orphe-02.webp',n:{en:'Forest green',ar:'أخضر غابة'}},
            {c:BRICK,f:'orphe-03.webp',n:{en:'Brick red',ar:'أحمر طوبي'}}];
 
-const NUMS=[['600',{en:'ml — Orphe capacity',ar:'مل — سعة أورفي'}],['2000',{en:'g — Peso maximum',ar:'غرام — أقصى سعة بيسو'}],
-            ['0.1',{en:'g — precision',ar:'غرام — الدقة'}],['38',{en:'mm — Flow38™ burr',ar:'مم — شفرة Flow38™'}],
-            ['1.2',{en:'cm — PESOmini thickness',ar:'سم — سماكة بيسوميني'}]];
+const NUMS=[['600',{en:'ml · Orphe capacity',ar:'مل · سعة أورفي'}],['2000',{en:'g · Peso maximum',ar:'غرام · أقصى سعة بيسو'}],
+            ['0.1',{en:'g · precision',ar:'غرام · الدقة'}],['38',{en:'mm · Flow38™ burr',ar:'مم · شفرة Flow38™'}],
+            ['1.2',{en:'cm · PESOmini thickness',ar:'سم · سماكة بيسوميني'}]];
 
 const CHAPS=[
  {l:'P',en:['Chapter one','The gap we noticed',
@@ -965,10 +954,10 @@ const CHAPS=[
   ['ادخل أي مقهى من الموجة الثالثة في أي مكان في العالم، وستجد عمارة تُلهم، وهوية تُحرّك، وتصميمًا داخليًا يجعلك ترغب في البقاء.',
    'ثم انظر إلى الغلايات والموازين والمطاحن على رخامات المطابخ. إنها عملية، وجيدة، لكنها لا تحمل شيئًا من ذلك الشعور.']]},
  {l:'E',en:['Chapter two','Coffee as calm',
-  ['We don\'t treat coffee as a science project. We treat it as a moment — a calm, personal ritual. Something that slows you down, not speeds you up.',
+  ['We don\'t treat coffee as a science project. We treat it as a moment, a calm, personal ritual. Something that slows you down, not speeds you up.',
    'Brewing should feel like a pleasure, not a performance.']],
   ar:['الفصل الثاني','القهوة لحظة هدوء',
-  ['لا نتعامل مع القهوة كتجربة علمية، بل كلحظة — طقس شخصي هادئ. شيء يُبطئ خطوتك بدل أن يسرّعها.',
+  ['لا نتعامل مع القهوة كتجربة علمية، بل كلحظة، طقس شخصي هادئ. شيء يُبطئ خطوتك بدل أن يسرّعها.',
    'يجب أن يكون التحضير متعة، لا استعراضًا.']]},
  {l:'C',en:['Chapter three','Design as identity, not decoration',
   ['Most brewing equipment brands think about function first and design as an afterthought. Maybe a colour variant. Maybe a collaboration that\'s really just a logo swap.',
@@ -977,10 +966,10 @@ const CHAPS=[
   ['معظم علامات معدات القهوة تفكر في الوظيفة أولًا، ويأتي التصميم لاحقًا. ربما لون مختلف. ربما تعاون ليس أكثر من تبديل شعار.',
    'نحن نرى التصميم هوية. كل قرار بصري يجب أن يكون مقصودًا، من ثقل المقبض إلى نقرة القرص.']]},
  {l:'L',en:['Chapter four','Drops, not collaborations',
-  ['Peclee has its own design language — clean, considered, premium. Alongside it we release limited editions with partners whose philosophy aligns with ours.',
+  ['Peclee has its own design language, clean, considered, premium. Alongside it we release limited editions with partners whose philosophy aligns with ours.',
    'We take both visual identities, find the intersection, and make something neither of us could have made alone.']],
   ar:['الفصل الرابع','إصدارات، لا تعاونات',
-  ['لبيكلي لغتها التصميمية الخاصة — نظيفة، مدروسة، فاخرة. وإلى جانبها نُصدر إصدارات محدودة مع شركاء تتوافق فلسفتهم مع فلسفتنا.',
+  ['لبيكلي لغتها التصميمية الخاصة، نظيفة، مدروسة، فاخرة. وإلى جانبها نُصدر إصدارات محدودة مع شركاء تتوافق فلسفتهم مع فلسفتنا.',
    'نأخذ الهويتين البصريتين، ونجد نقطة التقائهما، ونصنع شيئًا لم يكن أي منا قادرًا على صنعه وحده.']]},
  {l:'E',en:['Chapter five','Who it\'s for',
   ['Home brewers who want their equipment to match the taste they\'ve developed. Café owners who want their bar tools to reflect their brand. People who\'d rather own fewer, better things.',
@@ -989,10 +978,10 @@ const CHAPS=[
   ['لمن يحضّر في المنزل ويريد لأدواته أن تليق بذوقه. ولأصحاب المقاهي الذين يريدون لأدوات البار أن تعكس علامتهم. ولمن يفضّل امتلاك أشياء أقل وأفضل.',
    'ليس عليهم أن يكونوا خبراء قهوة. يكفي أن يهتموا بالجمال والهدوء وإتقان شيء واحد.']]},
  {l:'E',en:['Chapter six','Why this matters now',
-  ['People care about their spaces more than ever. A kettle on a kitchen counter isn\'t just a kettle — it\'s a design choice.',
+  ['People care about their spaces more than ever. A kettle on a kitchen counter isn\'t just a kettle, it\'s a design choice.',
    'Coffee is already one of the most aesthetic-driven subcultures in the world. Nobody has brought that same energy to the tools people use at home.']],
   ar:['الفصل السادس','لماذا الآن',
-  ['يهتم الناس بمساحاتهم أكثر من أي وقت مضى. الغلاية على رخامة المطبخ ليست مجرد غلاية — إنها قرار تصميمي.',
+  ['يهتم الناس بمساحاتهم أكثر من أي وقت مضى. الغلاية على رخامة المطبخ ليست مجرد غلاية، إنها قرار تصميمي.',
    'القهوة أصلًا من أكثر الثقافات الفرعية اهتمامًا بالجمال. لكن لم يجلب أحد الطاقة نفسها إلى الأدوات التي نستخدمها في البيت.']]}];
 
 const TRIO=[
@@ -1004,8 +993,8 @@ const TRIO=[
   ar:['نبرتنا','واثقة دون استعجال. لا نُلقي دروسًا ولا نحتكر المعرفة. جمل قصيرة. مساحة للتنفس.']}];
 
 const ZONES={en:['Espresso','Moka','·','Pour-over','French','·'],ar:['إسبريسو','موكا','·','فلتر','فرنش','·']};
-const METH={en:['Espresso — fine','Moka pot','Between ranges — adjust to taste','Pour-over','French press','Coarser than marked'],
-            ar:['إسبريسو — ناعم','موكا بوت','بين النطاقات — اضبط حسب ذوقك','فلتر','فرنش برس','أخشن من النطاق المحدد']};
+const METH={en:['Espresso, fine','Moka pot','Between ranges, adjust to taste','Pour-over','French press','Coarser than marked'],
+            ar:['إسبريسو، ناعم','موكا بوت','بين النطاقات، اضبط حسب ذوقك','فلتر','فرنش برس','أخشن من النطاق المحدد']};
 
 /* ═══════════ LANGUAGE ═══════════ */
 let L='en';
@@ -1031,7 +1020,7 @@ function render(){
       <span class="pr">${t('soon')}</span></div></a>`;}).join('');
   bindRail();
 
-  /* colourway (section removed — guarded in case it returns) */
+  /* colourway (section removed, guarded in case it returns) */
   const sw=document.getElementById('sw');
   if(sw){
     sw.innerHTML=FIN.map((f,i)=>`<button aria-pressed="${i===0}" aria-label="${f.n[L]}"><i style="background:${f.c}"></i></button>`).join('');
@@ -1060,7 +1049,7 @@ function render(){
           const cname=a[1].split('·')[0].trim();
           return `<button type="button" class="csw${j===0?' on':''}" data-idx="${j}" aria-label="${cname}" title="${cname}"><i style="background:${a[3]}"></i></button>`;
         }).join('')}</div></div>
-        <div class="prow-idx">${String(i+1).padStart(2,'0')} / ${p.kind[L]}</div></div>
+        <div class="prow-idx">${String(i+1).padStart(2,'0')} · ${p.kind[L]}</div></div>
       </div>
     </button>`).join('');
   bindRows();
@@ -1072,8 +1061,6 @@ function render(){
       <h2>${c[L][1]}</h2>${c[L][2].map(p=>`<p class="body">${p}</p>`).join('')}
     </article>`).join('');
   bindChapters();
-  const ghost=document.getElementById('abGhost');
-  if(ghost)ghost.innerHTML=A.kettle('#171310');
   document.getElementById('trio').innerHTML=TRIO.map(x=>
     `<div class="rv"><h3>${x[L][0]}</h3><p class="body">${x[L][1]}</p></div>`).join('');
 
@@ -1095,7 +1082,10 @@ function render(){
 
   /* footer contact + legal */
   document.getElementById('ft-contact').innerHTML=
-    `<li><a href="mailto:${INFO.email}" class="ltr">${INFO.email}</a></li>`;
+    `<li><a href="mailto:${INFO.email}" class="ltr">${INFO.email}</a></li>
+     <li><a href="https://instagram.com/${INFO.instagram}" target="_blank" rel="noopener">Instagram</a></li>
+     <li><a href="https://www.tiktok.com/@peclee.com?_r=1&_t=ZS-98WOFpJO48t" target="_blank" rel="noopener">TikTok</a></li>
+     <li><a href="https://snapchat.com/t/x8TEA4MD" target="_blank" rel="noopener">Snapchat</a></li>`;
   document.getElementById('ft-legal').textContent=
     '© '+new Date().getFullYear()+' Peclee Futureworks';
 
@@ -1204,7 +1194,7 @@ function tick(){
   const now=new Date();
   const localTime=new Intl.DateTimeFormat(L==='en'?'en-GB':'ar',{hour:'2-digit',minute:'2-digit',hour12:false}).format(now);
   const c=document.getElementById('clock');
-  if(c)c.textContent=(L==='en'?'Your time — ':'وقتك — ')+localTime;
+  if(c)c.textContent=(L==='en'?'Your time · ':'وقتك · ')+localTime;
   const pr=new Intl.DateTimeFormat('en-GB',{timeZone:INFO.tz,weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false})
     .formatToParts(now).reduce((a,x)=>(a[x.type]=x.value,a),{});
   const mins=+pr.hour*60 + +pr.minute;
@@ -1279,7 +1269,7 @@ document.getElementById('ft-form').addEventListener('submit',async e=>{
   try{
     const fd=new FormData();
     fd.append('access_key','YOUR-WEB3FORMS-ACCESS-KEY');
-    fd.append('subject','Newsletter signup — peclee.com');
+    fd.append('subject','Newsletter signup · peclee.com');
     fd.append('email',el.value);
     const r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd});
     if(!r.ok)throw new Error();
