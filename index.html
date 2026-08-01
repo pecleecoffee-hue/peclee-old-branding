@@ -57,7 +57,8 @@ html[dir="rtl"] .body{line-height:1.95}
 .mk b:nth-child(1){grid-area:1/1}.mk b:nth-child(2){grid-area:1/2}.mk b:nth-child(3){grid-area:1/3}
 .mk b:nth-child(4){grid-area:2/3}.mk b:nth-child(5){grid-area:2/4}.mk b:nth-child(6){grid-area:2/5}
 .logo .wm{font-size:16px;font-weight:500;letter-spacing:-.02em;font-family:var(--sans)}
-.logo-img{height:22px;width:auto;display:block}
+.logo-img{height:38px;width:auto;display:block}
+.hd.stuck .logo-img{height:26px;transition:height .3s}
 .ft .logo-img{height:clamp(70px,10vw,130px);filter:brightness(0) invert(1)}
 .tag-lock{font-size:9.5px;letter-spacing:.2em;opacity:.45;padding-inline-start:12px;margin-inline-start:12px;
   border-inline-start:1px solid var(--line);white-space:nowrap}
@@ -145,6 +146,7 @@ html[dir="rtl"] .cta{font-family:var(--arab);letter-spacing:0;font-size:12px}
 .hero .grid{z-index:2}
 .hero .wrap{position:relative;z-index:3;width:100%}
 .hero.video-on h1,.hero.video-on .body{color:var(--paper)}
+.hero-red{color:var(--brick)!important;opacity:1!important;font-weight:400}
 .hero.video-on .body{opacity:.9}
 .hero-meta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:clamp(24px,4vw,44px)}
 .hero h1{margin-bottom:clamp(28px,4vw,56px)}
@@ -269,11 +271,11 @@ html[dir="rtl"] .spec dt{font-family:var(--arab);letter-spacing:0;font-size:12.5
 /* ══ ABOUT ══ */
 .open-sec{min-height:90svh;display:flex;align-items:flex-end;padding-bottom:clamp(40px,6vw,80px);position:relative;overflow:hidden}
 .ab-ghost{position:absolute;top:50%;right:clamp(-10%,-2vw,4%);transform:translateY(-52%) rotate(-6deg);
-  width:clamp(420px,52vw,900px);opacity:.055;pointer-events:none;z-index:0;mix-blend-mode:multiply}
+  width:clamp(420px,52vw,900px);opacity:.055;pointer-events:none;z-index:0}
 .ab-ghost svg{width:100%;height:auto;display:block}
 @media (max-width:900px){.ab-ghost{width:78vw;right:-18vw;opacity:.05}}
 .open-sec .wrap{position:relative;width:100%}
-.sig{margin-top:clamp(32px,5vw,56px);border-top:1px solid var(--line);padding-top:22px;
+.sig{margin-top:clamp(32px,5vw,56px);padding-top:22px;
   display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 .story{background:var(--paper);padding:var(--sec) 0}
 .story-in{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,6vw,110px);align-items:start}
@@ -509,15 +511,8 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
         <span class="w"><i data-t="h_3">brewing</i></span>
       </h1>
       <div class="hero-b">
-        <p class="body" data-t="h_body">Peclee was created for people who enjoy making their own cup of coffee. We believe good coffee doesn't have to be complicated. With the right tools and a little curiosity, anyone can brew something great at home.</p>
+        <p class="body hero-red" data-t="h_body">Peclee was created for people who enjoy making their own cup of coffee. We believe good coffee doesn't have to be complicated. With the right tools and a little curiosity, anyone can brew something great at home.</p>
       </div>
-    </div>
-  </section>
-
-  <section class="pad" style="background:var(--paper);text-align:center">
-    <div class="wrap">
-      <p class="mono dim rv" style="margin-bottom:32px" data-t="pro_l">Prologue</p>
-      <p class="lg rv" style="max-width:20ch;margin:0 auto" data-t="pro_s">Coffee doesn't need to be complicated. It needs to be yours.</p>
     </div>
   </section>
 
@@ -615,7 +610,6 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
       <h1 class="xl" style="font-size:clamp(2.2rem,7vw,6.6rem)" data-t="ab_h">A design brand that happens to work in coffee.</h1>
       <div class="sig">
         <p class="body" data-t="ab_b">Our competitors talk about temperature stability and pour rates. We talk about those things too — but we lead with how the object makes you feel, how it looks on your counter, and what story it tells.</p>
-        <span class="mono dim" data-t="ab_n">Six chapters ↓</span>
       </div>
     </div>
   </section>
@@ -664,80 +658,18 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
     <div class="grid" aria-hidden="true"></div>
     <div class="wrap">
       <div class="top-row">
-        <p class="mono dim" data-t="nav3">Contact</p>
         <p class="clock" id="clock">—</p>
       </div>
       <h1 class="xl" style="font-size:clamp(2.4rem,8vw,7rem)" data-t="ct_h">Say hello.</h1>
       <div class="status" id="status" style="margin-top:clamp(24px,3vw,36px)"><i></i><span id="status-t">—</span></div>
       <div class="ctop-b">
-        <p class="body" data-t="ct_b">Reach us directly, or write below and we'll come back to you. Someone here reads every message.</p>
-        <a href="#write" class="cta" data-t="ct_c">Write to us ↓</a>
+        <p class="body" data-t="ct_b">Reach us directly. Someone here reads every message.</p>
       </div>
     </div>
   </section>
 
   <section style="padding-bottom:clamp(48px,7vw,90px)">
     <div class="wrap chan" id="chan"></div>
-  </section>
-
-  <div class="seam" data-seam="cream" aria-hidden="true"></div>
-
-  <section class="formsec" id="write">
-    <div class="wrap">
-      <div class="f-head"><h2 class="md" data-t="fm_h">Or write to us</h2><p class="mono dim" id="count">01 / 03</p></div>
-      <form id="form" novalidate>
-        <!-- Web3Forms — replace with your key -->
-        <input type="hidden" name="access_key" value="YOUR-WEB3FORMS-ACCESS-KEY">
-        <input type="hidden" name="subject" value="New enquiry from peclee.com">
-        <input type="hidden" name="enquiry_type" id="h-type" value="">
-        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1">
-
-        <div class="step live" data-s="0">
-          <p class="q" data-t="fm_q1">What can we help with?</p>
-          <p class="q-sub" data-t="fm_s1">Pick the closest one.</p>
-          <div class="picks" id="picks"></div>
-        </div>
-
-        <div class="step" data-s="1">
-          <p class="q" data-t="fm_q2">And who are you?</p>
-          <label class="f"><span data-t="fm_n">Your name</span><input type="text" name="name" id="i-name" autocomplete="name"></label>
-          <label class="f"><span data-t="fm_e">Email</span><input type="email" name="email" id="i-email" autocomplete="email"></label>
-          <label class="f" id="wrap-co" style="display:none"><span data-t="fm_c">Café or store</span><input type="text" name="company" id="i-co"></label>
-          <div class="nav-r">
-            <button type="button" class="ghost" data-back data-t="fm_back">← Back</button>
-            <div class="right"><span class="err" id="e2"></span><button type="button" class="cta fill" data-next data-t="fm_next">Continue</button></div>
-          </div>
-        </div>
-
-        <div class="step" data-s="2">
-          <p class="q" data-t="fm_q3">Tell us more.</p>
-          <label class="f"><span data-t="fm_m">Your message</span><textarea name="message" id="i-msg" rows="1"></textarea></label>
-          <div class="nav-r">
-            <button type="button" class="ghost" data-back data-t="fm_back">← Back</button>
-            <div class="right"><span class="err" id="e3"></span><button type="submit" class="cta fill" id="send" data-t="fm_send">Send it</button></div>
-          </div>
-        </div>
-      </form>
-
-      <div class="ty" id="ty">
-        <div class="ty-in">
-          <p class="mono" style="opacity:.6;margin-bottom:22px" data-t="ty_l">Message received</p>
-          <p class="big" id="ty-big">Thank you.</p>
-          <p class="body" data-t="ty_b">We've got it. Expect a reply within two working days — sooner if it's a quick one.</p>
-          <dl class="rec">
-            <div><dt data-t="ty_1">Enquiry</dt><dd id="rec-type">—</dd></div>
-            <div><dt data-t="ty_2">Replying to</dt><dd id="rec-email">—</dd></div>
-            <div><dt data-t="ty_3">Meanwhile</dt><dd><a href="https://instagram.com/peclee.sa" target="_blank" rel="noopener">@peclee.sa</a></dd></div>
-          </dl>
-          <div class="strip" data-seam-light aria-hidden="true"></div>
-          <div style="margin-top:clamp(28px,4vw,44px);display:flex;gap:12px;flex-wrap:wrap">
-            <a href="#/tools" class="cta" data-t="h_cta1">See the tools →</a>
-            <button class="cta" id="again" data-t="ty_again">Send another</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="prog" aria-hidden="true"><i id="prog"></i></div>
   </section>
 </div>
 
@@ -831,7 +763,7 @@ const INFO={
   city:{en:'⚠ CITY',ar:'⚠ المدينة'},
   country:{en:'Saudi Arabia',ar:'السعودية'},
   company:{en:'⚠ COMPANY NAME',ar:'⚠ اسم الشركة'},
-  email:'⚠ EMAIL@PECLEE.COM',
+  email:'info@peclee.com',
   phone:'⚠ +966 ** *** ****',
   phoneRaw:'966000000000',
   instagram:'peclee.sa',
@@ -900,7 +832,6 @@ en:{
  h_1:'For the',h_2:'love of',h_3:'brewing',
  h_body:"Peclee was created for people who enjoy making their own cup of coffee. We believe good coffee doesn't have to be complicated. With the right tools and a little curiosity, anyone can brew something great at home.",
  h_cta1:'See the tools →',h_cta2:'Our story',
- pro_l:'Prologue',pro_s:"Coffee doesn't need to be complicated. It needs to be yours.",
  band:'Designed for your daily brew ✳',
  tl_h:'The tools',tl_n:'01 — Drag to explore',tl_cta:'All four tools →',soon:'Coming soon',
  cw_h:'One kettle, three finishes',cw_n:'02 — Orphe',cw_t:'Control that feels effortless.',
@@ -949,7 +880,6 @@ ar:{
  h_1:'لعشّاق',h_2:'تحضير',h_3:'القهوة',
  h_body:'أُنشئت بيكلي لمن يستمتع بتحضير فنجان قهوته بنفسه. نؤمن أن القهوة الجيدة لا تحتاج إلى تعقيد. مع الأدوات المناسبة وقليل من الشغف، يمكن لأي شخص أن يحضّر شيئًا رائعًا في منزله.',
  h_cta1:'تعرّف على الأدوات ←',h_cta2:'قصتنا',
- pro_l:'مقدمة',pro_s:'القهوة لا تحتاج إلى تعقيد. تحتاج أن تكون لك.',
  band:'مصمّمة لتحضيرك اليومي ✳',
  tl_h:'الأدوات',tl_n:'٠١ — اسحب للاستكشاف',tl_cta:'جميع الأدوات ←',soon:'قريبًا',
  cw_h:'غلاية واحدة، ثلاثة ألوان',cw_n:'٠٢ — أورفي',cw_t:'تحكم سهل.',
@@ -1099,9 +1029,6 @@ const TRIO=[
  {en:['How we sound','Confident but unhurried. We don\'t lecture and we don\'t gatekeep. Short sentences. Breathing room.'],
   ar:['نبرتنا','واثقة دون استعجال. لا نُلقي دروسًا ولا نحتكر المعرفة. جمل قصيرة. مساحة للتنفس.']}];
 
-const TYPES={en:['Register interest in a tool','Stock Peclee in my store','Collaborate on a drop','Something else'],
-             ar:['تسجيل اهتمام بأداة','توفير بيكلي في متجري','التعاون على إصدار','شيء آخر']};
-
 const ZONES={en:['Espresso','Moka','·','Pour-over','French','·'],ar:['إسبريسو','موكا','·','فلتر','فرنش','·']};
 const METH={en:['Espresso — fine','Moka pot','Between ranges — adjust to taste','Pour-over','French press','Coarser than marked'],
             ar:['إسبريسو — ناعم','موكا بوت','بين النطاقات — اضبط حسب ذوقك','فلتر','فرنش برس','أخشن من النطاق المحدد']};
@@ -1178,37 +1105,19 @@ function render(){
 
   /* contact channels */
   const C=L==='en'
-    ?[['Email',INFO.email],['Phone & WhatsApp',INFO.phone],['Instagram','@'+INFO.instagram],
-      ['Trade & wholesale','Stock Peclee in your store'],['Studio',INFO.city.en+', '+INFO.country.en]]
-    :[['البريد الإلكتروني',INFO.email],['الهاتف وواتساب',INFO.phone],['انستغرام','@'+INFO.instagram],
-      ['التجارة والجملة','وفّر بيكلي في متجرك'],['الاستوديو',INFO.city.ar+'، '+INFO.country.ar]];
-  const acts=L==='en'?['Copy','Open mail','Call','WhatsApp','Follow','Request','Sun–Thu · 9.30–18.30']
-                     :['نسخ','فتح البريد','اتصال','واتساب','متابعة','اطلب','الأحد–الخميس · ٩:٣٠–١٨:٣٠'];
+    ?[['Email',INFO.email],['Instagram','@'+INFO.instagram],['Trade & wholesale','Stock Peclee in your store']]
+    :[['البريد الإلكتروني',INFO.email],['انستغرام','@'+INFO.instagram],['التجارة والجملة','وفّر بيكلي في متجرك']];
+  const acts=L==='en'?['Copy','Open mail','Follow','Request']
+                     :['نسخ','فتح البريد','متابعة','اطلب'];
   document.getElementById('chan').innerHTML=`
-   <div class="crow"><span class="crow-no">01</span><div><p class="crow-k">${C[0][0]}</p><p class="crow-v ltr">${C[0][1]}</p></div>
+   <div class="crow"><div><p class="crow-k">${C[0][0]}</p><p class="crow-v ltr">${C[0][1]}</p></div>
      <div class="cacts"><button class="pill" data-copy="${INFO.email}">${acts[0]}</button>
      <a class="pill" href="mailto:${INFO.email}">${acts[1]}</a></div></div>
-   <div class="crow"><span class="crow-no">02</span><div><p class="crow-k">${C[1][0]}</p><p class="crow-v ltr">${C[1][1]}</p></div>
-     <div class="cacts"><button class="pill" data-copy="${INFO.phone}">${acts[0]}</button>
-     <a class="pill" href="tel:+${INFO.phoneRaw}">${acts[2]}</a>
-     <a class="pill" href="https://wa.me/${INFO.phoneRaw}" target="_blank" rel="noopener">${acts[3]}</a></div></div>
-   <div class="crow"><span class="crow-no">03</span><div><p class="crow-k">${C[2][0]}</p><p class="crow-v ltr">${C[2][1]}</p></div>
-     <div class="cacts"><a class="pill" href="https://instagram.com/${INFO.instagram}" target="_blank" rel="noopener">${acts[4]}</a></div></div>
-   <div class="crow"><span class="crow-no">04</span><div><p class="crow-k">${C[3][0]}</p><p class="crow-v">${C[3][1]}</p></div>
-     <div class="cacts"><button class="pill" id="trade">${acts[5]}</button></div></div>
-   <div class="crow"><span class="crow-no">05</span><div><p class="crow-k">${C[4][0]}</p><p class="crow-v">${C[4][1]}</p></div>
-     <div class="cacts"><span class="pill" style="pointer-events:none;opacity:.6">${acts[6]}</span></div></div>`;
+   <div class="crow"><div><p class="crow-k">${C[1][0]}</p><p class="crow-v ltr">${C[1][1]}</p></div>
+     <div class="cacts"><a class="pill" href="https://instagram.com/${INFO.instagram}" target="_blank" rel="noopener">${acts[2]}</a></div></div>
+   <div class="crow"><div><p class="crow-k">${C[2][0]}</p><p class="crow-v">${C[2][1]}</p></div>
+     <div class="cacts"><a class="pill" href="mailto:${INFO.email}?subject=${encodeURIComponent(L==='en'?'Stocking Peclee':'وفّر بيكلي')}">${acts[3]}</a></div></div>`;
   bindChannels();
-
-  /* form picks */
-  document.getElementById('picks').innerHTML=TYPES[L].map((x,i)=>
-    `<button type="button" class="pick" data-t2="${i}"><em>0${i+1}</em><span>${x}</span></button>`).join('');
-  document.querySelectorAll('.pick').forEach(b=>b.addEventListener('click',()=>{
-    ctype=TYPES[L][+b.dataset.t2];
-    document.getElementById('h-type').value=ctype;
-    document.getElementById('wrap-co').style.display=(+b.dataset.t2===1)?'block':'none';
-    setTimeout(()=>go(1),200);
-  }));
 
   /* footer contact + legal */
   document.getElementById('ft-contact').innerHTML=
@@ -1287,14 +1196,6 @@ function bindChannels(){
       setTimeout(()=>{b.textContent=old;b.classList.remove('done')},1600);
     });
   });
-  const tr=document.getElementById('trade');
-  if(tr)tr.addEventListener('click',()=>{
-    ctype=TYPES[L][1];
-    document.getElementById('h-type').value=ctype;
-    document.getElementById('wrap-co').style.display='block';
-    go(1,false);
-    document.getElementById('write').scrollIntoView({behavior:'smooth',block:'start'});
-  });
 }
 
 /* ═══════════ product panel ═══════════ */
@@ -1327,9 +1228,9 @@ addEventListener('keydown',e=>{if(e.key==='Escape'&&panel.classList.contains('op
 /* ═══════════ clock (Riyadh, Sun–Thu) ═══════════ */
 function tick(){
   const now=new Date();
-  const time=new Intl.DateTimeFormat('en-GB',{timeZone:INFO.tz,hour:'2-digit',minute:'2-digit',hour12:false}).format(now);
+  const localTime=new Intl.DateTimeFormat(L==='en'?'en-GB':'ar',{hour:'2-digit',minute:'2-digit',hour12:false}).format(now);
   const c=document.getElementById('clock');
-  if(c)c.textContent=(L==='en'?INFO.city.en+' — ':INFO.city.ar+' — ')+time;
+  if(c)c.textContent=(L==='en'?'Your time — ':'وقتك — ')+localTime;
   const pr=new Intl.DateTimeFormat('en-GB',{timeZone:INFO.tz,weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false})
     .formatToParts(now).reduce((a,x)=>(a[x.type]=x.value,a),{});
   const mins=+pr.hour*60 + +pr.minute;
@@ -1341,54 +1242,6 @@ function tick(){
   document.getElementById('status-t').textContent=open?t('open'):(wknd?t('wknd'):t('shut'));
 }
 setInterval(tick,20000);
-
-/* ═══════════ form ═══════════ */
-const steps=[...document.querySelectorAll('.step')],count=document.getElementById('count'),prog=document.getElementById('prog');
-let cs=0,ctype='';
-function go(n,focus){
-  cs=n; steps.forEach(el=>el.classList.toggle('live',+el.dataset.s===n));
-  count.textContent=String(n+1).padStart(2,'0')+' / 03';
-  prog.style.width=((n+1)/3*100)+'%';
-  if(n>0&&focus!==false){const f=steps[n].querySelector('input:not([type=hidden]),textarea');
-    if(f)setTimeout(()=>f.focus({preventScroll:true}),300)}
-}
-document.querySelectorAll('[data-back]').forEach(b=>b.addEventListener('click',()=>go(cs-1)));
-const nameF=document.getElementById('i-name'),emailF=document.getElementById('i-email'),
-      msgF=document.getElementById('i-msg'),e2=document.getElementById('e2'),e3=document.getElementById('e3');
-msgF.addEventListener('input',()=>{msgF.style.height='auto';msgF.style.height=msgF.scrollHeight+'px'});
-document.querySelector('[data-next]').addEventListener('click',()=>{
-  e2.textContent='';
-  if(!nameF.value.trim()){e2.textContent=L==='en'?'Name, please':'الاسم من فضلك';nameF.focus();return}
-  if(!/^\S+@\S+\.\S+$/.test(emailF.value)){e2.textContent=L==='en'?'Check the email':'تحقق من البريد';emailF.focus();return}
-  go(2);
-});
-[nameF,emailF].forEach(el=>el.addEventListener('keydown',ev=>{
-  if(ev.key==='Enter'){ev.preventDefault();document.querySelector('[data-next]').click()}}));
-
-const form=document.getElementById('form'),send=document.getElementById('send'),ty=document.getElementById('ty');
-form.addEventListener('submit',async ev=>{
-  ev.preventDefault(); e3.textContent='';
-  if(!msgF.value.trim()){e3.textContent=L==='en'?'Add a message':'اكتب رسالتك';msgF.focus();return}
-  send.textContent=L==='en'?'Sending…':'جارٍ الإرسال…'; send.setAttribute('disabled','');
-  try{
-    const r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(form)});
-    if(!r.ok)throw new Error();
-    document.getElementById('ty-big').textContent=t('ty_thanks')+nameF.value.trim().split(/\s+/)[0]+'.';
-    document.getElementById('rec-type').textContent=ctype||'—';
-    document.getElementById('rec-email').textContent=emailF.value.trim();
-    form.style.display='none'; document.querySelector('.f-head').style.display='none';
-    ty.classList.add('live'); lightStrip();
-    document.getElementById('write').scrollIntoView({behavior:'smooth',block:'start'});
-  }catch(_){
-    send.textContent=t('fm_send'); send.removeAttribute('disabled');
-    e3.innerHTML=(L==='en'?'Didn\'t send — ':'لم تُرسل — ')+'<a href="mailto:'+INFO.email+'" style="text-decoration:underline">'+(L==='en'?'email us':'راسلنا')+'</a>';
-  }
-});
-document.getElementById('again').addEventListener('click',()=>{
-  form.reset(); msgF.style.height='auto'; ty.classList.remove('live');
-  form.style.display='block'; document.querySelector('.f-head').style.display='';
-  send.textContent=t('fm_send'); send.removeAttribute('disabled'); go(0);
-});
 
 /* ═══════════ dissolve ═══════════ */
 function build(el,on,off,flip){
