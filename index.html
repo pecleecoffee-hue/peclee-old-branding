@@ -225,7 +225,25 @@ html[dir="rtl"] .tcard .pr{font-family:var(--arab);letter-spacing:0}
   text-transform:uppercase;opacity:.45;direction:ltr}
 html[dir="rtl"] .zones{font-family:var(--arab);letter-spacing:0;font-size:10.5px}
 .zones span{text-align:center}
-.drops{background:var(--ink);color:var(--cream)}
+.drops{background:var(--ink);color:var(--cream);position:relative;overflow:hidden}
+.drops .wrap{position:relative;z-index:2}
+.drops-glow{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.dglow{position:absolute;filter:blur(min(12vw,120px));mix-blend-mode:screen;will-change:transform,opacity}
+.dglow-a{width:58vw;height:80vh;left:-16vw;top:-24vh;border-radius:44% 56% 60% 40% / 50% 44% 56% 50%;
+  background:radial-gradient(ellipse 60% 60% at 40% 35%,var(--brick) 0%,rgba(163,39,36,0) 74%);
+  opacity:.55;animation:pigMain 30s ease-in-out infinite}
+.dglow-b{width:48vw;height:60vh;right:-14vw;bottom:-22vh;border-radius:55% 45% 40% 60% / 58% 46% 54% 42%;
+  background:radial-gradient(ellipse 55% 55% at 55% 55%,var(--terracotta) 0%,rgba(185,87,69,0) 76%);
+  opacity:.4;animation:pigSecondary 36s ease-in-out infinite}
+.dglow-c{width:36vw;height:44vh;right:2vw;top:-16vh;border-radius:50%;
+  background:radial-gradient(circle,var(--peach) 0%,rgba(217,152,120,.4) 40%,rgba(217,152,120,0) 72%);
+  opacity:.4;animation:pigLight 33s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.dglow{animation:none}}
+@media (max-width:767px){
+  .dglow-a{width:100vw;height:50vh;left:-25vw;top:-14vh}
+  .dglow-b{width:90vw;height:40vh;right:-25vw;bottom:-14vh}
+  .dglow-c{width:60vw;height:30vh;right:-10vw;top:-8vh}
+}
 .drops .body{opacity:.72}
 .drops .eyebrow{border-color:rgba(244,239,227,.2)}
 .drops .cta{border-color:rgba(244,239,227,.4)}
@@ -428,6 +446,7 @@ html[dir="rtl"] .crow-k{font-family:var(--arab);letter-spacing:0;font-size:12px}
   word-break:break-word;transition:color .3s}
 html[dir="rtl"] .crow-v{letter-spacing:0;line-height:1.4}
 .crow:hover .crow-v{color:var(--brick)}
+.crow-v{cursor:pointer;transition:color .2s;display:inline-block}
 .cacts{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
 .pill{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line);
   border-radius:100px;padding:9px 16px;white-space:nowrap;transition:background .3s,color .3s,border-color .3s}
@@ -664,6 +683,11 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
   </section>
 
   <section class="pad drops">
+    <div class="drops-glow" aria-hidden="true">
+      <div class="dglow dglow-a"></div>
+      <div class="dglow dglow-b"></div>
+      <div class="dglow dglow-c"></div>
+    </div>
     <div class="wrap">
       <div class="eyebrow rv"><h2 class="md" data-t="dr_h">Drops</h2></div>
       <div class="two">
@@ -1202,22 +1226,16 @@ function render(){
 
   /* contact channels */
   const C=L==='en'
-    ?[['Email',INFO.email],['Instagram','@'+INFO.instagram],['TikTok','@peclee.com'],['Snapchat','Peclee'],['Trade & wholesale','Stock Peclee in your store']]
-    :[['البريد الإلكتروني',INFO.email],['انستغرام','@'+INFO.instagram],['تيك توك','@peclee.com'],['سناب شات','Peclee'],['التجارة والجملة','وفّر بيكلي في متجرك']];
+    ?[['Email',INFO.email],['Instagram','@'+INFO.instagram],['TikTok','@peclee.com'],['Snapchat','peclee.sa'],['Trade & wholesale','Stock Peclee in your store']]
+    :[['البريد الإلكتروني',INFO.email],['انستغرام','@'+INFO.instagram],['تيك توك','@peclee.com'],['سناب شات','peclee.sa'],['التجارة والجملة','وفّر بيكلي في متجرك']];
   const acts=L==='en'?['Copy','Open mail','Follow','Follow','Follow','Request']
                      :['نسخ','فتح البريد','متابعة','متابعة','متابعة','اطلب'];
   document.getElementById('chan').innerHTML=`
-   <div class="crow"><div><p class="crow-k">${C[0][0]}</p><p class="crow-v ltr">${C[0][1]}</p></div>
-     <div class="cacts"><button class="pill" data-copy="${INFO.email}">${acts[0]}</button>
-     <a class="pill" href="mailto:${INFO.email}">${acts[1]}</a></div></div>
-   <div class="crow"><div><p class="crow-k">${C[1][0]}</p><p class="crow-v ltr">${C[1][1]}</p></div>
-     <div class="cacts"><a class="pill" href="https://instagram.com/${INFO.instagram}" target="_blank" rel="noopener">${acts[2]}</a></div></div>
-   <div class="crow"><div><p class="crow-k">${C[2][0]}</p><p class="crow-v ltr">${C[2][1]}</p></div>
-     <div class="cacts"><a class="pill" href="https://www.tiktok.com/@peclee.com?_r=1&_t=ZS-98WOFpJO48t" target="_blank" rel="noopener">${acts[3]}</a></div></div>
-   <div class="crow"><div><p class="crow-k">${C[3][0]}</p><p class="crow-v ltr">${C[3][1]}</p></div>
-     <div class="cacts"><a class="pill" href="https://snapchat.com/t/x8TEA4MD" target="_blank" rel="noopener">${acts[4]}</a></div></div>
-   <div class="crow"><div><p class="crow-k">${C[4][0]}</p><p class="crow-v">${C[4][1]}</p></div>
-     <div class="cacts"><a class="pill" href="mailto:${INFO.email}?subject=${encodeURIComponent(L==='en'?'Stocking Peclee':'وفّر بيكلي')}">${acts[5]}</a></div></div>`;
+   <div class="crow"><div><p class="crow-k">${C[0][0]}</p><a class="crow-v ltr" href="mailto:${INFO.email}">${C[0][1]}</a></div></div>
+   <div class="crow"><div><p class="crow-k">${C[1][0]}</p><a class="crow-v ltr" href="https://instagram.com/${INFO.instagram}" target="_blank" rel="noopener">${C[1][1]}</a></div></div>
+   <div class="crow"><div><p class="crow-k">${C[2][0]}</p><a class="crow-v ltr" href="https://www.tiktok.com/@peclee.com?_r=1&_t=ZS-98WOFpJO48t" target="_blank" rel="noopener">${C[2][1]}</a></div></div>
+   <div class="crow"><div><p class="crow-k">${C[3][0]}</p><a class="crow-v ltr" href="https://snapchat.com/t/x8TEA4MD" target="_blank" rel="noopener">${C[3][1]}</a></div></div>
+   <div class="crow"><div><p class="crow-k">${C[4][0]}</p><a class="crow-v" href="mailto:${INFO.email}?subject=${encodeURIComponent(L==='en'?'Stocking Peclee':'وفّر بيكلي')}">${C[4][1]}</a></div></div>`;
   bindChannels();
 
   /* footer contact + legal */
