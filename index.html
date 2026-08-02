@@ -79,7 +79,7 @@ html[dir="rtl"] .body{line-height:1.95}
 .logo .wm{font-size:16px;font-weight:500;letter-spacing:-.02em;font-family:var(--sans)}
 .logo-img{height:36px;width:auto;display:block}
 .hd.stuck .logo-img{height:28px;transition:height .3s}
-.ft .logo-img{height:clamp(70px,10vw,130px);filter:brightness(0) invert(1)}
+.ft .logo-img{height:36px;filter:brightness(0) invert(1)}
 .tag-lock{font-size:9.5px;letter-spacing:.2em;opacity:.45;padding-inline-start:12px;margin-inline-start:12px;
   border-inline-start:1px solid var(--line);white-space:nowrap}
 html[dir="rtl"] .tag-lock{letter-spacing:0;font-size:11px}
@@ -640,9 +640,8 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
 
   <section class="close-sec">
     <div class="wrap">
-      <p class="mono dim" style="margin-bottom:28px">Peclee</p>
       <p class="lg rv" style="max-width:24ch;margin:0 auto 40px" data-t="ab_end">Coffee, your way.</p>
-      <div class="rv" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <div class="rv" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:40px">
         <a href="#/tools" class="cta fill" data-t="h_cta1">See the tools →</a>
         <a href="#/contact" class="cta" data-t="ab_ec">Get in touch</a>
       </div>
@@ -1093,18 +1092,22 @@ function render(){
 
   /* contact channels */
   const C=L==='en'
-    ?[['Email',INFO.email],['Instagram','@'+INFO.instagram],['Trade & wholesale','Stock Peclee in your store']]
-    :[['البريد الإلكتروني',INFO.email],['انستغرام','@'+INFO.instagram],['التجارة والجملة','وفّر بيكلي في متجرك']];
-  const acts=L==='en'?['Copy','Open mail','Follow','Request']
-                     :['نسخ','فتح البريد','متابعة','اطلب'];
+    ?[['Email',INFO.email],['Instagram','@'+INFO.instagram],['TikTok','@peclee.com'],['Snapchat','Peclee'],['Trade & wholesale','Stock Peclee in your store']]
+    :[['البريد الإلكتروني',INFO.email],['انستغرام','@'+INFO.instagram],['تيك توك','@peclee.com'],['سناب شات','Peclee'],['التجارة والجملة','وفّر بيكلي في متجرك']];
+  const acts=L==='en'?['Copy','Open mail','Follow','Follow','Follow','Request']
+                     :['نسخ','فتح البريد','متابعة','متابعة','متابعة','اطلب'];
   document.getElementById('chan').innerHTML=`
    <div class="crow"><div><p class="crow-k">${C[0][0]}</p><p class="crow-v ltr">${C[0][1]}</p></div>
      <div class="cacts"><button class="pill" data-copy="${INFO.email}">${acts[0]}</button>
      <a class="pill" href="mailto:${INFO.email}">${acts[1]}</a></div></div>
    <div class="crow"><div><p class="crow-k">${C[1][0]}</p><p class="crow-v ltr">${C[1][1]}</p></div>
      <div class="cacts"><a class="pill" href="https://instagram.com/${INFO.instagram}" target="_blank" rel="noopener">${acts[2]}</a></div></div>
-   <div class="crow"><div><p class="crow-k">${C[2][0]}</p><p class="crow-v">${C[2][1]}</p></div>
-     <div class="cacts"><a class="pill" href="mailto:${INFO.email}?subject=${encodeURIComponent(L==='en'?'Stocking Peclee':'وفّر بيكلي')}">${acts[3]}</a></div></div>`;
+   <div class="crow"><div><p class="crow-k">${C[2][0]}</p><p class="crow-v ltr">${C[2][1]}</p></div>
+     <div class="cacts"><a class="pill" href="https://www.tiktok.com/@peclee.com?_r=1&_t=ZS-98WOFpJO48t" target="_blank" rel="noopener">${acts[3]}</a></div></div>
+   <div class="crow"><div><p class="crow-k">${C[3][0]}</p><p class="crow-v ltr">${C[3][1]}</p></div>
+     <div class="cacts"><a class="pill" href="https://snapchat.com/t/x8TEA4MD" target="_blank" rel="noopener">${acts[4]}</a></div></div>
+   <div class="crow"><div><p class="crow-k">${C[4][0]}</p><p class="crow-v">${C[4][1]}</p></div>
+     <div class="cacts"><a class="pill" href="mailto:${INFO.email}?subject=${encodeURIComponent(L==='en'?'Stocking Peclee':'وفّر بيكلي')}">${acts[5]}</a></div></div>`;
   bindChannels();
 
   /* footer contact + legal */
