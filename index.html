@@ -259,7 +259,7 @@ html[dir="rtl"] .prow-idx{font-family:var(--arab);letter-spacing:0}
 .panel{position:fixed;inset:0;z-index:150;background:var(--cream);transform:translateY(101%);
   transition:transform .68s cubic-bezier(.76,0,.24,1);overflow-y:auto;overscroll-behavior:contain}
 .panel.open{transform:none}
-.panel-bar{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;
+.panel-bar{position:sticky;top:0;z-index:5;display:flex;justify-content:flex-end;align-items:center;
   padding:16px var(--pad);background:rgba(244,239,227,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .x{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase}
 html[dir="rtl"] .x{font-family:var(--arab);letter-spacing:0}
@@ -269,10 +269,13 @@ html[dir="rtl"] .x{font-family:var(--arab);letter-spacing:0}
 .p-stage{background:var(--paper);border:1px solid var(--line-2);aspect-ratio:1/1;display:grid;place-items:center;position:relative;overflow:hidden}
 .p-stage > div{position:absolute;inset:0;display:grid;place-items:center;padding:12%;opacity:0;transition:opacity .35s}
 .p-stage > div.on{opacity:1}
-.p-thumbs{display:flex;gap:8px;margin-top:10px}
-.p-thumbs button{flex:1;aspect-ratio:1/1;background:var(--paper);border:1px solid var(--line-2);
-  display:grid;place-items:center;padding:14%;transition:border-color .3s}
-.p-thumbs button[aria-current="true"]{border-color:var(--brick)}
+.p-arrow{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:100px;
+  background:rgba(250,247,239,.9);border:1px solid var(--line-2);display:grid;place-items:center;
+  cursor:pointer;font-size:22px;line-height:1;z-index:3;transition:background .2s,transform .2s}
+.p-arrow:hover{background:var(--paper);transform:translateY(-50%) scale(1.06)}
+.p-arrow-l{left:14px}
+.p-arrow-r{right:14px}
+.p-arrow[hidden]{display:none}
 .p-tag{font-size:clamp(1.15rem,2.1vw,1.75rem);margin:14px 0 24px}
 .p-buy{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:clamp(40px,6vw,64px)}
 .feat{border-top:1px solid var(--line)}
@@ -541,8 +544,8 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
       <div class="eyebrow rv"><h2 class="md" data-t="dl_h">Find your grind</h2></div>
       <div class="dial-wrap">
         <div class="rv">
-          <p class="body" data-t="dl_b">The Kivi dial moves in clicks, fine to coarse. Drag across to see where each brew method sits, then set it once and repeat it exactly.</p>
-          <a href="#/tools/kivi" class="cta" style="margin-top:32px" data-t="dl_cta">Kivi specifications</a>
+          <p class="body" data-t="dl_b">The KIVI dial moves in clicks, fine to coarse. Drag across to see where each brew method sits, then set it once and repeat it exactly.</p>
+          <a href="#/tools/kivi" class="cta" style="margin-top:32px" data-t="dl_cta">KIVI specifications</a>
         </div>
         <div class="dial rv">
           <div class="read"><b id="d-val">18</b><span class="mono dim" data-t="dl_u">clicks</span></div>
@@ -595,7 +598,6 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
   <section class="intro">
     <div class="grid" aria-hidden="true"></div>
     <div class="wrap">
-      <p class="mono dim" style="margin-bottom:24px" data-t="tp_l">The tools · four pieces</p>
       <h1 class="xl" style="font-size:clamp(2.3rem,7vw,6.2rem)" data-t="tp_h">Everything you need.<br>Nothing you don't.</h1>
     </div>
   </section>
@@ -675,19 +677,25 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
 <!-- ══════════ PRODUCT PANEL ══════════ -->
 <div class="panel" id="panel" role="dialog" aria-modal="true" aria-hidden="true">
   <div class="panel-bar">
-    <span class="mono dim" id="p-kind">···</span>
     <button class="x" id="x"><span data-t="close">Close</span> <span aria-hidden="true">✕</span></button>
   </div>
   <div class="p-top">
-    <div class="p-gal"><div class="p-stage" id="p-stage"></div><div class="p-thumbs" id="p-thumbs"></div></div>
+    <div class="p-gal">
+      <div class="p-stage" id="p-stage"></div>
+      <button type="button" class="p-arrow p-arrow-l" id="p-prev" aria-label="Previous photo">‹</button>
+      <button type="button" class="p-arrow p-arrow-r" id="p-next" aria-label="Next photo">›</button>
+    </div>
     <div>
-      <p class="mono dim" id="p-code">···</p>
       <h2 class="lg" id="p-name" style="margin-top:10px">···</h2>
       <p class="p-tag" id="p-tagline">···</p>
       <p class="body" id="p-desc" style="margin-bottom:36px">···</p>
       <div class="p-buy">
         <a href="#/contact" class="cta fill" data-close data-t="p_reg">Register interest</a>
-        <a href="#/contact" class="cta" data-close data-t="p_ask">Ask a question</a>
+        <a href="#" class="cta" id="p-buynow" data-t="p_buy">Buy now</a>
+      </div>
+      <div class="p-color-block" id="p-color-block" style="margin-top:28px">
+        <p class="mono dim" data-t="p_colors" style="margin-bottom:12px">Colors</p>
+        <div class="prow-sw" id="p-colors"></div>
       </div>
       <ul class="feat" id="p-feat"></ul>
     </div>
@@ -714,13 +722,12 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
     <div class="ft-top">
       <div>
         <img src="images/logo-peclee.png" alt="Peclee" class="logo-img">
-        <p class="lg" style="margin:24px 0 14px" data-t="ft_line">For the love of brewing</p>
       </div>
       <div>
         <h4 data-t="nav1">Tools</h4>
         <ul>
-          <li><a href="#/tools/orphe" data-t="ft_p1">Orphe kettle</a></li>
-          <li><a href="#/tools/kivi" data-t="ft_p2">Kivi grinder</a></li>
+          <li><a href="#/tools/orphe" data-t="ft_p1">ORPHE kettle</a></li>
+          <li><a href="#/tools/kivi" data-t="ft_p2">KIVI grinder</a></li>
           <li><a href="#/tools/peso" data-t="ft_p3">Peso scale</a></li>
           <li><a href="#/tools/pesomini" data-t="ft_p4">PESOmini scale</a></li>
         </ul>
@@ -823,11 +830,11 @@ en:{
  h_cta1:'See the tools →',h_cta2:'Our story',
  band:'Most equipment is furniture. Ours are instruments. Peclee exists because the tools you brew with should feel as considered as the coffee itself: slower, quieter, made to be touched every single day. ✳',
  tl_h:'The tools',tl_n:'01 · Drag to explore',tl_cta:'All four tools →',soon:'Coming soon',
- cw_h:'One kettle, three finishes',cw_n:'02 · Orphe',cw_t:'Control that feels effortless.',
+ cw_h:'One kettle, three finishes',cw_n:'02 · ORPHE',cw_t:'Control that feels effortless.',
  cw_b:'A balanced handle, FlowSense™ gooseneck flow and a clean modern design help you pour with confidence from the very first brew.',
- cw_cta:'Orphe details',
- dl_h:'Find your grind',dl_n:'02 · Kivi',dl_u:'clicks',dl_cta:'Kivi specifications',
- dl_b:'The Kivi dial moves in clicks, fine to coarse. Drag across to see where each brew method sits, then set it once and repeat it exactly.',
+ cw_cta:'ORPHE details',
+ dl_h:'Find your grind',dl_n:'02 · KIVI',dl_u:'clicks',dl_cta:'KIVI specifications',
+ dl_b:'The KIVI dial moves in clicks, fine to coarse. Drag across to see where each brew method sits, then set it once and repeat it exactly.',
  wy_h:'Why we make them',wy_n:'03 · Approach',
  wy_1h:'Coffee as calm',
  wy_1a:"We don't treat coffee as a science project. We treat it as a moment, something that slows you down rather than speeds you up.",
@@ -856,8 +863,8 @@ en:{
  ty_1:'Enquiry',ty_2:'Replying to',ty_3:'Meanwhile',ty_again:'Send another',ty_thanks:'Thank you, ',
  nl_h:'Hear about drops first',nl_p:'Limited editions, new tools, and the occasional brew guide. No spam.',nl_b:'Join',
  ft_line:'For the love of brewing',ft_brand:'Brand',ft_reach:'Reach us',ft_trade:'Stockists & trade',
- ft_p1:'Orphe kettle',ft_p2:'Kivi grinder',ft_p3:'Peso scale',ft_p4:'PESOmini scale',
- p_reg:'Register interest',p_ask:'Ask a question',p_spec:'Specifications',
+ ft_p1:'ORPHE kettle',ft_p2:'KIVI grinder',ft_p3:'PESO scale',ft_p4:'PESOmini scale',
+ p_reg:'Register interest',p_buy:'Buy now',p_colors:'Colors',p_spec:'Specifications',
  open:'Open now, usually a same-day reply',shut:'Closed, back at 9.30',wknd:'Weekend, back Sunday 9.30',
  langBtn:'عربي'
 },
@@ -905,60 +912,62 @@ ar:{
  nl_h:'كن أول من يعرف',nl_p:'إصدارات محدودة، أدوات جديدة، ودليل تحضير من وقت لآخر. بلا إزعاج.',nl_b:'انضم',
  ft_line:'لعشّاق تحضير القهوة',ft_brand:'العلامة',ft_reach:'للتواصل',ft_trade:'الموزّعون والتجارة',
  ft_p1:'غلاية أورفي',ft_p2:'مطحنة كيفي',ft_p3:'ميزان بيسو',ft_p4:'ميزان بيسوميني',
- p_reg:'سجّل اهتمامك',p_ask:'اسأل سؤالًا',p_spec:'المواصفات',
+ p_reg:'سجّل اهتمامك',p_buy:'اشترِ الآن',p_colors:'الألوان',p_spec:'المواصفات',
  open:'متاحون الآن، نرد عادةً في اليوم نفسه',shut:'مغلق، نعود ٩:٣٠ صباحًا',wknd:'عطلة نهاية الأسبوع، نعود الأحد ٩:٣٠',
  langBtn:'EN'
 }};
 
 /* ═══════════ PRODUCTS ═══════════ */
 const P=[
-{id:'orphe',art:'kettle',c:NAVY,code:'PC ORPHE · 600 ML',
- name:{en:'Orphe',ar:'أورفي'},kind:{en:'Electric kettle',ar:'غلاية كهربائية'},
+{id:'orphe',art:'kettle',c:NAVY,code:'PC ORPHE · 600 ML',buyUrl:'#',
+ name:{en:'ORPHE',ar:'أورفي'},kind:{en:'Electric kettle',ar:'غلاية كهربائية'},
  tagline:{en:'Control that feels effortless.',ar:'تحكم سهل.'},
  desc:{en:'Our kettle makes precision feel natural, even on your first pour. A balanced handle, FlowSense™ gooseneck flow and a clean modern design mean you can pour with confidence from the very first brew.',
        ar:'تجعل غلايتنا الدقة أمرًا طبيعيًا حتى من أول سكب. بمقبض متوازن، وتدفق عنق إوزّة محكوم، وتصميم حديث ونظيف، تساعدك على السكب بثقة من أول تحضير.'},
- shots:['orphe-01.webp,Navy · front · full body,kettle,'+NAVY,'orphe-02.webp,Green · front · full body,kettle,'+GREEN,
-        'orphe-03.webp,Brick · front · full body,kettle,'+BRICK,'orphe-04.webp,Spout & handle detail,kettle,'+NAVY,
-        'orphe-05.webp,Base & logo detail,kettle,'+GREEN],
+ colors:[
+   {name:{en:'Navy',ar:'كحلي'},hex:NAVY,shots:['orphe-01.webp,Navy · front · full body,kettle,'+NAVY,'orphe-04.webp,Navy · spout & handle detail,kettle,'+NAVY]},
+   {name:{en:'Green',ar:'أخضر'},hex:GREEN,shots:['orphe-02.webp,Green · front · full body,kettle,'+GREEN,'orphe-05.webp,Green · base & logo detail,kettle,'+GREEN]}
+ ],
  features:{en:[['FlowSense™ gooseneck','Smooth, consistent flow for accurate pouring.'],['Ergo Grip™','Handle designed for comfort and stability.'],['Strix technology','Keeps water at the sweet spot for your beans.'],['Rapid heating','Brew faster without compromising control.']],
            ar:[['FlowSense™','تدفق سلس ومتّسق لسكب دقيق.'],['Ergo Grip™','مقبض مصمم للراحة والثبات.'],['Strix','تحافظ على الماء في الدرجة المثالية لحبوبك.'],['تسخين سريع','تحضير أسرع دون التضحية بالتحكم.']]},
- specs:{en:[['Capacity','600 ml'],['Material','Stainless steel with heat-resistant coating'],['Heating type','Electronic'],['Weight','Lightweight, easy-pour design'],['Finishes','Midnight navy · forest green · brick red']],
-        ar:[['السعة','٦٠٠ مل'],['المادة','ستانلس ستيل مع طبقة مقاومة للحرارة'],['نوع التسخين','إلكتروني'],['الوزن','خفيف وسهل السكب'],['الألوان','كحلي داكن · أخضر غابة · أحمر طوبي']]}},
+ specs:{en:[['Capacity','600 ml'],['Material','Stainless steel with heat-resistant coating'],['Heating type','Electronic'],['Weight','Lightweight, easy-pour design'],['Finishes','Midnight navy · forest green']],
+        ar:[['السعة','٦٠٠ مل'],['المادة','ستانلس ستيل مع طبقة مقاومة للحرارة'],['نوع التسخين','إلكتروني'],['الوزن','خفيف وسهل السكب'],['الألوان','كحلي داكن · أخضر غابة']]}},
 
-{id:'kivi',art:'grinder',c:NAVY,code:'PC KIVI · 38 MM',
- name:{en:'Kivi',ar:'كيفي'},kind:{en:'Hand grinder',ar:'مطحنة يدوية'},
+{id:'kivi',art:'grinder',c:NAVY,code:'PC KIVI · 38 MM',buyUrl:'#',
+ name:{en:'KIVI',ar:'كيفي'},kind:{en:'Hand grinder',ar:'مطحنة يدوية'},
  tagline:{en:'Consistency starts at the core.',ar:'الثبات يبدأ من الأساس.'},
- desc:{en:'Powered by the Flow38™ 38 mm burr, Kivi delivers balanced, even particle distribution with every grind. A stable dual-bearing system and smooth operation make it the grinder for people who want simplicity without sacrificing precision.',
+ desc:{en:'Powered by the Flow38™ 38 mm burr, KIVI delivers balanced, even particle distribution with every grind. A stable dual-bearing system and smooth operation make it the grinder for people who want simplicity without sacrificing precision.',
        ar:'بفضل شفرة Flow38™ مقاس ٣٨ مم، تقدّم كيفي توزيعًا متوازنًا ومتجانسًا لحبيبات القهوة مع كل عملية طحن. نظام التحمّل المزدوج المستقر والأداء السلس يجعلانها مثالية لمن يريد البساطة دون التضحية بالدقة.'},
- shots:['kivi-01.webp,Navy · front · handle on,grinder,'+NAVY,'kivi-02.webp,Green · front · handle on,grinder,'+GREEN,
-        'kivi-03.webp,Brick · front · handle on,grinder,'+BRICK,'kivi-04.webp,Crank & collar detail,grinder,'+NAVY,
-        'kivi-05.webp,Burr / chamber detail,grinder,'+NAVY],
+ colors:[
+   {name:{en:'Navy',ar:'كحلي'},hex:NAVY,shots:['kivi-01.webp,Navy · front · handle on,grinder,'+NAVY,'kivi-04.webp,Navy · crank & collar detail,grinder,'+NAVY,'kivi-05.webp,Navy · burr / chamber detail,grinder,'+NAVY]},
+   {name:{en:'Green',ar:'أخضر'},hex:GREEN,shots:['kivi-02.webp,Green · front · handle on,grinder,'+GREEN]}
+ ],
  features:{en:[['Flow38™ steel burrs','38 mm stainless steel burr set, engineered for even grinding.'],['Dual-bearing stability','Precision bearings keep the shaft aligned for concentric grinding.'],['Click adjustment','Fine-tune with clear click positions, espresso through French press.'],['Compact build','Lightweight and long-lasting, with a stainless internal chamber.']],
            ar:[['شفرات Flow38™','طقم شفرات ستانلس ستيل ٣٨ مم، مصمّم لطحن متجانس.'],['ثبات التحمّل المزدوج','محملان دقيقان يحافظان على محاذاة العمود لطحن ناعم ومتوازن.'],['ضبط بالنقرات','اضبط درجة الطحن بدقة، من الإسبريسو إلى الفرنش برس.'],['هيكل مدمج ومتين','خفيف وطويل الأمد، مع حجرة داخلية من الستانلس ستيل.']]},
  specs:{en:[['Burr type','38 mm stainless steel (Flow38™)'],['Materials','PP / 304 stainless steel'],['Weight','350 g'],['Capacity','Approximately 20 g of coffee beans'],['Dimensions','Body 150 × 45 mm · handle 160 mm · burr 38 mm'],['Grind range','Moka 10–14 clicks · pour-over 18–24 · French press 25–27']],
         ar:[['نوع الشفرة','ستانلس ستيل ٣٨ مم (Flow38™)'],['المواد','PP / ستانلس ستيل ٣٠٤'],['الوزن','٣٥٠ غرام'],['السعة','حوالي ٢٠ غرام من حبوب القهوة'],['الأبعاد','الهيكل ١٥٠ × ٤٥ مم · المقبض ١٦٠ مم · الشفرة ٣٨ مم'],['نطاق الطحن','الموكا ١٠–١٤ نقرة · الفلتر ١٨–٢٤ · الفرنش برس ٢٥–٢٧']]}},
 
-{id:'peso',art:'scale',c:BRICK,code:'PC PESO · 2000 G',
- name:{en:'Peso',ar:'بيسو'},kind:{en:'Brewing scale',ar:'ميزان تحضير'},
+{id:'peso',art:'scale',c:BRICK,code:'PC PESO · 2000 G',buyUrl:'#',
+ name:{en:'PESO',ar:'بيسو'},kind:{en:'Brewing scale',ar:'ميزان تحضير'},
  tagline:{en:'Brew bigger. Brew smarter.',ar:'حضّر أكثر. حضّر بأذكى طريقة.'},
- desc:{en:'Peso is built for brewers who need more room, more stability and more control. A heat-resistant glass surface, wide platform and rigid ABS frame make it reliable for home brewers and café bars alike.',
+ desc:{en:'PESO is built for brewers who need more room, more stability and more control. A heat-resistant glass surface, wide platform and rigid ABS frame make it reliable for home brewers and café bars alike.',
        ar:'صُمّم بيسو لصنّاع القهوة الذين يحتاجون إلى مساحة أكبر وثبات أعلى وتحكم أدق. السطح الزجاجي المقاوم للحرارة والمنصة الواسعة وهيكل ABS القوي يمنحك أداءً موثوقًا في المنزل أو في المقهى.'},
- shots:['peso-01.webp,Three-quarter · full scale,scale,'+NAVY,'peso-02.webp,Top-down · platform,scale,'+GREEN,
-        'peso-03.webp,In use · dripper on scale,scale,'+BRICK,'peso-04.webp,Glass top & logo detail,scale,'+NAVY,
-        'peso-05.webp,Display detail,scale,'+NAVY],
+ colors:[
+   {name:{en:'Navy',ar:'كحلي'},hex:NAVY,shots:['peso-01.webp,Navy · three-quarter · full scale,scale,'+NAVY]}
+ ],
  features:{en:[['2000 g capacity','Room for pour-over, immersion brews and café-sized equipment.'],['0.1 g precision','Ultra-accurate readings for consistent extraction.'],['Three modes','Manual weighing, auto-timer, or espresso mode.'],['Glass top + silicone pad','Heat-resistant glass with a grippy pad to hold your brewer.'],['Silent mode','Switch between 1000 g and 2000 g with optional sound control.'],['USB-C charging','600 mAh rechargeable battery for long-lasting use.']],
            ar:[['سعة ٢٠٠٠ غرام','مثالية للقهوة المقطّرة والتحضير بالغمر ومعدات المقاهي.'],['دقة ٠٫١ غرام','قياسات فائقة الدقة لاستخلاص متناسق.'],['ثلاثة أوضاع','يدوي، تلقائي، أو وضع الإسبريسو.'],['سطح زجاجي + وسادة سيليكون','زجاج مقاوم للحرارة مع وسادة مانعة للانزلاق.'],['وضع الصمت','التبديل بين ١٠٠٠ و٢٠٠٠ غرام مع التحكم بالصوت.'],['شحن USB-C','بطارية ٦٠٠ ملّي أمبير قابلة للشحن.']]},
  specs:{en:[['Maximum capacity','2000 g (switchable weight limit)'],['Precision','0.1 g'],['Materials','ABS body · heat-resistant tempered glass · silicone anti-slip pad'],['Modes','Manual · Auto · Espresso · Power off'],['Body','124 × 130 × 23.5 mm'],['Battery','600 mAh rechargeable lithium'],['Charging','USB Type-C']],
         ar:[['السعة القصوى','٢٠٠٠ غرام (مع تبديل حد الوزن)'],['الدقة','٠٫١ غرام'],['المواد','هيكل ABS · زجاج مقاوم للحرارة · وسادة سيليكون'],['الأوضاع','يدوي · تلقائي · إسبريسو · إيقاف'],['الأبعاد','١٢٤ × ١٣٠ × ٢٣٫٥ مم'],['البطارية','ليثيوم ٦٠٠ ملّي أمبير'],['الشحن','USB Type-C']]}},
 
-{id:'pesomini',art:'mini',c:GREEN,code:'PC PESOM · 1500 G',
+{id:'pesomini',art:'mini',c:GREEN,code:'PC PESOM · 1500 G',buyUrl:'#',
  name:{en:'PESOmini',ar:'بيسوميني'},kind:{en:'Brewing scale',ar:'ميزان تحضير'},
  tagline:{en:'Accuracy that fits your pocket.',ar:'دقة تناسب جيبك.'},
  desc:{en:'Designed for brewers who value accuracy without complication, PESOmini combines ultra-precise weighing with intuitive smart modes, all inside a compact, travel-ready frame.',
        ar:'مصمّم لعشّاق القهوة الذين يقدّرون الدقة دون التعقيد، يجمع بيسوميني بين قياس فائق الدقة وأوضاع ذكية، داخل تصميم مدمج وسهل الحمل.'},
- shots:['pesomini-01.webp,Green · three-quarter,mini,'+GREEN,'pesomini-02.webp,Top-down · platform,mini,'+NAVY,
-        'pesomini-03.webp,Side profile · thickness,mini,'+BRICK,'pesomini-04.webp,In use · cup on scale,mini,'+GREEN,
-        'pesomini-05.webp,Display detail,mini,'+GREEN],
+ colors:[
+   {name:{en:'Green',ar:'أخضر'},hex:GREEN,shots:['pesomini-01.webp,Green · three-quarter,mini,'+GREEN]}
+ ],
  features:{en:[['Three smart modes','Normal, auto-timer and espresso extraction.'],['0.1 g precision','Ultra-accurate measurements for dialling in with confidence.'],['G / OZ switch','Swap between grams and ounces with a single touch.'],['Ultra-slim','A 1.2 cm body built for daily brewing and travel.'],['Splash-resistant','Added protection from spills and splashes.'],['Heatproof pad','Protects the surface during hot brewing.']],
            ar:[['ثلاثة أوضاع ذكية','عادي، تلقائي، ووضع الإسبريسو.'],['دقة ٠٫١ غرام','قياس فائق الدقة لضبط القهوة بكل ثقة.'],['تبديل G / OZ','الانتقال الفوري بين الغرام والأونصة بلمسة واحدة.'],['تصميم نحيف','جسم بسمك ١٫٢ سم للاستخدام اليومي والسفر.'],['مقاوم للرذاذ','حماية إضافية من الانسكابات والرذاذ.'],['وسادة مقاومة للحرارة','تحمي السطح أثناء التحضير الساخن.']]},
  specs:{en:[['Weighing capacity','1000 g / 1500 g (switchable)'],['Precision','0.1 g'],['Modes','Normal · Auto · Espresso'],['Body','90 × 80 × 12 mm'],['Battery','800 mAh rechargeable lithium'],['Charging','USB Type-C']],
@@ -968,7 +977,7 @@ const FIN=[{c:NAVY,f:'orphe-01.webp',n:{en:'Midnight navy',ar:'كحلي داكن
            {c:GREEN,f:'orphe-02.webp',n:{en:'Forest green',ar:'أخضر غابة'}},
            {c:BRICK,f:'orphe-03.webp',n:{en:'Brick red',ar:'أحمر طوبي'}}];
 
-const NUMS=[['600',{en:'ml · Orphe capacity',ar:'مل · سعة أورفي'}],['2000',{en:'g · Peso maximum',ar:'غرام · أقصى سعة بيسو'}],
+const NUMS=[['600',{en:'ml · ORPHE capacity',ar:'مل · سعة أورفي'}],['2000',{en:'g · PESO maximum',ar:'غرام · أقصى سعة بيسو'}],
             ['0.1',{en:'g · precision',ar:'غرام · الدقة'}],['38',{en:'mm · Flow38™ burr',ar:'مم · شفرة Flow38™'}],
             ['1.2',{en:'cm · PESOmini thickness',ar:'سم · سماكة بيسوميني'}]];
 
@@ -1039,7 +1048,7 @@ function render(){
 
   /* rail */
   document.getElementById('rail-in').innerHTML=P.map(p=>{
-    const s=p.shots[0].split(',');
+    const s=p.colors[0].shots[0].split(',');
     return `<a class="tcard" href="#/tools/${p.id}">
       <div class="vis">${SLOT(s[0],'Peclee '+p.name.en,s[1],A[s[2]](s[3]))}</div>
       <div class="meta"><div><h3>${p.name[L]}</h3><p class="t">${p.tagline[L]}</p></div>
@@ -1064,20 +1073,20 @@ function render(){
   drawDial();
 
   /* tools rows */
-  document.getElementById('rows').innerHTML=P.map((p,i)=>`
+  document.getElementById('rows').innerHTML=P.map((p,i)=>{
+    const shots0=p.colors[0].shots;
+    return `
     <button class="prow" data-i="${i}">
       <div class="prow-in">
-        <div class="frames">${p.shots.map((s,j)=>{const a=s.split(',');
+        <div class="frames">${shots0.map((s,j)=>{const a=s.split(',');
           return `<div class="${j===0?'on':''}">${SLOT(a[0],'Peclee '+p.name.en,a[1],A[a[2]](a[3]))}</div>`}).join('')}</div>
         <div class="prow-label"><div><div class="prow-name">${p.name[L]}</div>
         <div class="prow-tag">${p.tagline[L]}</div>
-        <div class="prow-sw">${p.shots.slice(0,3).map((s,j)=>{const a=s.split(',');
-          const cname=a[1].split('·')[0].trim();
-          return `<button type="button" class="csw${j===0?' on':''}" data-idx="${j}" aria-label="${cname}" title="${cname}"><i style="background:${a[3]}"></i></button>`;
-        }).join('')}</div></div>
-        <div class="prow-idx">${String(i+1).padStart(2,'0')} · ${p.kind[L]}</div></div>
+        ${p.colors.length>1?`<div class="prow-sw">${p.colors.map((c,ci)=>
+          `<button type="button" class="csw${ci===0?' on':''}" data-cidx="${ci}" aria-label="${c.name[L]}" title="${c.name[L]}"><i style="background:${c.hex}"></i></button>`
+        ).join('')}</div>`:''}</div></div>
       </div>
-    </button>`).join('');
+    </button>`;}).join('');
   bindRows();
 
   /* about */
@@ -1134,7 +1143,7 @@ function bindRail(){
 function setFin(i){
   const vis=document.getElementById('cw-vis'), nm=document.getElementById('cw-name'), sw=document.getElementById('sw');
   if(!vis||!sw)return; /* colourway section removed from the page */
-  vis.innerHTML=SLOT(FIN[i].f,'Peclee Orphe',FIN[i].n.en+' · front',A.kettle(FIN[i].c));
+  vis.innerHTML=SLOT(FIN[i].f,'Peclee ORPHE',FIN[i].n.en+' · front',A.kettle(FIN[i].c));
   if(nm)nm.textContent=FIN[i].n[L];
   [...sw.children].forEach((b,j)=>b.setAttribute('aria-pressed',String(i===j)));
 }
@@ -1152,21 +1161,32 @@ document.getElementById('range').addEventListener('input',drawDial);
 
 function bindRows(){
   document.querySelectorAll('.prow').forEach(row=>{
-    const fr=[...row.querySelectorAll('.frames > div')],n=fr.length;
-    let cur=0,moved=0,x0=0,drag=false;
-    const show=i=>{if(i===cur)return;fr[cur].classList.remove('on');fr[i].classList.add('on');cur=i;
-      row.querySelectorAll('.csw').forEach(b=>b.classList.toggle('on',+b.dataset.idx===i))};
-    const scrub=e=>{const r=row.getBoundingClientRect();
-      let p=(e.clientX-r.left)/r.width; if(L==='ar')p=1-p;
-      show(Math.floor(Math.min(.9999,Math.max(0,p))*n))};
+    const p=P[+row.dataset.i];
+    const framesEl=row.querySelector('.frames');
+    let colorIdx=0,cur=0,moved=0,x0=0,drag=false;
+    const renderFrames=()=>{
+      const shots=p.colors[colorIdx].shots;
+      framesEl.innerHTML=shots.map((s,j)=>{const a=s.split(',');
+        return `<div class="${j===0?'on':''}">${SLOT(a[0],'Peclee '+p.name.en,a[1],A[a[2]](a[3]))}</div>`}).join('');
+      cur=0;
+    };
+    const show=i=>{const fr=[...framesEl.children];if(i===cur||!fr[i])return;
+      fr[cur].classList.remove('on');fr[i].classList.add('on');cur=i};
+    const scrub=e=>{const fr=[...framesEl.children],n=fr.length;const r=row.getBoundingClientRect();
+      let p2=(e.clientX-r.left)/r.width; if(L==='ar')p2=1-p2;
+      show(Math.floor(Math.min(.9999,Math.max(0,p2))*n))};
     row.onpointermove=e=>{if(e.pointerType==='mouse'){scrub(e);return}if(drag){moved=Math.abs(e.clientX-x0);scrub(e)}};
     row.onpointerdown=e=>{if(e.pointerType!=='mouse'){drag=true;x0=e.clientX;moved=0}};
     row.onpointerup=()=>{drag=false};
     row.onpointerleave=()=>show(0);
-    row.onclick=()=>{if(moved<8)location.hash='#/tools/'+P[+row.dataset.i].id};
+    row.onclick=()=>{if(moved<8)location.hash='#/tools/'+p.id};
     row.querySelectorAll('.csw').forEach(b=>{
       b.addEventListener('pointerdown',e=>e.stopPropagation());
-      b.addEventListener('click',e=>{e.stopPropagation();show(+b.dataset.idx)});
+      b.addEventListener('click',e=>{e.stopPropagation();
+        colorIdx=+b.dataset.cidx;
+        row.querySelectorAll('.csw').forEach(x=>x.classList.toggle('on',x===b));
+        renderFrames();
+      });
     });
   });
 }
@@ -1193,22 +1213,44 @@ function bindChannels(){
 }
 
 /* ═══════════ product panel ═══════════ */
-const panel=document.getElementById('panel'),stage=document.getElementById('p-stage'),thumbs=document.getElementById('p-thumbs');
+const panel=document.getElementById('panel'),stage=document.getElementById('p-stage'),
+  pPrev=document.getElementById('p-prev'),pNext=document.getElementById('p-next');
 function fillPanel(p){
-  document.getElementById('p-kind').textContent=p.kind[L];
-  document.getElementById('p-code').textContent=p.code;
-  document.getElementById('p-name').textContent=p.name[L];
+  document.getElementById('p-name').textContent='Peclee '+p.name[L];
   document.getElementById('p-tagline').textContent=p.tagline[L];
   document.getElementById('p-desc').textContent=p.desc[L];
-  const html=p.shots.map((s,j)=>{const a=s.split(',');
-    return `<div class="${j===0?'on':''}">${SLOT(a[0],'Peclee '+p.name.en,a[1],A[a[2]](a[3]))}</div>`}).join('');
-  stage.innerHTML=html;
-  thumbs.innerHTML=p.shots.map((s,j)=>{const a=s.split(',');
-    return `<button aria-current="${j===0}">${A[a[2]](a[3])}</button>`}).join('');
-  [...thumbs.children].forEach((b,j)=>b.addEventListener('click',()=>{
-    [...stage.children].forEach((d,k)=>d.classList.toggle('on',k===j));
-    [...thumbs.children].forEach((x,k)=>x.setAttribute('aria-current',String(k===j)));
-  }));
+  document.getElementById('p-buynow').href=p.buyUrl||'#';
+  let colorIdx=0,shotIdx=0;
+  const renderGallery=()=>{
+    const shots=p.colors[colorIdx].shots;
+    shotIdx=0;
+    stage.innerHTML=shots.map((s,j)=>{const a=s.split(',');
+      return `<div class="${j===0?'on':''}">${SLOT(a[0],'Peclee '+p.name.en,a[1],A[a[2]](a[3]))}</div>`}).join('');
+    const multi=shots.length>1;
+    pPrev.hidden=!multi; pNext.hidden=!multi;
+  };
+  const showShot=i=>{
+    const fr=[...stage.children],n=fr.length;
+    shotIdx=(i+n)%n;
+    fr.forEach((d,k)=>d.classList.toggle('on',k===shotIdx));
+  };
+  pPrev.onclick=()=>showShot(shotIdx-1);
+  pNext.onclick=()=>showShot(shotIdx+1);
+  renderGallery();
+  const cwrap=document.getElementById('p-colors'),cblock=document.getElementById('p-color-block');
+  if(p.colors.length>1){
+    cblock.style.display='';
+    cwrap.innerHTML=p.colors.map((c,ci)=>
+      `<button type="button" class="csw${ci===0?' on':''}" data-cidx="${ci}" aria-label="${c.name[L]}" title="${c.name[L]}"><i style="background:${c.hex}"></i></button>`
+    ).join('');
+    [...cwrap.children].forEach(b=>b.addEventListener('click',()=>{
+      colorIdx=+b.dataset.cidx;
+      [...cwrap.children].forEach(x=>x.classList.toggle('on',x===b));
+      renderGallery();
+    }));
+  }else{
+    cblock.style.display='none';cwrap.innerHTML='';
+  }
   document.getElementById('p-feat').innerHTML=p.features[L].map(f=>`<li><h4>${f[0]}</h4><p>${f[1]}</p></li>`).join('');
   document.getElementById('p-spec').innerHTML=p.specs[L].map(s=>`<div><dt>${s[0]}</dt><dd>${s[1]}</dd></div>`).join('');
   panel.scrollTop=0; panel.classList.add('open'); panel.setAttribute('aria-hidden','false');
