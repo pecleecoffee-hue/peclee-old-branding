@@ -157,6 +157,22 @@ html[dir="rtl"] .cta{font-family:var(--arab);letter-spacing:0;font-size:12px}
 #load .bar{height:1px;background:var(--line);position:relative;margin-bottom:14px}
 #load .bar i{position:absolute;inset-block:0;inset-inline:0 100%;background:var(--brick);transition:inset-inline-end .2s linear}
 #load .row{display:flex;justify-content:space-between}
+.load-lines{position:absolute;inset:0;z-index:-1;pointer-events:none;display:grid;grid-template-columns:repeat(12,1fr)}
+.load-lines i{border-right:1px solid var(--line-2);height:var(--lp,0%);transition:height .15s linear;display:block}
+.load-lines i:last-child{border-right:none}
+.load-lines i:nth-child(1){transition-delay:0s}
+.load-lines i:nth-child(2){transition-delay:.02s}
+.load-lines i:nth-child(3){transition-delay:.04s}
+.load-lines i:nth-child(4){transition-delay:.06s}
+.load-lines i:nth-child(5){transition-delay:.08s}
+.load-lines i:nth-child(6){transition-delay:.1s}
+.load-lines i:nth-child(7){transition-delay:.08s}
+.load-lines i:nth-child(8){transition-delay:.06s}
+.load-lines i:nth-child(9){transition-delay:.04s}
+.load-lines i:nth-child(10){transition-delay:.02s}
+.load-lines i:nth-child(11){transition-delay:0s}
+.load-lines i:nth-child(12){transition-delay:0s}
+@media (max-width:767px){.load-lines{grid-template-columns:repeat(6,1fr)}}
 
 /* ══ HOME ══ */
 .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;
@@ -571,6 +587,7 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
 <body class="lock">
 
 <div id="load">
+  <div class="load-lines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <div class="row mono dim"><span data-t="ld1">Peclee</span><span data-t="ld2">Coffee, Your Way</span></div>
   <p class="line" data-t="ld3">For the love of brewing</p>
   <div>
@@ -1520,6 +1537,7 @@ render(); router();
   const iv=setInterval(()=>{
     v=Math.min(100,v+Math.random()*13+5);
     bar.style.insetInlineEnd=(100-v)+'%'; pct.textContent=Math.round(v);
+    el.style.setProperty('--lp',v+'%');
     if(v>=100){clearInterval(iv);setTimeout(()=>{
       el.classList.add('gone'); document.body.classList.remove('lock'); document.body.classList.add('ready');
       if(heroV){
