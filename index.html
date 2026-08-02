@@ -276,6 +276,18 @@ html[dir="rtl"] .x{font-family:var(--arab);letter-spacing:0}
 .p-arrow-l{left:14px}
 .p-arrow-r{right:14px}
 .p-arrow[hidden]{display:none}
+.p-stage{cursor:zoom-in}
+.lightbox{position:fixed;inset:0;background:rgba(23,19,16,.95);z-index:60;display:none;place-items:center;padding:24px}
+.lightbox.open{display:grid}
+.lb-stage{position:relative;width:min(92vw,760px);aspect-ratio:1/1;overflow:hidden;touch-action:pan-y}
+.lb-stage > div{position:absolute;inset:0;display:grid;place-items:center;padding:6%;opacity:0;transition:opacity .3s}
+.lb-stage > div.on{opacity:1}
+.lb-close{position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:13px;
+  letter-spacing:.08em;text-transform:uppercase;cursor:pointer;display:flex;gap:8px;align-items:center;z-index:2}
+.lightbox .p-arrow{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.28);color:#fff}
+.lightbox .p-arrow:hover{background:rgba(255,255,255,.22)}
+.lightbox .p-arrow-l{left:clamp(8px,3vw,32px)}
+.lightbox .p-arrow-r{right:clamp(8px,3vw,32px)}
 .p-tag{font-size:clamp(1.15rem,2.1vw,1.75rem);margin:14px 0 24px}
 .p-buy{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:clamp(40px,6vw,64px)}
 .feat{border-top:1px solid var(--line)}
@@ -704,6 +716,14 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
     <h3 class="md" style="margin-bottom:24px" data-t="p_spec">Specifications</h3>
     <dl class="spec" id="p-spec"></dl>
   </div>
+</div>
+
+<!-- ══════════ LIGHTBOX ══════════ -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button type="button" class="lb-close" id="lb-close"><span data-t="close">Close</span> <span aria-hidden="true">✕</span></button>
+  <button type="button" class="p-arrow p-arrow-l" id="lb-prev" aria-label="Previous photo">‹</button>
+  <div class="lb-stage" id="lb-stage"></div>
+  <button type="button" class="p-arrow p-arrow-r" id="lb-next" aria-label="Next photo">›</button>
 </div>
 
 <footer class="ft">
@@ -1212,30 +1232,73 @@ function bindChannels(){
   });
 }
 
-/* ═══════════ product panel ═══════════ */
+/* ═══════════ product panel + lightbox ═══════════ */
 const panel=document.getElementById('panel'),stage=document.getElementById('p-stage'),
-  pPrev=document.getElementById('p-prev'),pNext=document.getElementById('p-next');
+  pPrev=document.getElementById('p-prev'),pNext=document.getElementById('p-next'),
+  lightbox=document.getElementById('lightbox'),lbStage=document.getElementById('lb-stage'),
+  lbPrev=document.getElementById('lb-prev'),lbNext=document.getElementById('lb-next'),lbClose=document.getElementById('lb-close');
+let curP=null,curColorIdx=0,curShotIdx=0;
+const curShots=()=>curP.colors[curColorIdx].shots;
+function renderGallery(){
+  const shots=curShots();
+  curShotIdx=0;
+  stage.innerHTML=shots.map((s,j)=>{const a=s.split(',');
+    return `<div class="${j===0?'on':''}">${SLOT(a[0],'Peclee '+curP.name.en,a[1],A[a[2]](a[3]))}</div>`}).join('');
+  const multi=shots.length>1;
+  pPrev.hidden=!multi; pNext.hidden=!multi;
+}
+function renderLbFrame(){
+  const shots=curShots();
+  lbStage.innerHTML=shots.map((s,j)=>{const a=s.split(',');
+    return `<div class="${j===curShotIdx?'on':''}">${SLOT(a[0],'Peclee '+curP.name.en,a[1],A[a[2]](a[3]))}</div>`}).join('');
+  const multi=shots.length>1;
+  lbPrev.hidden=!multi; lbNext.hidden=!multi;
+}
+function showShot(i){
+  const shots=curShots(),n=shots.length;
+  curShotIdx=(i+n)%n;
+  [...stage.children].forEach((d,k)=>d.classList.toggle('on',k===curShotIdx));
+  if(lightbox.classList.contains('open'))
+    [...lbStage.children].forEach((d,k)=>d.classList.toggle('on',k===curShotIdx));
+}
+pPrev.onclick=()=>showShot(curShotIdx-1);
+pNext.onclick=()=>showShot(curShotIdx+1);
+lbPrev.onclick=()=>showShot(curShotIdx-1);
+lbNext.onclick=()=>showShot(curShotIdx+1);
+stage.addEventListener('click',()=>{
+  renderLbFrame();
+  lightbox.classList.add('open'); lightbox.setAttribute('aria-hidden','false');
+  document.body.classList.add('lock');
+});
+function closeLightbox(){
+  lightbox.classList.remove('open'); lightbox.setAttribute('aria-hidden','true');
+  if(!panel.classList.contains('open'))document.body.classList.remove('lock');
+}
+lbClose.onclick=closeLightbox;
+lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox()});
+/* swipe support in lightbox */
+let lbX0=0,lbDX=0,lbDragging=false;
+lbStage.addEventListener('pointerdown',e=>{lbDragging=true;lbX0=e.clientX;lbDX=0});
+lbStage.addEventListener('pointermove',e=>{if(lbDragging)lbDX=e.clientX-lbX0});
+lbStage.addEventListener('pointerup',()=>{
+  if(!lbDragging)return; lbDragging=false;
+  if(Math.abs(lbDX)>40){
+    const fwd=lbDX<0; const dir=(L==='ar')?!fwd:fwd;
+    showShot(curShotIdx+(dir?1:-1));
+  }
+});
+addEventListener('keydown',e=>{
+  if(!lightbox.classList.contains('open'))return;
+  if(e.key==='Escape')closeLightbox();
+  if(e.key==='ArrowLeft')showShot(curShotIdx-1);
+  if(e.key==='ArrowRight')showShot(curShotIdx+1);
+});
 function fillPanel(p){
+  curP=p; curColorIdx=0;
   document.getElementById('p-name').textContent='Peclee '+p.name[L];
   document.getElementById('p-tagline').textContent=p.tagline[L];
   document.getElementById('p-desc').textContent=p.desc[L];
   document.getElementById('p-buynow').href=p.buyUrl||'#';
-  let colorIdx=0,shotIdx=0;
-  const renderGallery=()=>{
-    const shots=p.colors[colorIdx].shots;
-    shotIdx=0;
-    stage.innerHTML=shots.map((s,j)=>{const a=s.split(',');
-      return `<div class="${j===0?'on':''}">${SLOT(a[0],'Peclee '+p.name.en,a[1],A[a[2]](a[3]))}</div>`}).join('');
-    const multi=shots.length>1;
-    pPrev.hidden=!multi; pNext.hidden=!multi;
-  };
-  const showShot=i=>{
-    const fr=[...stage.children],n=fr.length;
-    shotIdx=(i+n)%n;
-    fr.forEach((d,k)=>d.classList.toggle('on',k===shotIdx));
-  };
-  pPrev.onclick=()=>showShot(shotIdx-1);
-  pNext.onclick=()=>showShot(shotIdx+1);
   renderGallery();
   const cwrap=document.getElementById('p-colors'),cblock=document.getElementById('p-color-block');
   if(p.colors.length>1){
@@ -1244,7 +1307,7 @@ function fillPanel(p){
       `<button type="button" class="csw${ci===0?' on':''}" data-cidx="${ci}" aria-label="${c.name[L]}" title="${c.name[L]}"><i style="background:${c.hex}"></i></button>`
     ).join('');
     [...cwrap.children].forEach(b=>b.addEventListener('click',()=>{
-      colorIdx=+b.dataset.cidx;
+      curColorIdx=+b.dataset.cidx;
       [...cwrap.children].forEach(x=>x.classList.toggle('on',x===b));
       renderGallery();
     }));
@@ -1256,10 +1319,10 @@ function fillPanel(p){
   panel.scrollTop=0; panel.classList.add('open'); panel.setAttribute('aria-hidden','false');
   document.body.classList.add('lock'); document.getElementById('x').focus();
 }
-function shutPanel(){panel.classList.remove('open');panel.setAttribute('aria-hidden','true');document.body.classList.remove('lock')}
+function shutPanel(){panel.classList.remove('open');panel.setAttribute('aria-hidden','true');closeLightbox();document.body.classList.remove('lock')}
 document.getElementById('x').onclick=()=>{location.hash='#/tools'};
 panel.querySelectorAll('[data-close]').forEach(a=>a.addEventListener('click',shutPanel));
-addEventListener('keydown',e=>{if(e.key==='Escape'&&panel.classList.contains('open'))location.hash='#/tools'});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&panel.classList.contains('open')&&!lightbox.classList.contains('open'))location.hash='#/tools'});
 
 /* ═══════════ clock (Riyadh, Sun–Thu) ═══════════ */
 function tick(){
