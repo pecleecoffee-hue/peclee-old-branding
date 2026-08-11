@@ -306,7 +306,7 @@ html[dir="rtl"] .x{font-family:var(--arab);letter-spacing:0}
 .p-top{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(28px,5vw,80px);padding:clamp(32px,5vw,72px) var(--pad) 0;max-width:1560px;margin:0 auto}
 .p-gal{position:sticky;top:96px}
 .p-stage{background:var(--paper);border:1px solid var(--line-2);aspect-ratio:1/1;display:grid;place-items:center;position:relative;overflow:hidden}
-.p-stage > div{position:absolute;inset:0;display:grid;place-items:center;padding:12%;opacity:0;transition:opacity .35s}
+.p-stage > div{position:absolute;inset:0;display:grid;place-items:center;padding:0;opacity:0;transition:opacity .35s}
 .p-stage > div.on{opacity:1}
 .p-arrow{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:100px;
   background:rgba(250,247,239,.9);border:1px solid var(--line-2);display:grid;place-items:center;
@@ -319,7 +319,7 @@ html[dir="rtl"] .x{font-family:var(--arab);letter-spacing:0}
 .lightbox{position:fixed;inset:0;background:rgba(23,19,16,.95);z-index:60;display:none;place-items:center;padding:24px}
 .lightbox.open{display:grid}
 .lb-stage{position:relative;width:min(92vw,760px);aspect-ratio:1/1;overflow:hidden;touch-action:pan-y}
-.lb-stage > div{position:absolute;inset:0;display:grid;place-items:center;padding:6%;opacity:0;transition:opacity .3s}
+.lb-stage > div{position:absolute;inset:0;display:grid;place-items:center;padding:0;opacity:0;transition:opacity .3s}
 .lb-stage > div.on{opacity:1}
 .lb-close{position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:13px;
   letter-spacing:.08em;text-transform:uppercase;cursor:pointer;display:flex;gap:8px;align-items:center;z-index:2}
@@ -958,6 +958,9 @@ grinder:(c,b='0 0 400 400')=>`<svg viewBox="${b}" aria-hidden="true">
 const NAVY='#1E3352',GREEN='#2C5040',BRICK='#A32724';
 
 function SLOT(file,alt,note,drawing){
+  if(!file){
+    return '<div class="slot empty"><div class="slot-ph">'+drawing+'<span class="slot-tag">'+note+'</span></div></div>';
+  }
   return '<div class="slot"><img src="images/'+file+'" alt="'+alt+'" loading="lazy" '
     +'onerror="this.closest(\'.slot\').classList.add(\'empty\')">'
     +'<div class="slot-ph">'+drawing+'<span class="slot-tag"><b>images/'+file+'</b>'+note+'</span></div></div>';
@@ -1070,7 +1073,7 @@ const P=[
  desc:{en:'Our kettle makes precision feel natural, even on your first pour. A balanced handle, FlowSense™ gooseneck flow and a clean modern design mean you can pour with confidence from the very first brew.',
        ar:'تجعل غلايتنا الدقة أمرًا طبيعيًا حتى من أول سكب. بمقبض متوازن، وتدفق عنق إوزّة محكوم، وتصميم حديث ونظيف، تساعدك على السكب بثقة من أول تحضير.'},
  colors:[
-   {name:{en:'Navy',ar:'كحلي'},hex:NAVY,shots:['orphe-01.webp,Navy · front · full body,kettle,'+NAVY,'orphe-04.webp,Navy · spout & handle detail,kettle,'+NAVY]},
+   {name:{en:'Navy',ar:'كحلي'},hex:NAVY,shots:[',Navy · front · full body,kettle,'+NAVY,',Navy · spout & handle detail,kettle,'+NAVY]},
    {name:{en:'Green',ar:'أخضر'},hex:GREEN,shots:[
      'orphe-green-main.jpg,Green · front · full body,kettle,'+GREEN,
      'orphe-green-front-base.jpg,Green · on base · temperature display,kettle,'+GREEN,
@@ -1088,8 +1091,8 @@ const P=[
  desc:{en:'Powered by the Flow38™ 38 mm burr, KIVI delivers balanced, even particle distribution with every grind. A stable dual-bearing system and smooth operation make it the grinder for people who want simplicity without sacrificing precision.',
        ar:'بفضل شفرة Flow38™ مقاس ٣٨ مم، تقدّم كيفي توزيعًا متوازنًا ومتجانسًا لحبيبات القهوة مع كل عملية طحن. نظام التحمّل المزدوج المستقر والأداء السلس يجعلانها مثالية لمن يريد البساطة دون التضحية بالدقة.'},
  colors:[
-   {name:{en:'Navy',ar:'كحلي'},hex:NAVY,shots:['kivi-01.webp,Navy · front · handle on,grinder,'+NAVY,'kivi-04.webp,Navy · crank & collar detail,grinder,'+NAVY,'kivi-05.webp,Navy · burr / chamber detail,grinder,'+NAVY]},
-   {name:{en:'Green',ar:'أخضر'},hex:GREEN,shots:['kivi-02.webp,Green · front · handle on,grinder,'+GREEN]}
+   {name:{en:'Navy',ar:'كحلي'},hex:NAVY,shots:[',Navy · front · handle on,grinder,'+NAVY,',Navy · crank & collar detail,grinder,'+NAVY,',Navy · burr / chamber detail,grinder,'+NAVY]},
+   {name:{en:'Green',ar:'أخضر'},hex:GREEN,shots:[',Green · front · handle on,grinder,'+GREEN]}
  ],
  features:{en:[['Flow38™ steel burrs','38 mm stainless steel burr set, engineered for even grinding.'],['Dual-bearing stability','Precision bearings keep the shaft aligned for concentric grinding.'],['Click adjustment','Fine-tune with clear click positions, espresso through French press.'],['Compact build','Lightweight and long-lasting, with a stainless internal chamber.']],
            ar:[['شفرات Flow38™','طقم شفرات ستانلس ستيل ٣٨ مم، مصمّم لطحن متجانس.'],['ثبات التحمّل المزدوج','محملان دقيقان يحافظان على محاذاة العمود لطحن ناعم ومتوازن.'],['ضبط بالنقرات','اضبط درجة الطحن بدقة، من الإسبريسو إلى الفرنش برس.'],['هيكل مدمج ومتين','خفيف وطويل الأمد، مع حجرة داخلية من الستانلس ستيل.']]},
@@ -1102,7 +1105,7 @@ const P=[
  desc:{en:'PESO is built for brewers who need more room, more stability and more control. A heat-resistant glass surface, wide platform and rigid ABS frame make it reliable for home brewers and café bars alike.',
        ar:'صُمّم بيسو لصنّاع القهوة الذين يحتاجون إلى مساحة أكبر وثبات أعلى وتحكم أدق. السطح الزجاجي المقاوم للحرارة والمنصة الواسعة وهيكل ABS القوي يمنحك أداءً موثوقًا في المنزل أو في المقهى.'},
  colors:[
-   {name:{en:'Navy',ar:'كحلي'},hex:NAVY,shots:['peso-01.webp,Navy · three-quarter · full scale,scale,'+NAVY]}
+   {name:{en:'Navy',ar:'كحلي'},hex:NAVY,shots:[',Navy · three-quarter · full scale,scale,'+NAVY]}
  ],
  features:{en:[['2000 g capacity','Room for pour-over, immersion brews and café-sized equipment.'],['0.1 g precision','Ultra-accurate readings for consistent extraction.'],['Three modes','Manual weighing, auto-timer, or espresso mode.'],['Glass top + silicone pad','Heat-resistant glass with a grippy pad to hold your brewer.'],['Silent mode','Switch between 1000 g and 2000 g with optional sound control.'],['USB-C charging','600 mAh rechargeable battery for long-lasting use.']],
            ar:[['سعة ٢٠٠٠ غرام','مثالية للقهوة المقطّرة والتحضير بالغمر ومعدات المقاهي.'],['دقة ٠٫١ غرام','قياسات فائقة الدقة لاستخلاص متناسق.'],['ثلاثة أوضاع','يدوي، تلقائي، أو وضع الإسبريسو.'],['سطح زجاجي + وسادة سيليكون','زجاج مقاوم للحرارة مع وسادة مانعة للانزلاق.'],['وضع الصمت','التبديل بين ١٠٠٠ و٢٠٠٠ غرام مع التحكم بالصوت.'],['شحن USB-C','بطارية ٦٠٠ ملّي أمبير قابلة للشحن.']]},
@@ -1115,7 +1118,7 @@ const P=[
  desc:{en:'Designed for brewers who value accuracy without complication, PESOmini combines ultra-precise weighing with intuitive smart modes, all inside a compact, travel-ready frame.',
        ar:'مصمّم لعشّاق القهوة الذين يقدّرون الدقة دون التعقيد، يجمع بيسوميني بين قياس فائق الدقة وأوضاع ذكية، داخل تصميم مدمج وسهل الحمل.'},
  colors:[
-   {name:{en:'Green',ar:'أخضر'},hex:GREEN,shots:['pesomini-01.webp,Green · three-quarter,mini,'+GREEN]}
+   {name:{en:'Green',ar:'أخضر'},hex:GREEN,shots:[',Green · three-quarter,mini,'+GREEN]}
  ],
  features:{en:[['Three smart modes','Normal, auto-timer and espresso extraction.'],['0.1 g precision','Ultra-accurate measurements for dialling in with confidence.'],['G / OZ switch','Swap between grams and ounces with a single touch.'],['Ultra-slim','A 1.2 cm body built for daily brewing and travel.'],['Splash-resistant','Added protection from spills and splashes.'],['Heatproof pad','Protects the surface during hot brewing.']],
            ar:[['ثلاثة أوضاع ذكية','عادي، تلقائي، ووضع الإسبريسو.'],['دقة ٠٫١ غرام','قياس فائق الدقة لضبط القهوة بكل ثقة.'],['تبديل G / OZ','الانتقال الفوري بين الغرام والأونصة بلمسة واحدة.'],['تصميم نحيف','جسم بسمك ١٫٢ سم للاستخدام اليومي والسفر.'],['مقاوم للرذاذ','حماية إضافية من الانسكابات والرذاذ.'],['وسادة مقاومة للحرارة','تحمي السطح أثناء التحضير الساخن.']]},
