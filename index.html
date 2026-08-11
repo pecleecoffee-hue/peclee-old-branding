@@ -277,13 +277,10 @@ html[dir="rtl"] .zones{font-family:var(--arab);letter-spacing:0;font-size:10.5px
 .rows{border-top:1px solid var(--line)}
 .prow{display:block;width:100%;text-align:start;position:relative;border-bottom:1px solid var(--line);
   background:var(--paper);overflow:hidden;cursor:pointer;touch-action:pan-y}
-.prow-in{height:clamp(360px,50vw,600px);position:relative;display:grid;place-items:center;padding:clamp(40px,6vw,80px) var(--pad)}
-.frames{position:absolute;inset:0}
-.frames > div{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transition:opacity .18s linear;
-  padding:clamp(48px,7vw,90px) var(--pad)}
-.frames > div.on{opacity:1}
+.prow-in{position:relative;display:flex;align-items:center;flex-wrap:wrap;gap:clamp(24px,4vw,64px);padding:clamp(32px,5vw,56px) var(--pad)}
+.frames{position:relative;width:min(40vw,360px);flex:0 0 auto;aspect-ratio:1/1;background:var(--paper);border:1px solid var(--line-2)}
 .frames svg{width:min(100%,clamp(200px,26vw,400px));height:100%}
-.prow-label{position:relative;pointer-events:none;width:100%;display:flex;justify-content:space-between;align-items:flex-start;gap:24px}
+.prow-label{position:relative;pointer-events:auto;flex:1 1 260px;min-width:220px;display:flex;flex-direction:column;align-items:flex-start;gap:4px}
 .prow-name{font-size:clamp(2rem,6.5vw,5.6rem);font-weight:400;letter-spacing:-.04em;line-height:.9;mix-blend-mode:multiply}
 html[dir="rtl"] .prow-name{letter-spacing:0;line-height:1.15}
 .prow-tag{margin-top:12px;font-size:clamp(13px,1.2vw,16px);opacity:.62;max-width:26ch}
@@ -575,8 +572,8 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
   .tcard{width:76vw}
   .hero-b,.top-row,.f-head{flex-direction:column;align-items:flex-start;gap:20px}
   .prow-label{flex-direction:column;gap:8px}
-  .prow-in{height:clamp(400px,88vw,520px);align-items:end;padding:clamp(20px,5vw,32px) var(--pad) clamp(20px,5vw,28px)}
-  .frames > div{padding:clamp(56px,16vw,90px) var(--pad) clamp(120px,26vw,160px)}
+  .prow-in{flex-direction:column;align-items:flex-start;padding:clamp(24px,6vw,32px) var(--pad) clamp(28px,6vw,36px)}
+  .frames{width:100%;max-width:420px}
   .prow-name{font-size:clamp(1.7rem,9vw,3rem)}
   .prow-tag{max-width:none}
   .prow-sw{margin-top:12px}
@@ -1236,19 +1233,18 @@ function render(){
 
   /* tools rows */
   document.getElementById('rows').innerHTML=P.map((p,i)=>{
-    const shots0=p.colors[0].shots;
+    const s0=p.colors[0].shots[0].split(',');
     return `
-    <button class="prow" data-i="${i}">
+    <div class="prow" data-i="${i}" role="button" tabindex="0">
       <div class="prow-in">
-        <div class="frames">${shots0.map((s,j)=>{const a=s.split(',');
-          return `<div class="${j===0?'on':''}">${SLOT(a[0],'Peclee '+p.name.en,a[1],A[a[2]](a[3]))}</div>`}).join('')}</div>
-        <div class="prow-label"><div><div class="prow-name">${p.name[L]}</div>
+        <div class="frames">${SLOT(s0[0],'Peclee '+p.name.en,s0[1],A[s0[2]](s0[3]))}</div>
+        <div class="prow-label"><div class="prow-name">${p.name[L]}</div>
         <div class="prow-tag">${p.tagline[L]}</div>
         ${p.colors.length>1?`<div class="prow-sw">${p.colors.map((c,ci)=>
           `<button type="button" class="csw${ci===0?' on':''}" data-cidx="${ci}" aria-label="${c.name[L]}" title="${c.name[L]}"><i style="background:${c.hex}"></i></button>`
-        ).join('')}</div>`:''}</div></div>
+        ).join('')}</div>`:''}</div>
       </div>
-    </button>`;}).join('');
+    </div>`;}).join('');
   bindRows();
 
   /* about */
@@ -1333,29 +1329,26 @@ function bindRows(){
   document.querySelectorAll('.prow').forEach(row=>{
     const p=P[+row.dataset.i];
     const framesEl=row.querySelector('.frames');
-    let colorIdx=0,cur=0,moved=0,x0=0,drag=false;
-    const renderFrames=()=>{
-      const shots=p.colors[colorIdx].shots;
-      framesEl.innerHTML=shots.map((s,j)=>{const a=s.split(',');
-        return `<div class="${j===0?'on':''}">${SLOT(a[0],'Peclee '+p.name.en,a[1],A[a[2]](a[3]))}</div>`}).join('');
-      cur=0;
+    let colorIdx=0;
+    const renderShot=()=>{
+      const a=p.colors[colorIdx].shots[0].split(',');
+      framesEl.innerHTML=SLOT(a[0],'Peclee '+p.name.en,a[1],A[a[2]](a[3]));
     };
-    const show=i=>{const fr=[...framesEl.children];if(i===cur||!fr[i])return;
-      fr[cur].classList.remove('on');fr[i].classList.add('on');cur=i};
-    const scrub=e=>{const fr=[...framesEl.children],n=fr.length;const r=row.getBoundingClientRect();
-      let p2=(e.clientX-r.left)/r.width; if(L==='ar')p2=1-p2;
-      show(Math.floor(Math.min(.9999,Math.max(0,p2))*n))};
-    row.onpointermove=e=>{if(e.pointerType==='mouse'){scrub(e);return}if(drag){moved=Math.abs(e.clientX-x0);scrub(e)}};
-    row.onpointerdown=e=>{if(e.pointerType!=='mouse'){drag=true;x0=e.clientX;moved=0}};
-    row.onpointerup=()=>{drag=false};
-    row.onpointerleave=()=>show(0);
-    row.onclick=()=>{if(moved<8)location.hash='#/tools/'+p.id};
+    const goToProduct=()=>{location.hash='#/tools/'+p.id};
+    row.addEventListener('click',e=>{
+      if(e.target.closest('.csw'))return;
+      goToProduct();
+    });
+    row.addEventListener('keydown',e=>{
+      if(e.target.closest('.csw'))return;
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();goToProduct();}
+    });
     row.querySelectorAll('.csw').forEach(b=>{
-      b.addEventListener('pointerdown',e=>e.stopPropagation());
-      b.addEventListener('click',e=>{e.stopPropagation();
+      b.addEventListener('click',e=>{
+        e.stopPropagation();
         colorIdx=+b.dataset.cidx;
         row.querySelectorAll('.csw').forEach(x=>x.classList.toggle('on',x===b));
-        renderFrames();
+        renderShot();
       });
     });
   });
