@@ -206,14 +206,18 @@ html[dir="rtl"] .cta{font-family:var(--arab);letter-spacing:0;font-size:12px}
 .rail-in{display:flex;gap:clamp(16px,2.2vw,34px);padding:0 var(--pad);width:max-content}
 .tcard{width:clamp(258px,29vw,410px);flex:0 0 auto}
 .tcard .vis{background:var(--paper);aspect-ratio:1/1;position:relative;overflow:hidden;border:1px solid var(--line-2)}
-.tcard .vis .slot{transition:transform .6s cubic-bezier(.22,.8,.24,1)}
-.tcard:hover .vis .slot{transform:scale(1.04) translateY(-6px)}
+.tcard .vis .frames{position:absolute;inset:0;transition:transform .6s cubic-bezier(.22,.8,.24,1)}
+.tcard:hover .vis .frames{transform:scale(1.04) translateY(-6px)}
+.tcard .frames{position:relative;width:100%;height:100%}
+.tcard .frames>div{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transition:opacity .25s linear}
+.tcard .frames>div.on{opacity:1}
 .tcard .meta{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;
   padding-top:16px;border-top:1px solid var(--line);margin-top:16px}
 .tcard h3{font-size:clamp(1.1rem,1.5vw,1.4rem);font-weight:400;letter-spacing:-.02em}
 .tcard .t{font-size:13px;opacity:.6;margin-top:4px}
 .tcard .pr{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;white-space:nowrap;padding-top:4px;opacity:.6}
 html[dir="rtl"] .tcard .pr{font-family:var(--arab);letter-spacing:0}
+.tcard .prow-sw{margin-top:12px}
 .cw{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,80px);align-items:center}
 .cw-vis{background:var(--paper);aspect-ratio:1/1;border:1px solid var(--line-2);overflow:hidden}
 .sw{display:flex;gap:10px;margin:28px 0 20px}
@@ -447,7 +451,7 @@ html[dir="rtl"] .chap h2{letter-spacing:0;line-height:1.35}
 html[dir="rtl"] .clock{font-family:var(--arab);letter-spacing:0}
 .status{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:100px;
   padding:9px 18px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase}
-html[dir="rtl"] .status{font-family:var(--arab);letter-spacing:0;font-size:12px}
+html[dir="rtl"] .status{font-family:var(--arab);letter-spacing:0}
 .status i{width:7px;height:7px;border-radius:100px;background:var(--green);flex:0 0 auto}
 .status.shut i{background:var(--brick);opacity:.7}
 .ctop-b{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-top:clamp(28px,4vw,48px)}
@@ -824,7 +828,6 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
       <p class="p-tag" id="p-tagline">···</p>
       <p class="body" id="p-desc" style="margin-bottom:36px">···</p>
       <div class="p-buy">
-        <a href="#/contact" class="cta fill" data-close data-t="p_reg">Register interest</a>
         <a href="#" class="cta" id="p-buynow" data-t="p_buy">Buy now</a>
       </div>
       <div class="p-color-block" id="p-color-block" style="margin-top:28px">
@@ -1068,7 +1071,11 @@ const P=[
        ar:'تجعل غلايتنا الدقة أمرًا طبيعيًا حتى من أول سكب. بمقبض متوازن، وتدفق عنق إوزّة محكوم، وتصميم حديث ونظيف، تساعدك على السكب بثقة من أول تحضير.'},
  colors:[
    {name:{en:'Navy',ar:'كحلي'},hex:NAVY,shots:['orphe-01.webp,Navy · front · full body,kettle,'+NAVY,'orphe-04.webp,Navy · spout & handle detail,kettle,'+NAVY]},
-   {name:{en:'Green',ar:'أخضر'},hex:GREEN,shots:['orphe-02.webp,Green · front · full body,kettle,'+GREEN,'orphe-05.webp,Green · base & logo detail,kettle,'+GREEN]}
+   {name:{en:'Green',ar:'أخضر'},hex:GREEN,shots:[
+     'orphe-green-main.jpg,Green · front · full body,kettle,'+GREEN,
+     'orphe-green-front-base.jpg,Green · on base · temperature display,kettle,'+GREEN,
+     'orphe-green-top.jpg,Green · top-down · dial detail,kettle,'+GREEN
+   ]}
  ],
  features:{en:[['FlowSense™ gooseneck','Smooth, consistent flow for accurate pouring.'],['Ergo Grip™','Handle designed for comfort and stability.'],['Strix technology','Keeps water at the sweet spot for your beans.'],['Rapid heating','Brew faster without compromising control.']],
            ar:[['FlowSense™','تدفق سلس ومتّسق لسكب دقيق.'],['Ergo Grip™','مقبض مصمم للراحة والثبات.'],['Strix','تحافظ على الماء في الدرجة المثالية لحبوبك.'],['تسخين سريع','تحضير أسرع دون التضحية بالتحكم.']]},
@@ -1116,7 +1123,7 @@ const P=[
         ar:[['سعة الوزن','١٠٠٠ / ١٥٠٠ غرام (قابلة للتبديل)'],['الدقة','٠٫١ غرام'],['الأوضاع','عادي · تلقائي · إسبريسو'],['الأبعاد','٩٠ × ٨٠ × ١٢ مم'],['البطارية','ليثيوم ٨٠٠ ملّي أمبير'],['الشحن','USB Type-C']]}}];
 
 const FIN=[{c:NAVY,f:'orphe-01.webp',n:{en:'Midnight navy',ar:'كحلي داكن'}},
-           {c:GREEN,f:'orphe-02.webp',n:{en:'Forest green',ar:'أخضر غابة'}},
+           {c:GREEN,f:'orphe-green-main.jpg',n:{en:'Forest green',ar:'أخضر غابة'}},
            {c:BRICK,f:'orphe-03.webp',n:{en:'Brick red',ar:'أحمر طوبي'}}];
 
 const NUMS=[['600',{en:'ml · ORPHE capacity',ar:'مل · سعة أورفي'}],['2000',{en:'g · PESO maximum',ar:'غرام · أقصى سعة بيسو'}],
@@ -1188,12 +1195,18 @@ function render(){
     if(v.indexOf('<br>')>-1)el.innerHTML=v; else el.textContent=v;
   });
 
-  /* rail */
-  document.getElementById('rail-in').innerHTML=P.map(p=>{
-    const s=p.colors[0].shots[0].split(',');
-    return `<a class="tcard" href="#/tools/${p.id}">
-      <div class="vis">${SLOT(s[0],'Peclee '+p.name.en,s[1],A[s[2]](s[3]))}</div>
-      <div class="meta"><div><h3>${p.name[L]}</h3><p class="t">${p.tagline[L]}</p></div>
+  /* rail (home page "The tools") — now with working colour swatches */
+  document.getElementById('rail-in').innerHTML=P.map((p,i)=>{
+    const frames=p.colors.map((c,ci)=>{
+      const a=c.shots[0].split(',');
+      return `<div class="${ci===0?'on':''}">${SLOT(a[0],'Peclee '+p.name.en,a[1],A[a[2]](a[3]))}</div>`;
+    }).join('');
+    const sw=p.colors.length>1?`<div class="prow-sw" data-role="rail-sw">${p.colors.map((c,ci)=>
+      `<button type="button" class="csw${ci===0?' on':''}" data-cidx="${ci}" aria-label="${c.name[L]}" title="${c.name[L]}"><i style="background:${c.hex}"></i></button>`
+    ).join('')}</div>`:'';
+    return `<a class="tcard" href="#/tools/${p.id}" data-i="${i}">
+      <div class="vis"><div class="frames">${frames}</div></div>
+      <div class="meta"><div><h3>${p.name[L]}</h3><p class="t">${p.tagline[L]}</p>${sw}</div>
       <span class="pr">${t('soon')}</span></div></a>`;}).join('');
   bindRail();
 
@@ -1274,7 +1287,21 @@ function bindRail(){
   r.onpointerdown=e=>{down=true;moved=0;x0=e.clientX;s0=r.scrollLeft;r.classList.add('grab')};
   r.onpointermove=e=>{if(!down)return;const d=e.clientX-x0;moved=Math.abs(d);r.scrollLeft=s0-d;if(moved>6)e.preventDefault()};
   r.onpointerup=r.onpointerleave=()=>{down=false;r.classList.remove('grab')};
-  r.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>{if(moved>6)e.preventDefault()}));
+  r.querySelectorAll('a.tcard').forEach(a=>a.addEventListener('click',e=>{if(moved>6)e.preventDefault()}));
+
+  /* colour swatches on each rail card — switch the visible photo without
+     triggering the card's own link navigation */
+  r.querySelectorAll('.tcard').forEach(card=>{
+    card.querySelectorAll('.csw').forEach(b=>{
+      b.addEventListener('pointerdown',e=>e.stopPropagation());
+      b.addEventListener('click',e=>{
+        e.preventDefault(); e.stopPropagation();
+        const idx=+b.dataset.cidx;
+        card.querySelectorAll('.frames > div').forEach((f,j)=>f.classList.toggle('on',j===idx));
+        card.querySelectorAll('.csw').forEach(x=>x.classList.toggle('on',x===b));
+      });
+    });
+  });
 }
 function setFin(i){
   const vis=document.getElementById('cw-vis'), nm=document.getElementById('cw-name'), sw=document.getElementById('sw');
@@ -1409,8 +1436,8 @@ addEventListener('keydown',e=>{
   if(e.key==='ArrowLeft')showShot(curShotIdx-1);
   if(e.key==='ArrowRight')showShot(curShotIdx+1);
 });
-function fillPanel(p){
-  curP=p; curColorIdx=0;
+function fillPanel(p,startColorIdx){
+  curP=p; curColorIdx=startColorIdx||0;
   document.getElementById('p-name').textContent='Peclee '+p.name[L];
   document.getElementById('p-tagline').textContent=p.tagline[L];
   document.getElementById('p-desc').textContent=p.desc[L];
@@ -1437,7 +1464,6 @@ function fillPanel(p){
 }
 function shutPanel(){panel.classList.remove('open');panel.setAttribute('aria-hidden','true');closeLightbox();document.body.classList.remove('lock')}
 document.getElementById('x').onclick=()=>{location.hash='#/tools'};
-panel.querySelectorAll('[data-close]').forEach(a=>a.addEventListener('click',shutPanel));
 addEventListener('keydown',e=>{if(e.key==='Escape'&&panel.classList.contains('open')&&!lightbox.classList.contains('open'))location.hash='#/tools'});
 
 /* ═══════════ clock (Riyadh, Sun–Thu) ═══════════ */
@@ -1490,7 +1516,8 @@ function router(){
   document.getElementById('sheet').classList.remove('open');
   document.getElementById('bg').classList.remove('on');
   const prod=(seg==='tools'&&arg)?P.find(p=>p.id===arg):null;
-  if(prod)fillPanel(prod); else shutPanel();
+  if(prod)fillPanel(prod,window.__startColor||0); else shutPanel();
+  window.__startColor=0;
   if(!prod)scrollTo(0,0);
   seams(); reveal();
 }
@@ -1529,7 +1556,9 @@ document.getElementById('ft-form').addEventListener('submit',async e=>{
 });
 
 /* ═══════════ loader + start ═══════════ */
-render(); router();
+render();
+if(!location.hash){ window.__startColor=1; location.hash='#/tools/orphe'; }
+router();
 (function(){
   const bar=document.getElementById('bar'),pct=document.getElementById('pct'),el=document.getElementById('load');
   const heroV=document.getElementById('heroVideo'),heroS=document.getElementById('heroSec');
