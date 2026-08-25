@@ -6,11 +6,11 @@
 <title>Peclee, Coffee Tools by a Design Brand</title>
 <meta name="description" content="Peclee makes brewing tools that feel as considered as the coffee itself. Kettles, grinders, and scales, designed to be touched every day.">
 
-<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512x512.png">
-<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-<link rel="shortcut icon" href="images/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/images/favicon-512x512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<link rel="shortcut icon" href="/images/favicon.ico">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Peclee Futureworks">
@@ -183,12 +183,12 @@ html[dir="rtl"] .cta{font-family:var(--arab);letter-spacing:0;font-size:12px}
   background:linear-gradient(180deg,rgba(0,0,0,.28) 0%,rgba(0,0,0,.06) 38%,rgba(255,255,255,.55) 72%,rgba(255,255,255,.97) 94%)}
 .hero .grid{z-index:2}
 .hero .wrap{position:relative;z-index:3;width:100%}
-.hero.video-on h1,.hero.video-on .body{color:var(--paper)}
+.hero.video-on h1{color:var(--ink)}
 .hero-red{color:var(--brick)!important;opacity:1!important;font-weight:400}
 .hero.video-on .body{opacity:.9}
 .hero-meta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:clamp(24px,4vw,44px)}
-.hero h1{margin-bottom:clamp(28px,4vw,56px)}
-.hero h1 .w{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em}
+.hero h1{margin-bottom:clamp(28px,4vw,56px);display:flex;flex-wrap:nowrap;gap:0 .26em;white-space:nowrap;font-size:clamp(1.35rem,7.8vw,7.8rem)}
+.hero h1 .w{display:inline-block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em}
 .hero h1 .w i{display:block;font-style:normal;transform:translateY(105%);transition:transform 1.05s cubic-bezier(.22,.8,.24,1)}
 .ready .hero h1 .w i{transform:none}
 .ready .hero h1 .w:nth-child(2) i{transition-delay:.09s}
@@ -249,20 +249,21 @@ html[dir="rtl"] .zones{font-family:var(--arab);letter-spacing:0;font-size:10.5px
 .drops .wrap{position:relative;z-index:2}
 .drops-glow{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
 .dglow{position:absolute;filter:blur(min(12vw,120px));mix-blend-mode:screen;will-change:transform,opacity}
-.dglow-a{width:58vw;height:80vh;left:-16vw;top:-24vh;border-radius:44% 56% 60% 40% / 50% 44% 56% 50%;
-  background:radial-gradient(ellipse 60% 60% at 40% 35%,#4A4A4A 0%,rgba(74,74,74,0) 74%);
-  opacity:.55;animation:pigMain 30s ease-in-out infinite}
-.dglow-b{width:48vw;height:60vh;right:-14vw;bottom:-22vh;border-radius:55% 45% 40% 60% / 58% 46% 54% 42%;
-  background:radial-gradient(ellipse 55% 55% at 55% 55%,var(--terracotta) 0%,rgba(74,74,74,0) 76%);
-  opacity:.4;animation:pigSecondary 36s ease-in-out infinite}
-.dglow-c{width:36vw;height:44vh;right:2vw;top:-16vh;border-radius:50%;
+.dglow-a{width:95vw;height:120vh;left:-25vw;top:-35vh;border-radius:44% 56% 60% 40% / 50% 44% 56% 50%;
+  background:radial-gradient(ellipse 60% 60% at 40% 35%,#6E6E6E 0%,rgba(110,110,110,0) 74%);
+  opacity:.8;animation:pigMain 30s ease-in-out infinite}
+.dglow-b{width:80vw;height:95vh;right:-22vw;bottom:-30vh;border-radius:55% 45% 40% 60% / 58% 46% 54% 42%;
+  background:radial-gradient(ellipse 55% 55% at 55% 55%,#5C5C5C 0%,rgba(92,92,92,0) 76%);
+  opacity:.6;animation:pigSecondary 36s ease-in-out infinite}
+.dglow-c{width:62vw;height:75vh;right:-6vw;top:-24vh;border-radius:50%;
   background:radial-gradient(circle,var(--peach) 0%,rgba(154,154,154,.4) 40%,rgba(154,154,154,0) 72%);
-  opacity:.4;animation:pigLight 33s ease-in-out infinite}
+  opacity:.55;animation:pigLight 33s ease-in-out infinite}
+.dglow-s{inset:-80% -70%;filter:blur(min(14vw,140px));background:linear-gradient(155deg,#3A3A3A 0%,#707070 28%,transparent 55%,#9A9A9A 80%,#4A4A4A 100%);opacity:.32;animation:pigSweep 37s ease-in-out infinite}
 @media (prefers-reduced-motion:reduce){.dglow{animation:none}}
 @media (max-width:767px){
-  .dglow-a{width:100vw;height:50vh;left:-25vw;top:-14vh}
-  .dglow-b{width:90vw;height:40vh;right:-25vw;bottom:-14vh}
-  .dglow-c{width:60vw;height:30vh;right:-10vw;top:-8vh}
+  .dglow-a{width:150vw;height:70vh;left:-40vw;top:-18vh}
+  .dglow-b{width:130vw;height:60vh;right:-35vw;bottom:-20vh}
+  .dglow-c{width:90vw;height:45vh;right:-18vw;top:-10vh}
 }
 .drops .body{opacity:.72}
 .drops .eyebrow{border-color:rgba(255,255,255,.2)}
@@ -520,7 +521,8 @@ html[dir="rtl"] .ty .rec dt{font-family:var(--arab);letter-spacing:0;font-size:1
 .ty .cta:hover{background:var(--paper);color:var(--brick);border-color:var(--paper)}
 
 /* ══ FOOTER ══ */
-.ft{background:var(--brick);color:var(--paper);padding:var(--sec) 0 32px}
+.ft{background:var(--brick);color:var(--paper);padding:var(--sec) 0 32px;position:relative;overflow:hidden}
+.ft>.wrap{position:relative;z-index:2}
 .ft-news{display:grid;grid-template-columns:1fr auto;gap:clamp(20px,3vw,48px);align-items:center;
   padding-bottom:clamp(36px,5vw,60px);margin-bottom:clamp(36px,5vw,60px);border-bottom:1px solid rgba(255,255,255,.28)}
 .ft h4{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;opacity:.6;margin-bottom:18px;font-weight:400}
@@ -598,14 +600,14 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
 </div>
 
 <header class="hd" id="hd">
-  <a href="#/" class="logo" aria-label="Peclee">
-    <img src="images/logo-peclee.png" alt="Peclee" class="logo-img">
+  <a href="/" class="logo" aria-label="Peclee">
+    <img src="/images/logo-peclee.png" alt="Peclee" class="logo-img">
   </a>
   <div class="hd-r">
     <nav class="mono">
-      <a href="#/tools" data-nav="tools" data-t="nav1">Tools</a>
-      <a href="#/about" data-nav="about" data-t="nav2">About</a>
-      <a href="#/contact" data-nav="contact" data-t="nav3">Contact</a>
+      <a href="/tools" data-nav="tools" data-t="nav1">Tools</a>
+      <a href="/about" data-nav="about" data-t="nav2">About</a>
+      <a href="/contact" data-nav="contact" data-t="nav3">Contact</a>
       <button class="langbtn" id="lang">عربي</button>
     </nav>
     <button class="burger" id="bg" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
@@ -613,10 +615,10 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
 </header>
 
 <div class="sheet" id="sheet">
-  <a href="#/" data-t="nav0">Home</a>
-  <a href="#/tools" data-t="nav1">Tools</a>
-  <a href="#/about" data-t="nav2">About</a>
-  <a href="#/contact" data-t="nav3">Contact</a>
+  <a href="/" data-t="nav0">Home</a>
+  <a href="/tools" data-t="nav1">Tools</a>
+  <a href="/about" data-t="nav2">About</a>
+  <a href="/contact" data-t="nav3">Contact</a>
 </div>
 
 <main>
@@ -625,8 +627,8 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
 <div class="route" id="v-home">
   <section class="hero" id="heroSec">
     <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto">
-      <source src="video/hero-brew-mobile.mp4" media="(max-width: 760px)" type="video/mp4">
-      <source src="video/hero-brew.mp4" type="video/mp4">
+      <source src="/video/hero-brew-mobile.mp4" media="(max-width: 760px)" type="video/mp4">
+      <source src="/video/hero-brew.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="grid" aria-hidden="true"></div>
@@ -654,7 +656,7 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
     </div>
     <div class="rail rv" id="rail"><div class="rail-in" id="rail-in"></div></div>
     <div class="wrap" style="margin-top:clamp(28px,4vw,44px)">
-      <a href="#/tools" class="cta rv" data-t="tl_cta">All four tools →</a>
+      <a href="/tools" class="cta rv" data-t="tl_cta">All four tools →</a>
     </div>
   </section>
 
@@ -666,7 +668,7 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
       <div class="dial-wrap">
         <div class="rv">
           <p class="body" data-t="dl_b">The KIVI dial moves in clicks, fine to coarse. Drag across to see where each brew method sits, then set it once and repeat it exactly.</p>
-          <a href="#/tools/kivi" class="cta" style="margin-top:32px" data-t="dl_cta">KIVI specifications</a>
+          <a href="/tools/kivi" class="cta" style="margin-top:32px" data-t="dl_cta">KIVI specifications</a>
         </div>
         <div class="dial rv">
           <div class="read"><b id="d-val">18</b><span class="mono dim" data-t="dl_u">clicks</span></div>
@@ -705,6 +707,7 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
       <div class="dglow dglow-a"></div>
       <div class="dglow dglow-b"></div>
       <div class="dglow dglow-c"></div>
+      <div class="dglow dglow-s"></div>
     </div>
     <div class="wrap">
       <div class="eyebrow rv"><h2 class="md" data-t="dr_h">Drops</h2></div>
@@ -779,8 +782,8 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
     <div class="wrap">
       <p class="lg rv" style="max-width:24ch;margin:0 auto 40px" data-t="ab_end">Coffee, your way.</p>
       <div class="rv" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:40px">
-        <a href="#/tools" class="cta fill" data-t="h_cta1">See the tools →</a>
-        <a href="#/contact" class="cta" data-t="ab_ec">Get in touch</a>
+        <a href="/tools" class="cta fill" data-t="h_cta1">See the tools →</a>
+        <a href="/contact" class="cta" data-t="ab_ec">Get in touch</a>
       </div>
     </div>
   </section>
@@ -849,6 +852,12 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
 </div>
 
 <footer class="ft">
+  <div class="drops-glow" aria-hidden="true">
+    <div class="dglow dglow-a"></div>
+    <div class="dglow dglow-b"></div>
+    <div class="dglow dglow-c"></div>
+    <div class="dglow dglow-s"></div>
+  </div>
   <div class="wrap">
     <div class="ft-news">
       <div>
@@ -863,23 +872,23 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
     </div>
     <div class="ft-top">
       <div>
-        <img src="images/logo-peclee.png" alt="Peclee" class="logo-img">
+        <img src="/images/logo-peclee.png" alt="Peclee" class="logo-img">
       </div>
       <div>
         <h4 data-t="nav1">Tools</h4>
         <ul>
-          <li><a href="#/tools/orphe" data-t="ft_p1">ORPHE kettle</a></li>
-          <li><a href="#/tools/kivi" data-t="ft_p2">KIVI grinder</a></li>
-          <li><a href="#/tools/peso" data-t="ft_p3">Peso scale</a></li>
-          <li><a href="#/tools/pesomini" data-t="ft_p4">PESOmini scale</a></li>
+          <li><a href="/tools/orphe" data-t="ft_p1">ORPHE kettle</a></li>
+          <li><a href="/tools/kivi" data-t="ft_p2">KIVI grinder</a></li>
+          <li><a href="/tools/peso" data-t="ft_p3">Peso scale</a></li>
+          <li><a href="/tools/pesomini" data-t="ft_p4">PESOmini scale</a></li>
         </ul>
       </div>
       <div>
         <h4 data-t="ft_brand">Brand</h4>
         <ul>
-          <li><a href="#/about" data-t="nav2">About</a></li>
-          <li><a href="#/contact" data-t="nav3">Contact</a></li>
-          <li><a href="#/contact" data-t="ft_trade">Stockists &amp; trade</a></li>
+          <li><a href="/about" data-t="nav2">About</a></li>
+          <li><a href="/contact" data-t="nav3">Contact</a></li>
+          <li><a href="/contact" data-t="ft_trade">Stockists &amp; trade</a></li>
         </ul>
       </div>
       <div>
@@ -958,7 +967,7 @@ function SLOT(file,alt,note,drawing){
   if(!file){
     return '<div class="slot empty"><div class="slot-ph">'+drawing+'<span class="slot-tag">'+note+'</span></div></div>';
   }
-  return '<div class="slot"><img src="images/'+file+'" alt="'+alt+'" loading="lazy" '
+  return '<div class="slot"><img src="/images/'+file+'" alt="'+alt+'" loading="lazy" '
     +'onerror="this.closest(\'.slot\').classList.add(\'empty\')">'
     +'<div class="slot-ph">'+drawing+'<span class="slot-tag"><b>images/'+file+'</b>'+note+'</span></div></div>';
 }
@@ -1208,7 +1217,7 @@ function render(){
     const sw=p.colors.length>1?`<div class="prow-sw" data-role="rail-sw">${p.colors.map((c,ci)=>
       `<button type="button" class="csw${ci===0?' on':''}" data-cidx="${ci}" aria-label="${c.name[L]}" title="${c.name[L]}"><i style="background:${c.hex}"></i></button>`
     ).join('')}</div>`:'';
-    return `<a class="tcard" href="#/tools/${p.id}" data-i="${i}">
+    return `<a class="tcard" href="/tools/${p.id}" data-i="${i}">
       <div class="vis"><div class="frames">${frames}</div></div>
       <div class="meta"><div><h3>${p.name[L]}</h3><p class="t">${p.tagline[L]}</p>${sw}</div>
       <span class="pr">${t('soon')}</span></div></a>`;}).join('');
@@ -1334,7 +1343,7 @@ function bindRows(){
       const a=p.colors[colorIdx].shots[0].split(',');
       framesEl.innerHTML=SLOT(a[0],'Peclee '+p.name.en,a[1],A[a[2]](a[3]));
     };
-    const goToProduct=()=>{location.hash='#/tools/'+p.id};
+    const goToProduct=()=>{nav('/tools/'+p.id)};
     row.addEventListener('click',e=>{
       if(e.target.closest('.csw'))return;
       goToProduct();
@@ -1469,8 +1478,8 @@ function updateBuyLink(){
   document.getElementById('p-buynow').href=url;
 }
 function shutPanel(){panel.classList.remove('open');panel.setAttribute('aria-hidden','true');closeLightbox();document.body.classList.remove('lock')}
-document.getElementById('x').onclick=()=>{location.hash='#/tools'};
-addEventListener('keydown',e=>{if(e.key==='Escape'&&panel.classList.contains('open')&&!lightbox.classList.contains('open'))location.hash='#/tools'});
+document.getElementById('x').onclick=()=>{nav('/tools')};
+addEventListener('keydown',e=>{if(e.key==='Escape'&&panel.classList.contains('open')&&!lightbox.classList.contains('open'))nav('/tools')});
 
 /* ═══════════ clock (Riyadh, Sun–Thu) ═══════════ */
 function tick(){
@@ -1515,7 +1524,7 @@ function reveal(){
   document.querySelectorAll('.route.live .rv:not(.in)').forEach(el=>io.observe(el));
 }
 function router(){
-  const raw=location.hash.replace(/^#\/?/,''),[seg,arg]=raw.split('/');
+  const raw=location.pathname.replace(/^\/+|\/+$/g,''),[seg,arg]=raw.split('/');
   const id=VIEWS[seg]!==undefined?VIEWS[seg]:'v-home';
   document.querySelectorAll('.route').forEach(v=>v.classList.toggle('live',v.id===id));
   document.querySelectorAll('[data-nav]').forEach(a=>a.classList.toggle('on',a.dataset.nav===seg));
@@ -1527,7 +1536,17 @@ function router(){
   if(!prod)scrollTo(0,0);
   seams(); reveal();
 }
-addEventListener('hashchange',router);
+addEventListener('popstate',router);
+function nav(p){if(location.pathname!==p)history.pushState(null,'',p);router()}
+document.addEventListener('click',e=>{
+  if(e.defaultPrevented)return;
+  const a=e.target.closest('a');if(!a)return;
+  const h=a.getAttribute('href')||'';
+  if(h.charAt(0)!=='/'||a.target==='_blank')return;
+  if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0)return;
+  e.preventDefault();nav(h);
+});
+if(location.hash.indexOf('#/')===0)history.replaceState(null,'',location.hash.slice(1));
 
 /* ═══════════ chrome ═══════════ */
 document.getElementById('lang').addEventListener('click',()=>{
