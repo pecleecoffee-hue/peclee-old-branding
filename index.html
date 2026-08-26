@@ -626,7 +626,7 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
 <!-- ══════════ HOME ══════════ -->
 <div class="route" id="v-home">
   <section class="hero" id="heroSec">
-    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto">
+    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="/images/hero-poster.jpg">
       <source src="/video/hero-brew-mobile.mp4" media="(max-width: 760px)" type="video/mp4">
       <source src="/video/hero-brew.mp4" type="video/mp4">
     </video>
@@ -1008,7 +1008,7 @@ en:{
  ab_sl:'What success looks like',ab_ss:'When someone sees a Peclee product on a counter, they should feel something.',
  ab_wh:'What we make',ab_wn:'Two lines',ab_end:'Coffee, your way.',ab_ec:'Get in touch',
  ct_h:'Say hello.',ct_c:'Write to us ↓',
- ct_b:"Reach us directly, or write below and we'll come back to you. Someone here reads every message.",
+ ct_b:"Reach us directly. Someone here reads every message.",
  fm_h:'Or write to us',fm_q1:'What can we help with?',fm_s1:'Pick the closest one.',
  fm_q2:'And who are you?',fm_q3:'Tell us more.',
  fm_n:'Your name',fm_e:'Email',fm_c:'Café or store',fm_m:'Your message',
@@ -1056,7 +1056,7 @@ ar:{
  ab_sl:'كيف يبدو النجاح',ab_ss:'حين يرى أحدهم منتج بيكلي على الرخامة، يجب أن يشعر بشيء.',
  ab_wh:'ماذا نصنع',ab_wn:'خطّان',ab_end:'قهوتك بطريقتك.',ab_ec:'تواصل معنا',
  ct_h:'مرحبًا بك.',ct_c:'راسلنا ↓',
- ct_b:'تواصل معنا مباشرة، أو اكتب لنا أدناه وسنعود إليك. نقرأ كل رسالة بأنفسنا.',
+ ct_b:'تواصل معنا مباشرة. نقرأ كل رسالة بأنفسنا.',
  fm_h:'أو اكتب لنا',fm_q1:'كيف يمكننا مساعدتك؟',fm_s1:'اختر الأقرب.',
  fm_q2:'ومن أنت؟',fm_q3:'أخبرنا المزيد.',
  fm_n:'اسمك',fm_e:'البريد الإلكتروني',fm_c:'اسم المقهى أو المتجر',fm_m:'رسالتك',
@@ -1308,10 +1308,13 @@ function bindRail(){
       b.addEventListener('pointerdown',e=>e.stopPropagation());
       b.addEventListener('click',e=>{
         e.preventDefault(); e.stopPropagation();
-        const idx=+b.dataset.cidx;
+        const idx=+b.dataset.cidx;card._c=idx;
         card.querySelectorAll('.frames > div').forEach((f,j)=>f.classList.toggle('on',j===idx));
         card.querySelectorAll('.csw').forEach(x=>x.classList.toggle('on',x===b));
       });
+    });
+    card.addEventListener('click',e=>{
+      if(!e.defaultPrevented&&!e.target.closest('.csw'))window.__startColor=card._c||0;
     });
   });
 }
@@ -1343,7 +1346,7 @@ function bindRows(){
       const a=p.colors[colorIdx].shots[0].split(',');
       framesEl.innerHTML=SLOT(a[0],'Peclee '+p.name.en,a[1],A[a[2]](a[3]));
     };
-    const goToProduct=()=>{nav('/tools/'+p.id)};
+    const goToProduct=()=>{window.__startColor=colorIdx;nav('/tools/'+p.id)};
     row.addEventListener('click',e=>{
       if(e.target.closest('.csw'))return;
       goToProduct();
@@ -1456,7 +1459,7 @@ function fillPanel(p,startColorIdx){
   if(p.colors.length>1){
     cblock.style.display='';
     cwrap.innerHTML=p.colors.map((c,ci)=>
-      `<button type="button" class="csw${ci===0?' on':''}" data-cidx="${ci}" aria-label="${c.name[L]}" title="${c.name[L]}"><i style="background:${c.hex}"></i></button>`
+      `<button type="button" class="csw${ci===curColorIdx?' on':''}" data-cidx="${ci}" aria-label="${c.name[L]}" title="${c.name[L]}"><i style="background:${c.hex}"></i></button>`
     ).join('');
     [...cwrap.children].forEach(b=>b.addEventListener('click',()=>{
       curColorIdx=+b.dataset.cidx;
@@ -1586,6 +1589,7 @@ router();
 (function(){
   const bar=document.getElementById('bar'),pct=document.getElementById('pct'),el=document.getElementById('load');
   const heroV=document.getElementById('heroVideo'),heroS=document.getElementById('heroSec');
+  if(heroV&&matchMedia('(max-width: 760px)').matches)heroV.setAttribute('poster','/images/hero-poster-mobile.jpg');
   let v=0;
   const iv=setInterval(()=>{
     v=Math.min(100,v+Math.random()*13+5);
