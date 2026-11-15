@@ -1,32 +1,43 @@
 # Peclee website — GitHub upload
 
-This ZIP contains the complete website from the latest published source, including the PESO/PESOmini photo-framing correction and the sitewide proportion refinements.
+Package version: **2026-11-15-r2**.
 
-## Upload to GitHub
+## Upload the website
 
-1. Extract this ZIP on your device.
-2. Upload all the extracted files and folders inside `Peclee-Website` to your repository, preserving the folder structure. Upload the extracted contents rather than only the ZIP.
-3. Keep `dist`, `scripts`, `docs`, and both Markdown instructions at the repository root.
+1. Extract this ZIP. Upload its extracted contents, not the ZIP itself.
+2. Put `index.html`, `assets`, `tools`, `about`, `contact`, the CSS/JavaScript files,
+   and the remaining included files directly at your repository root.
+3. Replace the matching files from an older copy. Do not nest this package inside
+   a `Peclee-Website` or `dist` folder. Remove an old duplicate site folder only
+   after confirming it is no longer used by your hosting configuration.
+4. Configure your host to serve this repository root. For GitHub Pages, select
+   the branch containing these files and the root folder in the Pages settings.
 
-## Website files
+The website supports a domain root and a GitHub Pages project subdirectory.
+Keep `.nojekyll` when uploading. No package installation or build step is needed.
+Uploading files to GitHub stores the source; it does not by itself confirm that
+the website has been published. Check your host's deployment result afterward.
+GitHub setup reference: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
 
-- `dist/`: deployable website, all pages, CSS, JavaScript, product photos, fonts and motion assets.
-- `scripts/prepare-routes.mjs`: refreshes the seven direct page routes after editing `dist/index.html`. Run with Node.js: `node scripts/prepare-routes.mjs`.
-- `DESIGN-NOTES.md`: design, functionality and verification notes.
-- `docs/verification.md`: scroll-animation review notes.
+`version.json` identifies this package. Its `release` must be `2026-11-15-r2`.
 
-## Hosting
+## Preview and maintain
 
-Serve `dist/` as the website's document root. No package installation or build step is required to deploy the included files. To preview locally with Python: `python3 -m http.server 8000 --directory dist`, then open `http://localhost:8000`.
+Run `python3 -m http.server 8000` in the extracted folder, then open
+`http://localhost:8000/`. Use a web server rather than opening `index.html` as a
+local file.
 
-Uploading to GitHub stores the source; it does not by itself publish a website. The current navigation and assets use root-relative paths. Hosting at a domain root works as supplied; a GitHub Pages project URL under `/<repository>/` needs base-path changes before deployment.
+The main source is `index.html`; the other page HTML files are generated route
+copies. After editing the main HTML, run `node scripts/prepare-routes.mjs` to
+refresh the seven direct routes. CSS, JavaScript, fonts, images and motion assets
+are all included. Read `UPDATE-NOTES.md` for this update's scope.
 
-When moving to a different domain, update the social metadata origin in `dist/index.html` and `scripts/prepare-routes.mjs`, then regenerate the routes. The current origin is `https://peclee-evolved.bermitocoffee.chatgpt.site`.
+When moving to a different public domain, update the social metadata URLs in
+`index.html` and the corresponding origin used by `scripts/prepare-routes.mjs`,
+then regenerate the routes. The previous publication origin is
+`https://peclee-evolved.bermitocoffee.chatgpt.site`.
 
-The existing newsletter uses an email-enquiry fallback. No email-marketing service credentials are included. Product purchase links retain their original destinations.
-
-## Export provenance
-
-Source commit: `22e2153783191e1d115f72c35fbe777e9cdc7d10`
-Export date: 15 November 2026.
-Git history, Sites project binding, private credentials and temporary review files are excluded. All deployable website files are unchanged from the published source commit.
+To create another validated ZIP after editing, run
+`python3 scripts/export-github.py /absolute/path/Peclee-Website.zip`.
+Git history, account credentials, Sites project settings and review screenshots
+are not included.

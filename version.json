@@ -1,0 +1,9 @@
+{
+  "release": "2026-11-15-r2",
+  "changes": [
+    "Corrected PESO and PESOmini photo framing and sitewide proportions",
+    "Preserved the maroon product spotlight and scroll-controlled kettle sequence",
+    "Fixed asset paths and navigation for GitHub project folders and local previews",
+    "Versioned styles and scripts to load this release"
+  ]
+}

@@ -3,31 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="peclee-base" content="./">
+<meta name="peclee-version" content="2026-11-15-r2">
+<script>
+/* Resolve this release correctly at a domain root, repository path, or local file. */
+(() => {
+  const page = new URL(location.href);
+  if (!page.pathname.endsWith('/') && !/\.[a-z0-9]+$/i.test(page.pathname)) page.pathname += '/';
+  const base = document.createElement('base');
+  base.href = new URL(document.querySelector('meta[name="peclee-base"]').content, page).href;
+  document.head.appendChild(base);
+  window.PECLEE_BASE = new URL(base.href).pathname;
+  window.PECLEE_VERSION = '2026-11-15-r2';
+})();
+</script>
+
 <title>Peclee, Coffee Tools by a Design Brand</title>
 <meta name="description" content="Peclee makes brewing tools that feel as considered as the coffee itself. Kettles, grinders, and scales, designed to be touched every day.">
 
-<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="512x512" href="/images/favicon-512x512.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-<link rel="shortcut icon" href="/images/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512x512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="shortcut icon" href="assets/favicon-32x32.png">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Peclee Futureworks">
 <meta property="og:title" content="Peclee, Coffee Tools by a Design Brand">
 <meta property="og:description" content="Peclee makes brewing tools that feel as considered as the coffee itself. Kettles, grinders, and scales, designed to be touched every day.">
-<meta property="og:image" content="https://peclee.com/images/og-image.jpg">
+<meta property="og:image" content="https://peclee-evolved.bermitocoffee.chatgpt.site/assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://peclee.com">
+<meta property="og:url" content="https://peclee-evolved.bermitocoffee.chatgpt.site">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Peclee, Coffee Tools by a Design Brand">
 <meta name="twitter:description" content="Peclee makes brewing tools that feel as considered as the coffee itself. Kettles, grinders, and scales, designed to be touched every day.">
-<meta name="twitter:image" content="https://peclee.com/images/og-image.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta name="twitter:image" content="https://peclee-evolved.bermitocoffee.chatgpt.site/assets/og-image.jpg">
+<link rel="stylesheet" href="assets/fonts.css">
 <style>
 /* ══════════════════════════════════════════════════════════
    PECLEE · full site preview, bilingual EN / AR
@@ -586,90 +599,93 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
   .nav-r .right{width:100%;justify-content:space-between}
 }
 </style>
+<link rel="stylesheet" href="evolved.css?v=20261115-r2">
+<link rel="stylesheet" href="spotlight.css?v=20261115-r2">
+<link rel="stylesheet" href="pages.css?v=20261115-r2">
+<link rel="stylesheet" href="refinements.css?v=20261115-r2">
 </head>
-<body class="lock">
-
-<div id="load">
-  <div class="load-lines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-  <div class="row mono dim"><span data-t="ld1">Peclee</span><span data-t="ld2">Coffee, Your Way</span></div>
-  <p class="line" data-t="ld3">For the love of brewing</p>
-  <div>
-    <div class="bar"><i id="bar"></i></div>
-    <div class="row mono dim"><span data-t="ld4">Loading</span><span><span id="pct">0</span>%</span></div>
-  </div>
-</div>
-
+<body class="ready spotlight-home">
+<a href="#main" class="skip-link">Skip to content</a>
 <header class="hd" id="hd">
-  <a href="/" class="logo" aria-label="Peclee">
-    <img src="/images/logo-peclee.png" alt="Peclee" class="logo-img">
+  <a href="./" class="logo" aria-label="Peclee">
+    <img src="assets/logo-peclee.png" alt="Peclee" class="logo-img">
   </a>
   <div class="hd-r">
     <nav class="mono">
-      <a href="/tools" data-nav="tools" data-t="nav1">Tools</a>
-      <a href="/about" data-nav="about" data-t="nav2">About</a>
-      <a href="/contact" data-nav="contact" data-t="nav3">Contact</a>
+      <a href="tools" data-nav="tools" data-t="nav1">Tools</a>
+      <a href="about" data-nav="about" data-t="nav2">About</a>
+      <a href="contact" data-nav="contact" data-t="nav3">Contact</a>
       <button class="langbtn" id="lang">عربي</button>
     </nav>
     <button class="burger" id="bg" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
   </div>
 </header>
 
-<div class="sheet" id="sheet">
-  <a href="/" data-t="nav0">Home</a>
-  <a href="/tools" data-t="nav1">Tools</a>
-  <a href="/about" data-t="nav2">About</a>
-  <a href="/contact" data-t="nav3">Contact</a>
+<div class="sheet" id="sheet" inert aria-label="Mobile navigation">
+  <a href="./" data-t="nav0">Home</a>
+  <a href="tools" data-t="nav1">Tools</a>
+  <a href="about" data-t="nav2">About</a>
+  <a href="contact" data-t="nav3">Contact</a>
 </div>
 
-<main>
+<main id="main">
 
 <!-- ══════════ HOME ══════════ -->
 <div class="route" id="v-home">
-  <section class="hero" id="heroSec">
-    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="/images/hero-poster.jpg">
-      <source src="/video/hero-brew-mobile.mp4" media="(max-width: 760px)" type="video/mp4">
-      <source src="/video/hero-brew.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay" aria-hidden="true"></div>
-    <div class="grid" aria-hidden="true"></div>
-    <div class="wrap">
-      <h1 class="xl">
-        <span class="w"><i data-t="h_1">For the</i></span>
-        <span class="w"><i data-t="h_2">love of</i></span>
-        <span class="w"><i data-t="h_3">brewing</i></span>
-      </h1>
-      <div class="hero-b">
-        <p class="body hero-red" data-t="h_body">Peclee was created for people who enjoy making their own cup of coffee. We believe good coffee doesn't have to be complicated. With the right tools and a little curiosity, anyone can brew something great at home.</p>
+  <section class="spotlight" id="heroSec" aria-labelledby="spotlight-title">
+    <div class="spotlight-stage">
+      <div class="spotlight-halo" aria-hidden="true"></div>
+      <div class="spotlight-intro">
+        <p class="mono spotlight-eyebrow" data-t="h_m1">Coffee brewing tools</p>
+        <h1 id="spotlight-title"><span data-t="h_1">For the</span> <span data-t="h_2">love of</span> <span data-t="h_3">brewing</span></h1>
+        <p class="spotlight-body" data-t="h_body">Peclee was created for people who enjoy making their own cup of coffee. We believe good coffee doesn't have to be complicated. With the right tools and a little curiosity, anyone can brew something great at home.</p>
       </div>
+      <div class="spotlight-art" role="img" aria-label="ORPHE kettle: from its base to the hand, then a gentle pour" data-scene-art>
+        <div class="spotlight-shadow"></div>
+        <img class="spotlight-rest" src="assets/motion-rest.webp" alt="" fetchpriority="high" width="1024" height="1024">
+        <div class="spotlight-lift"><img class="spotlight-hand" src="assets/motion-hand.webp" alt="" width="1536" height="1024"></div>
+        <img class="spotlight-dripper" src="assets/motion-dripper.webp" alt="" width="1024" height="1024">
+        <svg class="spotlight-water" viewBox="0 0 1000 700" preserveAspectRatio="none" aria-hidden="true"><path d="M 711 270 C 725 318 733 366 735 422"/><path class="water-glint" d="M 711 270 C 725 318 733 366 735 422"/></svg>
+      </div>
+      <div class="spotlight-chapter chapter-lift" aria-hidden="true"><span class="mono">01 / ORPHE</span><p data-t="tagline">Coffee, Your Way</p></div>
+      <div class="spotlight-chapter chapter-pour" aria-hidden="true"><span class="mono">02 / ORPHE</span><p data-en="Designed for your daily brew" data-ar="صُمّمت لتحضير قهوتك اليومية">Designed for your daily brew</p></div>
+      <div class="spotlight-bottom">
+        <a href="tools" class="cta spotlight-cta" data-t="h_cta1">See the tools →</a>
+        <a href="#home-tools" class="spotlight-scroll mono" data-en="Scroll to discover ↓" data-ar="مرّر لاكتشاف الأدوات ↓">Scroll to discover ↓</a>
+        <button type="button" class="spotlight-motion mono" id="scene-motion-toggle" aria-pressed="false">Reduce motion</button>
+      </div>
+      <div class="spotlight-progress" aria-hidden="true"><i></i></div>
     </div>
   </section>
 
   <div class="seam" data-seam="paper" aria-hidden="true"></div>
-  <div class="band"><div class="track" id="band">
-    <span data-t="band">Designed for your daily brew ✳</span>
-    <span data-t="band">Designed for your daily brew ✳</span>
-  </div></div>
+  <div class="band"><div class="wrap"><span class="band-index mono" aria-hidden="true">[ PECLEE ]</span><p data-t="band"></p></div></div>
 
-  <section class="pad">
+  <section class="pad collection" id="home-tools">
     <div class="wrap">
-      <div class="eyebrow rv"><h2 class="md" data-t="tl_h">The tools</h2></div>
+      <div class="eyebrow rv"><h2 class="md" data-t="tl_h">The tools</h2><span class="mono section-note" data-t="tp_l">Four objects. One daily ritual.</span></div>
     </div>
     <div class="rail rv" id="rail"><div class="rail-in" id="rail-in"></div></div>
     <div class="wrap" style="margin-top:clamp(28px,4vw,44px)">
-      <a href="/tools" class="cta rv" data-t="tl_cta">All four tools →</a>
+      <a href="tools" class="cta rv" data-t="tl_cta">All four tools →</a>
     </div>
   </section>
 
+  <section class="ritual-feature">
+    <div class="ritual-photo"><img src="assets/orphe-01.webp" alt="Close-up of the Peclee ORPHE kettle base and temperature display" loading="lazy"><span class="photo-note mono">ORPHE / 600 ML</span></div>
+    <div class="ritual-copy"><p class="mono" data-t="cw_n">01 / The art of the pour</p><h2 data-t="cw_t">Precision.<br>With a softer side.</h2><p class="body" data-t="cw_b">A balanced handle. A steady flow. The right tools make the small details feel effortless.</p><div class="ritual-specs"><span><b>600</b><small data-t="ritual_u">ml capacity</small></span><span><b>FlowSense™</b><small data-t="ritual_flow">A more considered pour</small></span></div><a href="tools/orphe" class="text-link" data-t="cw_cta">Meet ORPHE →</a></div>
+  </section>
   <div class="nums"><div class="track" id="numsT"></div></div>
 
-  <section class="pad">
+  <section class="pad grind-section">
     <div class="wrap">
-      <div class="eyebrow rv"><h2 class="md" data-t="dl_h">Find your grind</h2></div>
+      <div class="eyebrow rv"><h2 class="md" data-t="dl_h">Find your grind</h2><span class="mono section-note" data-t="dl_n">02 / A little less guesswork</span></div>
       <div class="dial-wrap">
         <div class="rv">
           <p class="body" data-t="dl_b">The KIVI dial moves in clicks, fine to coarse. Drag across to see where each brew method sits, then set it once and repeat it exactly.</p>
-          <a href="/tools/kivi" class="cta" style="margin-top:32px" data-t="dl_cta">KIVI specifications</a>
+          <a href="tools/kivi" class="cta" style="margin-top:32px" data-t="dl_cta">KIVI specifications</a>
         </div>
+        <div class="grind-object"><img src="assets/kivi-navy-main.jpg" alt="Peclee KIVI hand grinder" loading="lazy"></div>
         <div class="dial rv">
           <div class="read"><b id="d-val">18</b><span class="mono dim" data-t="dl_u">clicks</span></div>
           <p class="read-m" id="d-name">Pour-over</p>
@@ -684,9 +700,9 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
     </div>
   </section>
 
-  <section class="pad" style="background:var(--paper)">
+  <section class="pad philosophy" style="background:var(--paper)">
     <div class="wrap">
-      <div class="eyebrow rv"><h2 class="md" data-t="wy_h">Why we make them</h2></div>
+      <div class="eyebrow rv"><h2 class="md" data-t="wy_h">Why we make them</h2><span class="mono section-note" data-t="wy_n">03 / The Peclee approach</span></div>
       <div class="two">
         <div class="blk rv">
           <h3 data-t="wy_1h">Coffee as calm</h3>
@@ -710,12 +726,12 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
       <div class="dglow dglow-s"></div>
     </div>
     <div class="wrap">
-      <div class="eyebrow rv"><h2 class="md" data-t="dr_h">Drops</h2></div>
+      <div class="eyebrow rv"><h2 class="md" data-t="dr_h">Drops</h2><span class="mono section-note" data-t="dr_n">04 / Room to play</span></div>
       <div class="two">
         <p class="lg rv" data-t="dr_s">Made with artists, architects and studios we admire.</p>
         <div class="rv">
           <p class="body" data-t="dr_b">Alongside the standard line we release limited runs, a new pattern, a new palette, a new form. Not a logo on someone else's product. Something neither of us could have made alone.</p>
-          <a href="#ft-email" class="cta" style="margin-top:32px" data-t="dr_cta">Hear about the next drop</a>
+          <a href="mailto:info@peclee.com?subject=Peclee%20Drops" class="cta" style="margin-top:32px" data-t="dr_cta">Ask about the next drop →</a>
         </div>
       </div>
     </div>
@@ -730,7 +746,22 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
       <h1 class="xl" style="font-size:clamp(2.3rem,7vw,6.2rem)" data-t="tp_h">Everything you need.<br>Nothing you don't.</h1>
     </div>
   </section>
+  <div class="wrap tool-toolbar"><div class="tool-filters" role="group" aria-label="Filter tools">
+    <button class="tool-filter active" data-filter="all" aria-pressed="true" data-t="filter_all">All tools / 04</button>
+    <button class="tool-filter" data-filter="pour" aria-pressed="false" data-t="filter_pour">Pour</button>
+    <button class="tool-filter" data-filter="grind" aria-pressed="false" data-t="filter_grind">Grind</button>
+    <button class="tool-filter" data-filter="weigh" aria-pressed="false" data-t="filter_weigh">Weigh</button>
+    </div><span class="mono" id="filter-count" aria-live="polite">4 tools</span></div>
   <div class="rows" id="rows"></div>
+  <section class="pad scale-compare"><div class="wrap"><div class="eyebrow"><h2 class="md" data-t="compare_h">Same precision.<br>Different possibilities.</h2><span class="mono" data-t="compare_k">PESO / PESOmini</span></div><p class="body compare-intro" data-t="compare_b">A little more room on the counter, or a little more room in your bag. Choose the scale that fits your ritual.</p>
+  <div class="comparison-scroll"><table class="comparison"><caption class="sr-only" data-t="compare_caption">Compare Peclee brewing scales</caption><thead><tr><th data-t="compare_tool">The details</th><th>PESO</th><th>PESOmini</th></tr></thead><tbody>
+  <tr><th scope="row" data-t="compare_for">Made for</th><td data-t="compare_home">Home & café brewing</td><td data-t="compare_travel">Compact setups & travel</td></tr>
+  <tr><th scope="row" data-t="compare_capacity">Maximum capacity</th><td>2000 g</td><td>1500 g</td></tr>
+  <tr><th scope="row" data-t="compare_precision">Precision</th><td>0.1 g</td><td>0.1 g</td></tr>
+  <tr><th scope="row" data-t="compare_size">Dimensions</th><td><span class="ltr">124 × 130 × 23.5 mm</span></td><td><span class="ltr">90 × 80 × 12 mm</span></td></tr>
+  <tr><th scope="row" data-t="compare_charge">Charging</th><td>USB-C</td><td>USB-C</td></tr>
+  <tr><th scope="row"><span class="sr-only" data-t="compare_links">Explore each scale</span></th><td><a href="tools/peso" class="text-link" data-t="compare_peso">Explore PESO →</a></td><td><a href="tools/pesomini" class="text-link" data-t="compare_mini">Explore PESOmini →</a></td></tr>
+  </tbody></table></div></div></section>
 </div>
 
 <!-- ══════════ ABOUT ══════════ -->
@@ -782,8 +813,8 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
     <div class="wrap">
       <p class="lg rv" style="max-width:24ch;margin:0 auto 40px" data-t="ab_end">Coffee, your way.</p>
       <div class="rv" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:40px">
-        <a href="/tools" class="cta fill" data-t="h_cta1">See the tools →</a>
-        <a href="/contact" class="cta" data-t="ab_ec">Get in touch</a>
+        <a href="tools" class="cta fill" data-t="h_cta1">See the tools →</a>
+        <a href="contact" class="cta" data-t="ab_ec">Get in touch</a>
       </div>
     </div>
   </section>
@@ -798,7 +829,7 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
         <p class="clock" id="clock">···</p>
       </div>
       <h1 class="xl" style="font-size:clamp(2.4rem,8vw,7rem)" data-t="ct_h">Say hello.</h1>
-      <div class="status" id="status" style="margin-top:clamp(24px,3vw,36px)"><i></i><span id="status-t">···</span></div>
+      <a class="contact-email text-link" href="mailto:info@peclee.com">info@peclee.com →</a>
       <div class="ctop-b">
         <p class="body" data-t="ct_b">Reach us directly. Someone here reads every message.</p>
       </div>
@@ -813,7 +844,7 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
 </main>
 
 <!-- ══════════ PRODUCT PANEL ══════════ -->
-<div class="panel" id="panel" role="dialog" aria-modal="true" aria-hidden="true">
+<div class="panel" id="panel" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="p-name" inert>
   <div class="panel-bar">
     <button class="x" id="x"><span data-t="close">Close</span> <span aria-hidden="true">✕</span></button>
   </div>
@@ -828,7 +859,7 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
       <p class="p-tag" id="p-tagline">···</p>
       <p class="body" id="p-desc" style="margin-bottom:36px">···</p>
       <div class="p-buy">
-        <a href="#" class="cta" id="p-buynow" data-t="p_buy">Buy now</a>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="cta fill" id="p-buynow" data-t="p_buy">Buy now</a>
       </div>
       <div class="p-color-block" id="p-color-block" style="margin-top:28px">
         <p class="mono dim" data-t="p_colors" style="margin-bottom:12px">Colors</p>
@@ -864,31 +895,29 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
         <h4 data-t="nl_h">Hear about drops first</h4>
         <p class="ft-news-p" data-t="nl_p">Limited editions, new tools, and the occasional brew guide. No spam.</p>
       </div>
-      <form class="ft-form" id="ft-form">
-        <input type="email" id="ft-email" placeholder="your@email.com" aria-label="Email">
-        <button type="submit" data-t="nl_b">Join</button>
-      </form>
-      <p class="ft-note mono" id="ft-note"></p>
+      <a class="cta footer-enquiry" href="mailto:info@peclee.com?subject=Peclee%20Drops" data-t="dr_cta">Ask about the next drop →</a>
+      
     </div>
+    <div class="footer-statement" data-t="ft_line">For the love of brewing</div>
     <div class="ft-top">
       <div>
-        <img src="/images/logo-peclee.png" alt="Peclee" class="logo-img">
+        <img src="assets/logo-peclee.png" alt="Peclee" class="logo-img">
       </div>
       <div>
         <h4 data-t="nav1">Tools</h4>
         <ul>
-          <li><a href="/tools/orphe" data-t="ft_p1">ORPHE kettle</a></li>
-          <li><a href="/tools/kivi" data-t="ft_p2">KIVI grinder</a></li>
-          <li><a href="/tools/peso" data-t="ft_p3">Peso scale</a></li>
-          <li><a href="/tools/pesomini" data-t="ft_p4">PESOmini scale</a></li>
+          <li><a href="tools/orphe" data-t="ft_p1">ORPHE kettle</a></li>
+          <li><a href="tools/kivi" data-t="ft_p2">KIVI grinder</a></li>
+          <li><a href="tools/peso" data-t="ft_p3">Peso scale</a></li>
+          <li><a href="tools/pesomini" data-t="ft_p4">PESOmini scale</a></li>
         </ul>
       </div>
       <div>
         <h4 data-t="ft_brand">Brand</h4>
         <ul>
-          <li><a href="/about" data-t="nav2">About</a></li>
-          <li><a href="/contact" data-t="nav3">Contact</a></li>
-          <li><a href="/contact" data-t="ft_trade">Stockists &amp; trade</a></li>
+          <li><a href="about" data-t="nav2">About</a></li>
+          <li><a href="contact" data-t="nav3">Contact</a></li>
+          <li><a href="contact" data-t="ft_trade">Stockists &amp; trade</a></li>
         </ul>
       </div>
       <div>
@@ -897,7 +926,7 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
       </div>
     </div>
     <div class="ft-base mono">
-      <span id="ft-legal">···</span>
+      <span id="ft-legal">···</span><a href="./" data-t="back_top">Back to the beginning ↑</a>
     </div>
   </div>
 </footer>
@@ -907,12 +936,12 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
    ⚠ EDIT THIS BLOCK, the only place your details live.
    ═══════════════════════════════════════════════════════════ */
 const INFO={
-  city:{en:'⚠ CITY',ar:'⚠ المدينة'},
+  city:{en:'',ar:''},
   country:{en:'Saudi Arabia',ar:'السعودية'},
-  company:{en:'⚠ COMPANY NAME',ar:'⚠ اسم الشركة'},
+  company:{en:'Peclee Futureworks',ar:'بيكلي'},
   email:'info@peclee.com',
-  phone:'⚠ +966 ** *** ****',
-  phoneRaw:'966000000000',
+  phone:'',
+  phoneRaw:'',
   instagram:'peclee.sa',
   tz:'Asia/Riyadh',
   openFrom:9*60+30, openTo:18*60+30,      /* 09:30 – 18:30 */
@@ -967,7 +996,7 @@ function SLOT(file,alt,note,drawing){
   if(!file){
     return '<div class="slot empty"><div class="slot-ph">'+drawing+'<span class="slot-tag">'+note+'</span></div></div>';
   }
-  return '<div class="slot"><img src="/images/'+file+'" alt="'+alt+'" loading="lazy" '
+  return '<div class="slot"><img src="assets/'+file+'" alt="'+alt+'" loading="lazy" '
     +'onerror="this.closest(\'.slot\').classList.add(\'empty\')">'
     +'<div class="slot-ph">'+drawing+'<span class="slot-tag"><b>images/'+file+'</b>'+note+'</span></div></div>';
 }
@@ -1195,6 +1224,7 @@ const METH={en:['Espresso, fine','Moka pot','Between ranges, adjust to taste','P
 
 /* ═══════════ LANGUAGE ═══════════ */
 let L='en';
+try{L=localStorage.getItem('peclee-language')==='ar'?'ar':'en'}catch(_){}
 function t(k){return T[L][k]!==undefined?T[L][k]:T.en[k]}
 
 function render(){
@@ -1217,10 +1247,11 @@ function render(){
     const sw=p.colors.length>1?`<div class="prow-sw" data-role="rail-sw">${p.colors.map((c,ci)=>
       `<button type="button" class="csw${ci===0?' on':''}" data-cidx="${ci}" aria-label="${c.name[L]}" title="${c.name[L]}"><i style="background:${c.hex}"></i></button>`
     ).join('')}</div>`:'';
-    return `<a class="tcard" href="/tools/${p.id}" data-i="${i}">
-      <div class="vis"><div class="frames">${frames}</div></div>
-      <div class="meta"><div><h3>${p.name[L]}</h3><p class="t">${p.tagline[L]}</p>${sw}</div>
-      <span class="pr">${t('soon')}</span></div></a>`;}).join('');
+    return `<article class="tcard" data-i="${i}" data-product="${p.id}">
+      <a class="tcard-link" href="tools/${p.id}" aria-label="${p.name[L]} — ${p.kind[L]}">
+      <div class="vis"><span class="product-index mono" aria-hidden="true">${String(i+1).padStart(2,'0')} / 04</span><span class="product-kind mono">${p.kind[L]}</span><div class="frames">${frames}</div><span class="product-open" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 19 19 5M5 5h14v14"/></svg></span></div>
+      <div class="meta"><div><h3>${p.name[L]}</h3><p class="t">${p.tagline[L]}</p></div>
+      <span class="pr">${L==='ar'?'عرض الأداة ←':'View tool →'}</span></div></a>${sw}</article>`;}).join('');
   bindRail();
 
   /* colourway (section removed, guarded in case it returns) */
@@ -1244,14 +1275,14 @@ function render(){
   document.getElementById('rows').innerHTML=P.map((p,i)=>{
     const s0=p.colors[0].shots[0].split(',');
     return `
-    <div class="prow" data-i="${i}" role="button" tabindex="0">
+    <div class="prow" data-i="${i}" data-product="${p.id}" role="button" tabindex="0" aria-label="${p.name[L]} — ${p.tagline[L]}">
       <div class="prow-in">
         <div class="frames">${SLOT(s0[0],'Peclee '+p.name.en,s0[1],A[s0[2]](s0[3]))}</div>
-        <div class="prow-label"><div class="prow-name">${p.name[L]}</div>
+        <div class="prow-label"><span class="mono">${String(i+1).padStart(2,'0')} / ${p.kind[L]}</span><div class="prow-name">${p.name[L]}</div>
         <div class="prow-tag">${p.tagline[L]}</div>
         ${p.colors.length>1?`<div class="prow-sw">${p.colors.map((c,ci)=>
           `<button type="button" class="csw${ci===0?' on':''}" data-cidx="${ci}" aria-label="${c.name[L]}" title="${c.name[L]}"><i style="background:${c.hex}"></i></button>`
-        ).join('')}</div>`:''}</div>
+        ).join('')}</div>`:''}<span class="text-link">${L==='ar'?'عرض الأداة ←':'View tool →'}</span></div>
       </div>
     </div>`;}).join('');
   bindRows();
@@ -1299,7 +1330,7 @@ function bindRail(){
   r.onpointerdown=e=>{down=true;moved=0;x0=e.clientX;s0=r.scrollLeft;r.classList.add('grab')};
   r.onpointermove=e=>{if(!down)return;const d=e.clientX-x0;moved=Math.abs(d);r.scrollLeft=s0-d;if(moved>6)e.preventDefault()};
   r.onpointerup=r.onpointerleave=()=>{down=false;r.classList.remove('grab')};
-  r.querySelectorAll('a.tcard').forEach(a=>a.addEventListener('click',e=>{if(moved>6)e.preventDefault()}));
+  r.querySelectorAll('a.tcard-link').forEach(a=>a.addEventListener('click',e=>{if(moved>6)e.preventDefault()}));
 
   /* colour swatches on each rail card — switch the visible photo without
      triggering the card's own link navigation */
@@ -1444,12 +1475,13 @@ lbStage.addEventListener('pointerup',()=>{
 });
 addEventListener('keydown',e=>{
   if(!lightbox.classList.contains('open'))return;
-  if(e.key==='Escape')closeLightbox();
+  if(e.key==='Escape'){e.stopImmediatePropagation();closeLightbox();}
   if(e.key==='ArrowLeft')showShot(curShotIdx-1);
   if(e.key==='ArrowRight')showShot(curShotIdx+1);
 });
 function fillPanel(p,startColorIdx){
   curP=p; curColorIdx=startColorIdx||0;
+  panel.dataset.product=p.id;
   document.getElementById('p-name').textContent='Peclee '+p.name[L];
   document.getElementById('p-tagline').textContent=p.tagline[L];
   document.getElementById('p-desc').textContent=p.desc[L];
@@ -1527,7 +1559,7 @@ function reveal(){
   document.querySelectorAll('.route.live .rv:not(.in)').forEach(el=>io.observe(el));
 }
 function router(){
-  const raw=location.pathname.replace(/^\/+|\/+$/g,''),[seg,arg]=raw.split('/');
+  const raw=currentRoute(),[seg,arg]=raw.split('/');
   const id=VIEWS[seg]!==undefined?VIEWS[seg]:'v-home';
   document.querySelectorAll('.route').forEach(v=>v.classList.toggle('live',v.id===id));
   document.querySelectorAll('[data-nav]').forEach(a=>a.classList.toggle('on',a.dataset.nav===seg));
@@ -1536,24 +1568,55 @@ function router(){
   const prod=(seg==='tools'&&arg)?P.find(p=>p.id===arg):null;
   if(prod)fillPanel(prod,window.__startColor||0); else shutPanel();
   window.__startColor=0;
-  if(!prod)scrollTo(0,0);
+  if(!prod)scrollTo({top:0,left:0,behavior:'instant'});
   seams(); reveal();
 }
-addEventListener('popstate',router);
-function nav(p){if(location.pathname!==p)history.pushState(null,'',p);router()}
+function currentRoute(){
+  if(location.hash.startsWith('#/'))return location.hash.slice(2).replace(/\/+$/,'');
+  const path=location.pathname;
+  const relative=path.startsWith(window.PECLEE_BASE)?path.slice(window.PECLEE_BASE.length):'';
+  return relative.replace(/(?:^|\/)index\.html$/,'').replace(/^\/+|\/+$/g,'');
+}
+function nav(p){
+  const route=p.replace(/^\/+|\/+$/g,'');
+  if(location.protocol==='file:'){
+    const hash='#/'+route;
+    if(location.hash!==hash)location.hash=hash;
+    router();
+    return;
+  }
+  const path=window.PECLEE_BASE+(route?route+'/':'');
+  if(location.pathname!==path||location.hash)history.pushState(null,'',path);
+  router();
+}
+addEventListener('popstate',()=>router());
+addEventListener('hashchange',()=>{if(location.hash.startsWith('#/'))router()});
 document.addEventListener('click',e=>{
   if(e.defaultPrevented)return;
   const a=e.target.closest('a');if(!a)return;
   const h=a.getAttribute('href')||'';
-  if(h.charAt(0)!=='/'||a.target==='_blank')return;
+  if(a.target==='_blank'||a.hasAttribute('download'))return;
   if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0)return;
-  e.preventDefault();nav(h);
+  if(h.startsWith('#')&&!h.startsWith('#/')){
+    const target=document.getElementById(h.slice(1));
+    if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth'});if(h==='#main'){target.setAttribute('tabindex','-1');target.focus({preventScroll:true})}}
+    return;
+  }
+  const url=new URL(h,document.baseURI);
+  if(url.origin!==location.origin||url.protocol!==location.protocol||!url.pathname.startsWith(window.PECLEE_BASE))return;
+  const route=url.pathname.slice(window.PECLEE_BASE.length).replace(/(?:^|\/)index\.html$/,'').replace(/^\/+|\/+$/g,'');
+  if(!/^(?:tools(?:\/(?:orphe|kivi|peso|pesomini))?|about|contact)?$/.test(route))return;
+  e.preventDefault();nav(route);
 });
-if(location.hash.indexOf('#/')===0)history.replaceState(null,'',location.hash.slice(1));
+if(location.protocol!=='file:'&&location.hash.startsWith('#/')){
+  const legacy=location.hash.slice(2).replace(/^\/+|\/+$/g,'');
+  history.replaceState(null,'',window.PECLEE_BASE+(legacy?legacy+'/':''));
+}
 
 /* ═══════════ chrome ═══════════ */
 document.getElementById('lang').addEventListener('click',()=>{
   L=L==='en'?'ar':'en';
+  try{localStorage.setItem('peclee-language',L)}catch(_){}
   render(); router();
 });
 const hd=document.getElementById('hd');
@@ -1566,43 +1629,13 @@ bg.addEventListener('click',()=>{
 });
 let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{seams();lightStrip()},250)});
 
-/* newsletter */
-document.getElementById('ft-form').addEventListener('submit',async e=>{
-  e.preventDefault();
-  const el=document.getElementById('ft-email'),note=document.getElementById('ft-note');
-  if(!/^\S+@\S+\.\S+$/.test(el.value)){note.textContent=L==='en'?'Check that email':'تحقق من البريد';return}
-  note.textContent=L==='en'?'Adding you…':'جارٍ التسجيل…';
-  try{
-    const fd=new FormData();
-    fd.append('access_key','YOUR-WEB3FORMS-ACCESS-KEY');
-    fd.append('subject','Newsletter signup · peclee.com');
-    fd.append('email',el.value);
-    const r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd});
-    if(!r.ok)throw new Error();
-    note.textContent=L==='en'?"You're on the list.":'تم تسجيلك.'; el.value='';
-  }catch(_){note.textContent=L==='en'?'Something went wrong':'حدث خطأ ما'}
-});
-
-/* ═══════════ loader + start ═══════════ */
+/* Initialisation */
+Object.assign(T.en,{"hero_caption": "Considered tools. Everyday rituals.", "hero_label": "Coffee, your way.", "hero_explore": "Explore the tools", "tools_note": "Four objects. One daily ritual.", "ritual_k": "01 / The art of the pour", "ritual_h": "Precision.<br>With a softer side.", "ritual_b": "A balanced handle. A steady flow. The right tools make the small details feel effortless.", "ritual_u": "ml capacity", "ritual_flow": "A more considered pour", "ritual_cta": "Meet ORPHE →", "grind_note": "02 / A little less guesswork", "why_note": "03 / The Peclee approach", "drop_note": "04 / Room to play", "footer_cta": "Say hello →", "footer_statement": "Coffee, your way.", "back_top": "Back to the beginning ↑", "filter_all": "All tools / 04", "filter_pour": "Pour", "filter_grind": "Grind", "filter_weigh": "Weigh", "compare_h": "Same precision.<br>Different possibilities.", "compare_k": "PESO / PESOmini", "compare_b": "A little more room on the counter, or a little more room in your bag. Choose the scale that fits your ritual.", "compare_caption": "Compare Peclee brewing scales", "compare_tool": "The details", "compare_for": "Made for", "compare_home": "Home & café brewing", "compare_travel": "Compact setups & travel", "compare_capacity": "Maximum capacity", "compare_precision": "Precision", "compare_size": "Dimensions", "compare_charge": "Charging", "compare_links": "Explore each scale", "compare_peso": "Explore PESO →", "compare_mini": "Explore PESOmini →"});
+Object.assign(T.ar,{"hero_caption": "أدوات مدروسة. طقوس يومية.", "hero_label": "القهوة، على طريقتك.", "hero_explore": "اكتشف الأدوات", "tools_note": "أربع أدوات. طقس يومي واحد.", "ritual_k": "٠١ / فن السكب", "ritual_h": "دقة.<br>بلمسة ألطف.", "ritual_b": "مقبض متوازن. تدفق ثابت. الأدوات المناسبة تجعل التفاصيل الصغيرة سهلة وطبيعية.", "ritual_u": "مل سعة", "ritual_flow": "سكب أكثر دقة", "ritual_cta": "تعرّف على أورفي →", "grind_note": "٠٢ / ثقة أكبر في كل تحضير", "why_note": "٠٣ / نهج بيكلي", "drop_note": "٠٤ / مساحة للإبداع", "footer_cta": "قل مرحبًا →", "footer_statement": "القهوة، على طريقتك.", "back_top": "العودة إلى البداية ↑", "filter_all": "جميع الأدوات / ٠٤", "filter_pour": "السكب", "filter_grind": "الطحن", "filter_weigh": "الوزن", "compare_h": "الدقة ذاتها.<br>إمكانات مختلفة.", "compare_k": "بيسو / بيسوميني", "compare_b": "مساحة أوسع على الطاولة، أو مساحة إضافية في حقيبتك. اختر الميزان الذي يناسب طقسك.", "compare_caption": "مقارنة موازين تحضير بيكلي", "compare_tool": "التفاصيل", "compare_for": "مصمّم لأجل", "compare_home": "التحضير المنزلي والمقاهي", "compare_travel": "المساحات الصغيرة والسفر", "compare_capacity": "السعة القصوى", "compare_precision": "الدقة", "compare_size": "الأبعاد", "compare_charge": "الشحن", "compare_links": "اكتشف كل ميزان", "compare_peso": "اكتشف بيسو →", "compare_mini": "اكتشف بيسوميني →"});
 render();
 router();
-(function(){
-  const bar=document.getElementById('bar'),pct=document.getElementById('pct'),el=document.getElementById('load');
-  const heroV=document.getElementById('heroVideo'),heroS=document.getElementById('heroSec');
-  if(heroV&&matchMedia('(max-width: 760px)').matches)heroV.setAttribute('poster','/images/hero-poster-mobile.jpg');
-  let v=0;
-  const iv=setInterval(()=>{
-    v=Math.min(100,v+Math.random()*13+5);
-    bar.style.insetInlineEnd=(100-v)+'%'; pct.textContent=Math.round(v);
-    el.style.setProperty('--lp',v+'%');
-    if(v>=100){clearInterval(iv);setTimeout(()=>{
-      el.classList.add('gone'); document.body.classList.remove('lock'); document.body.classList.add('ready');
-      if(heroV){
-        heroV.play().then(()=>{if(heroS)heroS.classList.add('video-on')}).catch(()=>{});
-      }
-    },340)}
-  },120);
-})();
 </script>
+<script src="enhancements.js?v=20261115-r2"></script>
+<script src="spotlight.js?v=20261115-r2"></script>
 </body>
 </html>
