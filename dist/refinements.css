@@ -1,0 +1,89 @@
+/* Consistent proportions. Original photographs retain their geometry and colour. */
+ .slot{min-width:0;min-height:0;overflow:hidden}.slot>img{position:absolute;inset:0;display:block;width:100%;height:100%;min-height:0;min-width:0}
+:root{--pad:clamp(22px,4.5vw,64px);--sec:clamp(64px,7vw,104px)}
+.wrap{max-width:1440px}.body{text-wrap:pretty}h1,h2,h3{text-wrap:balance}
+.hd,.hd.stuck{height:80px;padding-block:16px}.hd .logo-img,.hd.stuck .logo-img{height:38px}
+.burger{width:44px;height:44px;position:relative}.burger i{left:9px;width:26px;top:16px}.burger i:last-child{top:26px;bottom:auto}.burger.on i:first-child,.burger.on i:last-child{top:21px;bottom:auto}
+.csw{width:40px;height:40px;padding:7px;flex-shrink:0}.csw i{width:100%;height:100%}
+.eyebrow{margin-bottom:38px}.eyebrow .md{font-size:clamp(36px,4.8vw,64px);line-height:1.06;letter-spacing:-.045em}
+/* Even frames, quiet stagger, and generous image area. */
+.collection{padding-bottom:80px}.rail-in{max-width:1440px;grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 42px}
+.tcard:nth-child(n){margin:0;width:100%}.tcard:nth-child(even){margin-top:56px}
+.tcard:nth-child(n) .vis{aspect-ratio:4/3;background:#fff;border:1px solid var(--line-2)}
+.tcard .vis .frames{inset:40px 12px 32px;aspect-ratio:auto;mix-blend-mode:normal}
+.tcard .slot img{padding:0;mix-blend-mode:normal}
+.tcard .meta{gap:12px;padding-top:18px}.tcard h3{font-size:clamp(30px,3vw,44px);letter-spacing:-.04em}
+.tcard .t{font-size:14px;margin-top:9px}.tcard .pr{font-size:10px;line-height:1.5}
+.product-index,.product-kind{font-size:9px}.product-open{width:32px;height:32px;font-size:20px}
+.tcard[data-product=peso] .frames,.tcard[data-product=pesomini] .frames{inset:40px 0 0}
+.tcard[data-product=peso] .slot img,.tcard[data-product=pesomini] .slot img{object-fit:cover;object-position:50% 86%}
+/* The collection page uses the same photographic scale as the homepage. */
+#v-tools .intro{padding:144px 0 46px}
+#v-tools .intro h1{font-size:clamp(48px,6.4vw,88px)!important;line-height:1.04;letter-spacing:-.05em;max-width:19ch}
+#v-tools .rows{max-width:1440px;column-gap:42px}
+#v-tools .prow,#v-tools .prow:nth-child(even){margin-bottom:40px;border-top:0}
+#v-tools .prow .frames,#v-tools .prow:nth-child(even) .frames{aspect-ratio:4/3;background:#fff;border:1px solid var(--line-2)}
+#v-tools .prow .slot img{padding:16px;mix-blend-mode:normal;object-fit:contain}
+#v-tools .prow[data-product=peso] .slot img,#v-tools .prow[data-product=pesomini] .slot img{object-fit:cover;object-position:50% 86%;padding:0}
+#v-tools .prow-label{border-top:0;padding-top:20px;gap:10px 16px}
+#v-tools .prow-name{font-size:clamp(36px,3.8vw,54px);letter-spacing:-.04em}
+#v-tools .prow-tag{font-size:14px}#v-tools .prow-in{padding-bottom:24px}
+#v-tools .prow-label .text-link{margin-top:0;font-size:12px}
+#v-tools .scale-compare{padding-top:24px}#v-tools .compare-intro{margin-bottom:28px}
+/* Product galleries: display the scales' actual face, with full originals in zoom. */
+.panel .p-top{max-width:1440px;gap:clamp(28px,5vw,70px);padding-top:32px;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr)}
+.panel .p-stage{background:#fff;aspect-ratio:1.08;border-color:var(--line-2)}
+.panel .p-stage img,.lightbox .lb-stage img{mix-blend-mode:normal}
+.panel[data-product=peso] .p-stage,.panel[data-product=pesomini] .p-stage{aspect-ratio:4/3}
+.panel[data-product=peso] .p-stage img,.panel[data-product=pesomini] .p-stage img{object-fit:cover;object-position:50% 86%}
+.panel #p-name{font-size:clamp(40px,4.4vw,66px);letter-spacing:-.045em;line-height:1.07}
+.panel .p-tag{font-size:clamp(20px,1.9vw,26px);margin-block:16px 20px}.panel .p-top .body{font-size:15px}
+.panel .p-specs{padding-block:56px 72px}.panel .feat li{padding-block:20px}.panel .p-buy{margin-bottom:26px}
+.lightbox .lb-stage{background:#fff;width:min(88vw,calc(100svh - 132px),860px)}
+/* Editorial sections share a calmer type scale and spacing rhythm. */
+.band{padding-block:44px}.band p{font-size:clamp(22px,2.7vw,36px);line-height:1.4;letter-spacing:-.035em}
+.ritual-feature{max-width:1440px;padding-bottom:80px}.ritual-photo{min-height:520px}
+.ritual-copy{padding:40px clamp(26px,3.5vw,50px);gap:23px}.ritual-copy h2{font-size:clamp(38px,4.3vw,60px);line-height:1.04}
+.ritual-copy>.mono{margin-bottom:8px}.ritual-specs{margin-top:0;padding-top:20px}
+.grind-object img{object-fit:contain}.grind-object{height:320px}.read b{font-size:clamp(88px,9vw,120px)}
+.philosophy .eyebrow h2{font-size:clamp(38px,4.6vw,62px)}.philosophy .blk h3{font-size:24px;letter-spacing:-.025em}
+.drops{padding-block:58px 68px}.drops .eyebrow{margin-bottom:36px}.drops .eyebrow h2{font-size:clamp(88px,16vw,220px);margin-top:14px;letter-spacing:-.065em}.drops .lg{font-size:clamp(29px,3.4vw,46px)}
+.ft{padding-top:56px}.ft-news{gap:32px;padding-bottom:34px}.footer-statement{font-size:clamp(38px,6.4vw,88px);padding-block:34px 42px;letter-spacing:-.05em}.ft-top{padding-bottom:36px}
+#v-about .open-sec{min-height:0;padding-block:150px 70px}#v-about .open-sec h1{font-size:clamp(52px,6.5vw,88px)!important;max-width:18ch}
+#v-about .open-sec .sig{margin-top:36px}#v-about .story{padding-block:60px}#v-about .story-in{gap:7vw}
+#v-about .stick{top:110px}#v-about .build{width:min(100%,320px)}#v-about .chap{min-height:0;padding-block:50px}#v-about .chap-no{margin-bottom:24px}
+#v-about .chap h2{font-size:clamp(30px,3.2vw,44px)}#v-about .statement{padding-block:72px}#v-about .statement .lg{font-size:clamp(36px,4.7vw,64px)}#v-about .close-sec{padding-bottom:72px}
+#v-contact .ctop{padding:144px 0 48px}#v-contact .ctop h1{font-size:clamp(72px,12vw,160px)!important;letter-spacing:-.055em}
+#v-contact .contact-email{font-size:clamp(24px,2.8vw,36px);margin-top:28px}#v-contact .crow{padding-block:26px}#v-contact .crow-v{font-size:clamp(26px,3.7vw,50px);letter-spacing:-.03em}
+html[dir=rtl] h1,html[dir=rtl] h2,html[dir=rtl] h3,html[dir=rtl] .footer-statement{letter-spacing:0}
+@media(max-width:760px){
+ :root{--sec:56px}.hd,.hd.stuck{height:70px;padding-block:12px}.hd .logo-img,.hd.stuck .logo-img{height:32px}.hd-r{gap:12px}.sheet{padding-top:96px}
+ .rail-in{gap:34px;padding-inline:var(--pad);grid-template-columns:1fr}.tcard:nth-child(n){margin:0;width:100%}.tcard:nth-child(n) .vis{aspect-ratio:4/3}.tcard .vis .frames{inset:32px 8px 18px}
+ .tcard[data-product=peso] .frames,.tcard[data-product=pesomini] .frames{inset:32px 0 0}.tcard h3{font-size:32px}.tcard .t{font-size:13px}.tcard .pr{font-size:9px}.tcard .meta{padding-top:16px}
+ .product-kind,.product-index{font-size:8px}.collection{padding-block:48px 58px}.collection>.wrap:last-child{margin-top:28px!important}
+ .eyebrow{gap:15px;margin-bottom:28px}.eyebrow .md{font-size:38px;max-width:10ch}.section-note{font-size:8px}
+ #v-tools .intro{padding:112px 0 32px}#v-tools .intro h1{font-size:clamp(37px,9.5vw,64px)!important;line-height:1.1}
+ #v-tools .rows{gap:0}#v-tools .prow,#v-tools .prow:nth-child(even){margin-bottom:28px}#v-tools .prow-name{font-size:36px}#v-tools .prow-tag{font-size:13px}
+ #v-tools .tool-toolbar{gap:12px}#v-tools .tool-filter{min-height:44px;padding:10px 12px}
+ #v-tools .comparison{min-width:0;table-layout:fixed}#v-tools .comparison th,#v-tools .comparison td{padding:16px 8px;font-size:11px;overflow-wrap:anywhere;line-height:1.6}
+ #v-tools .comparison th:first-child{width:30%}#v-tools .comparison thead th{font-size:22px;letter-spacing:-.035em}#v-tools .comparison thead th:first-child{font-size:8px}
+ #v-tools .comparison .text-link{font-size:11px}#v-tools .compare-intro{font-size:13px;margin-bottom:24px}
+ .panel .p-top{grid-template-columns:1fr;padding-top:22px;gap:25px}.panel #p-name{font-size:42px}.panel .p-tag{font-size:21px;margin-block:14px 18px}.panel .p-top .body{font-size:14px}
+ .panel .p-specs{padding-block:40px 56px}.panel .p-gal{top:auto}.panel .p-stage{aspect-ratio:1.12}.panel .spec>div{padding-block:16px}
+ .band{padding-block:30px}.band p{font-size:23px;line-height:1.4}.band .wrap{gap:18px}
+ .ritual-feature{padding-bottom:58px}.ritual-photo{min-height:0;aspect-ratio:1.18}.ritual-copy{padding:30px 25px 34px;gap:21px}.ritual-copy h2{font-size:40px;max-width:12ch}.ritual-copy .body{font-size:14px}
+ .philosophy .eyebrow h2{font-size:38px}.philosophy .blk h3{font-size:25px}.philosophy .blk .body{font-size:14px}
+ .drops{padding-block:36px 46px}.drops .eyebrow h2{font-size:clamp(76px,23vw,140px)}.drops .lg{font-size:30px}.drops .body{font-size:14px}
+ .ft{padding-top:40px}.ft-news{gap:22px}.ft-news h4{font-size:26px}.ft-news-p{font-size:13px}.footer-statement{font-size:11.6vw;padding-block:30px 36px;max-width:13ch}.ft-top{gap:28px 20px}.ft li{font-size:13px}
+ #v-about .open-sec{padding:116px 0 48px}#v-about .open-sec h1{font-size:clamp(39px,10vw,68px)!important;line-height:1.12}
+ #v-about .open-sec .sig{margin-top:28px}#v-about .story{padding-block:24px 48px}#v-about .story-in{gap:0}#v-about .stick{top:69px;padding-block:16px}#v-about .build{width:150px}#v-about .chap{padding-block:36px}#v-about .chap h2{font-size:31px}#v-about .statement{padding-block:50px}#v-about .statement .lg{font-size:34px}#v-about .close-sec{padding-bottom:52px}
+ #v-contact .ctop{padding:112px 0 36px}#v-contact .ctop h1{font-size:clamp(68px,18vw,120px)!important}#v-contact .crow-v{font-size:clamp(24px,6.8vw,38px)}#v-contact .crow{padding-block:22px}
+}
+/* Keep the complete kettle and grinder large enough to read within each frame. */
+.tcard .vis .frames{inset:40px 8px 8px}
+.tcard[data-product=orphe] .slot img,#v-tools .prow[data-product=orphe] .slot img{object-fit:cover;object-position:50% 60%;padding:0}
+.tcard[data-product=kivi] .slot img,#v-tools .prow[data-product=kivi] .slot img{object-fit:cover;object-position:50% 70%;padding:0}
+.tcard[data-product=peso] .frames,.tcard[data-product=pesomini] .frames{inset:40px 0 0}
+.grind-object img{object-fit:cover;object-position:50% 65%}
+@media(max-width:760px){.tcard .vis .frames{inset:32px 8px 8px}.tcard[data-product=peso] .frames,.tcard[data-product=pesomini] .frames{inset:32px 0 0}}
+.burger i:first-child{top:16px}.burger i:last-child{top:26px;bottom:auto}.burger.on i:first-child,.burger.on i:last-child{top:21px;bottom:auto}
