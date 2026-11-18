@@ -11,7 +11,7 @@ import tempfile
 from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
 
-VERSION = "2026-11-18-r3"
+VERSION = "2026-11-18-r4"
 ZIP_DATE = (2026, 11, 18, 0, 0, 0)
 REQUIRED = (
     "index.html",
@@ -24,6 +24,10 @@ REQUIRED = (
     "assets/motion-dripper.webp",
     "assets/peso-navy-main.jpg",
     "assets/peso-navy-front.webp",
+    "route-search.js",
+    "guides/peso-vs-pesomini/index.html",
+    "ar/guides/peso-vs-pesomini/index.html",
+    "ar/tools/peso/index.html",
     "robots.txt",
     "sitemap.xml",
     "assets/pesomini-green-main.jpg",
@@ -38,13 +42,13 @@ REQUIRED = (
 
 README = """# Peclee website — GitHub upload
 
-Package version: **2026-11-18-r3**.
+Package version: **2026-11-18-r4**.
 
 ## Upload the website
 
 1. Extract this ZIP. Upload its extracted contents, not the ZIP itself.
 2. Put `index.html`, `assets`, `tools`, `about`, `contact`, the CSS/JavaScript files,
-   and the remaining included files directly at your repository root.
+   the ar and guides folders, and the remaining files at your repository root.
 3. Replace the matching files from an older copy. Do not nest this package inside
    a `Peclee-Website` or `dist` folder. Remove an old duplicate site folder only
    after confirming it is no longer used by your hosting configuration.
@@ -57,7 +61,7 @@ Uploading files to GitHub stores the source; it does not by itself confirm that
 the website has been published. Check your host's deployment result afterward.
 GitHub setup reference: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
 
-`version.json` identifies this package. Its `release` must be `2026-11-18-r3`.
+`version.json` identifies this package. Its `release` must be `2026-11-18-r4`.
 
 ## Preview and maintain
 
@@ -67,7 +71,7 @@ local file.
 
 The main source is `index.html`; the other page HTML files are generated route
 copies. After editing the main HTML, run `node scripts/prepare-routes.mjs` to
-refresh the seven direct routes. CSS, JavaScript, fonts, images and motion assets
+refresh the English and Arabic pages. CSS, JavaScript, fonts, images and motion assets
 are all included. Read `UPDATE-NOTES.md` for this update's scope.
 
 The canonical production domain for search and sharing is www.peclee.com.
@@ -89,6 +93,7 @@ UPDATE_NOTES = """# Peclee update · 18 November 2026
 - Reframed the mobile and desktop opening and its motion controls.
 - Improved product history, Arabic controls, and retailer links.
 - Updated About, trade and limited-edition email enquiries.
+- Added independent English and Arabic pages and a bilingual PESO buying guide.
 - Included per-page search/social metadata, static product information,
   sitemap.xml, and robots.txt.
 """
@@ -118,7 +123,7 @@ def collect_files(project: Path) -> dict[str, bytes]:
         if source.is_file():
             files[relative.as_posix()] = source.read_bytes()
 
-    for script in ("prepare-routes.mjs", "export-github.py"):
+    for script in ("prepare-routes.mjs", "search-metadata.mjs", "scale-guide.mjs", "export-github.py"):
         source = project / "scripts" / script
         if not source.is_file():
             raise ValueError(f"Missing maintenance script: {source}")

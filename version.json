@@ -1,9 +1,9 @@
 {
-  "release": "2026-11-18-r3",
+  "release": "2026-11-18-r4",
   "changes": [
-    "Reconciled product specifications with the matching Noon Saudi listings",
-    "Added the single-product PESO front view and retained the original comparison image",
-    "Refined responsive hero framing, scroll controls, product navigation and Arabic shopping",
-    "Added unique page metadata, static product details, robots.txt and sitemap.xml"
+    "Independent English and Arabic landing pages for search and sharing",
+    "Worldwide product discovery and verified Saudi Arabia purchase destinations",
+    "Bilingual brewing scale comparison guide",
+    "Localized sitemap, social metadata and structured product information"
   ]
 }

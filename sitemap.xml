@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.peclee.com/</loc></url>
-  <url><loc>https://www.peclee.com/tools/</loc></url>
-  <url><loc>https://www.peclee.com/about/</loc></url>
-  <url><loc>https://www.peclee.com/contact/</loc></url>
-  <url><loc>https://www.peclee.com/tools/orphe/</loc></url>
-  <url><loc>https://www.peclee.com/tools/kivi/</loc></url>
-  <url><loc>https://www.peclee.com/tools/peso/</loc></url>
-  <url><loc>https://www.peclee.com/tools/pesomini/</loc></url>
+<url><loc>https://www.peclee.com/</loc></url>
+<url><loc>https://www.peclee.com/ar/</loc></url>
+<url><loc>https://www.peclee.com/tools/</loc></url>
+<url><loc>https://www.peclee.com/ar/tools/</loc></url>
+<url><loc>https://www.peclee.com/about/</loc></url>
+<url><loc>https://www.peclee.com/ar/about/</loc></url>
+<url><loc>https://www.peclee.com/contact/</loc></url>
+<url><loc>https://www.peclee.com/ar/contact/</loc></url>
+<url><loc>https://www.peclee.com/tools/orphe/</loc></url>
+<url><loc>https://www.peclee.com/ar/tools/orphe/</loc></url>
+<url><loc>https://www.peclee.com/tools/kivi/</loc></url>
+<url><loc>https://www.peclee.com/ar/tools/kivi/</loc></url>
+<url><loc>https://www.peclee.com/tools/peso/</loc></url>
+<url><loc>https://www.peclee.com/ar/tools/peso/</loc></url>
+<url><loc>https://www.peclee.com/tools/pesomini/</loc></url>
+<url><loc>https://www.peclee.com/ar/tools/pesomini/</loc></url>
+<url><loc>https://www.peclee.com/guides/peso-vs-pesomini/</loc></url>
+<url><loc>https://www.peclee.com/ar/guides/peso-vs-pesomini/</loc></url>
 </urlset>

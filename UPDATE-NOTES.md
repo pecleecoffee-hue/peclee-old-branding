@@ -7,5 +7,6 @@
 - Reframed the mobile and desktop opening and its motion controls.
 - Improved product history, Arabic controls, and retailer links.
 - Updated About, trade and limited-edition email enquiries.
+- Added independent English and Arabic pages and a bilingual PESO buying guide.
 - Included per-page search/social metadata, static product information,
   sitemap.xml, and robots.txt.

@@ -96,3 +96,11 @@ html[dir=rtl] h1,html[dir=rtl] h2,html[dir=rtl] h3,html[dir=rtl] .footer-stateme
   object-position: center;
 }
 .ft .ft-news h4 { font-size: clamp(22px, 2vw, 29px); letter-spacing: -.025em; }
+
+.compare-guide { display:inline-flex; margin-block-start:24px; }
+.compare-guide[hidden] { display:none; }
+
+/* The locale link remains available in narrow navigation and product dialogs. */
+.hd nav a.langbtn,.panel-bar a.langbtn {display:inline-flex;align-items:center;justify-content:center}
+.panel-bar {gap:16px}
+.panel-bar a.langbtn {border:0;padding-inline:8px;min-height:44px}
