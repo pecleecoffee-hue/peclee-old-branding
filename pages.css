@@ -257,7 +257,7 @@
 #v-about .chap .body { font-size: 15px; line-height: 1.8; max-width: 48ch; }
 #v-about .statement { background: var(--maroon); color: var(--cream); padding-block: 100px; }
 #v-about .statement .lg { font-size: clamp(42px, 5.4vw, 80px); line-height: 1.08; max-width: 23ch; letter-spacing: -.045em; }
-#v-about .trio { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 45px; }
+#v-about .trio { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 45px; }
 #v-about .trio > div { padding-top: 25px; }
 #v-about .trio h3 { font-size: 25px; color: var(--maroon); letter-spacing: -.025em; }
 #v-about .trio .body { font-size: 14px; }

@@ -87,3 +87,12 @@ html[dir=rtl] h1,html[dir=rtl] h2,html[dir=rtl] h3,html[dir=rtl] .footer-stateme
 .grind-object img{object-fit:cover;object-position:50% 65%}
 @media(max-width:760px){.tcard .vis .frames{inset:32px 8px 8px}.tcard[data-product=peso] .frames,.tcard[data-product=pesomini] .frames{inset:32px 0 0}}
 .burger i:first-child{top:16px}.burger i:last-child{top:26px;bottom:auto}.burger.on i:first-child,.burger.on i:last-child{top:21px;bottom:auto}
+
+/* The full-size PESO has a dedicated front view in a 4:3 studio frame. */
+.tcard[data-product=peso] .slot img:first-child,
+#v-tools .prow[data-product=peso] .slot img,
+.panel[data-product=peso] .p-stage img[src$="peso-navy-front.webp"] {
+  object-fit: contain;
+  object-position: center;
+}
+.ft .ft-news h4 { font-size: clamp(22px, 2vw, 29px); letter-spacing: -.025em; }

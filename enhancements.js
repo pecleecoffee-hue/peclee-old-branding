@@ -12,8 +12,6 @@
   const filterBindings = new WeakSet();
   let filter = 'all';
   let activeLayer = null;
-  let productTrigger = null;
-  let imageTrigger = null;
   let reconcileQueued = false;
   const language = () => typeof L !== 'undefined' && L === 'ar' ? 'ar' : 'en';
   const isOpen = el => Boolean(el && el.classList.contains('open'));
@@ -60,11 +58,11 @@
   });
 
   function restoreProductFocus() {
-    if (visible(productTrigger)) return focus(productTrigger);
-    const index = typeof P !== 'undefined' && typeof curP !== 'undefined' && curP
-      ? P.findIndex(product => product.id === curP.id) : -1;
-    const row = document.querySelector(`#rows .prow[data-i="${index}"]`);
-    if (visible(row)) return focus(row);
+    if (visible(lastProductTrigger)) return focus(lastProductTrigger);
+    if (curP) {
+      const card = document.querySelector(`.route.live [data-product="${curP.id}"] a[href]`);
+      if (visible(card)) return focus(card);
+    }
     focus(document.querySelector('.hd .logo'));
   }
 
@@ -92,12 +90,15 @@
     if (main) main.inert = anyOpen;
     if (header) header.inert = zoomOpen || productOpen;
     if (footer) footer.inert = anyOpen;
-    if (burger) burger.setAttribute('aria-expanded', String(menuOpen));
+    if (burger) {
+      burger.setAttribute('aria-expanded', String(menuOpen));
+      burger.setAttribute('aria-label', language()==='ar'
+        ? (menuOpen?'إغلاق القائمة':'فتح القائمة') : (menuOpen?'Close menu':'Open menu'));
+    }
     document.body.classList.toggle('lock', anyOpen);
     const nextLayer = zoomOpen ? imageDialog : productOpen ? productPanel : menuOpen ? menu : null;
     if (nextLayer !== activeLayer) {
       const previousLayer = activeLayer;
-      if (nextLayer === imageDialog) imageTrigger = document.activeElement;
       activeLayer = nextLayer;
       if (nextLayer === imageDialog) focus(byId('lb-close'));
       else if (nextLayer === productPanel) {
@@ -149,8 +150,6 @@
     const target = e.target instanceof Element ? e.target : null;
     if (!target) return;
     if (target.closest('.csw')) queueMicrotask(updateSwatches);
-    const trigger = target.closest('a.tcard-link, #rows .prow');
-    if (trigger && !target.closest('.csw')) productTrigger = trigger;
   }, true);
 
   function applyFilters() {
@@ -180,7 +179,9 @@
     if (counter) {
       counter.setAttribute('role', 'status');
       counter.setAttribute('aria-live', 'polite');
-      counter.textContent = language() === 'ar' ? `${count} أدوات` : `${count} ${count === 1 ? 'tool' : 'tools'}`;
+      const arabicCount=count.toLocaleString('ar-SA');
+      const arabicText=count===1?'أداة واحدة':(count===2?'أداتان':`${arabicCount} أدوات`);
+      counter.textContent=language()==='ar' ? arabicText : `${count} ${count===1?'tool':'tools'}`;
     }
   }
 
@@ -212,7 +213,13 @@
       el.textContent = el.dataset[lang];
     });
     if (imageDialog) imageDialog.setAttribute('aria-label', lang === 'ar' ? 'صورة المنتج' : 'Product image');
-    if (gallery) gallery.setAttribute('aria-label', lang === 'ar' ? 'تكبير صورة المنتج' : 'Enlarge product image');
+    if (gallery && curP) labelPhoto();
+    const filters=document.querySelector('.tool-filters');
+    if (filters) filters.setAttribute('aria-label',lang==='ar'?'تصفية الأدوات':'Filter tools');
+    const previous=lang==='ar'?'الصورة السابقة':'Previous photo';
+    const next=lang==='ar'?'الصورة التالية':'Next photo';
+    [byId('p-prev'), byId('lb-prev')].forEach(button=>button.setAttribute('aria-label',previous));
+    [byId('p-next'), byId('lb-next')].forEach(button=>button.setAttribute('aria-label',next));
     if (menu) menu.setAttribute('aria-label', lang === 'ar' ? 'القائمة الرئيسية' : 'Main navigation');
     updateSwatches();
     applyFilters();
@@ -232,9 +239,6 @@
     const originalRouter = router;
     router = function (...args) {
       const result = originalRouter.apply(this, args);
-      const route=currentRoute().split('/').filter(Boolean);
-      const product=route[0]==='tools' && P.find(p=>p.id===route[1]);
-      document.title=product ? `${product.name[language()]} — Peclee` : ({tools:language()==='ar'?'الأدوات — بيكلي':'The tools — Peclee',about:language()==='ar'?'عن بيكلي':'Our approach — Peclee',contact:language()==='ar'?'تواصل معنا — بيكلي':'Say hello — Peclee'}[route[0]] || 'Peclee — For the love of brewing');
       applyFilters();
       queueReconcile();
       return result;
@@ -244,7 +248,6 @@
     const originalFillPanel = fillPanel;
     fillPanel = function (...args) {
       if (productPanel && !isOpen(productPanel)) {
-        if (!visible(productTrigger)) productTrigger = document.activeElement;
         productPanel.inert = false;
       }
       const result = originalFillPanel.apply(this, args);

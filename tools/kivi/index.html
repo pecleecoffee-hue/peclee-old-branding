@@ -4,22 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="peclee-base" content="../../">
-<meta name="peclee-version" content="2026-11-15-r2">
+<meta name="peclee-version" content="2026-11-18-r3">
+<base href="../../">
 <script>
 /* Resolve this release correctly at a domain root, repository path, or local file. */
 (() => {
   const page = new URL(location.href);
   if (!page.pathname.endsWith('/') && !/\.[a-z0-9]+$/i.test(page.pathname)) page.pathname += '/';
-  const base = document.createElement('base');
+  const base = document.querySelector('base');
   base.href = new URL(document.querySelector('meta[name="peclee-base"]').content, page).href;
-  document.head.appendChild(base);
   window.PECLEE_BASE = new URL(base.href).pathname;
-  window.PECLEE_VERSION = '2026-11-15-r2';
+  window.PECLEE_VERSION = '2026-11-18-r3';
 })();
 </script>
-
-<title>KIVI grinder — Peclee</title>
-<meta name="description" content="Peclee makes brewing tools that feel as considered as the coffee itself. Kettles, grinders, and scales, designed to be touched every day.">
 
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -27,19 +24,44 @@
 <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
 <link rel="shortcut icon" href="assets/favicon-32x32.png">
 
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Peclee Futureworks">
-<meta property="og:title" content="Peclee, Coffee Tools by a Design Brand">
-<meta property="og:description" content="Peclee makes brewing tools that feel as considered as the coffee itself. Kettles, grinders, and scales, designed to be touched every day.">
-<meta property="og:image" content="https://peclee-evolved.bermitocoffee.chatgpt.site/assets/og-image.jpg">
+<!-- route-metadata -->
+<title>KIVI hand grinder — Peclee</title>
+<link rel="canonical" href="https://www.peclee.com/tools/kivi/">
+<meta name="description" content="KIVI pairs a 38 mm conical burr with a stepless dial. Turn it a little at a time to adjust the grind for the way you brew.">
+<meta property="og:type" content="product">
+<meta property="og:site_name" content="Peclee">
+<meta property="og:title" content="KIVI hand grinder — Peclee">
+<meta property="og:description" content="KIVI pairs a 38 mm conical burr with a stepless dial. Turn it a little at a time to adjust the grind for the way you brew.">
+<meta property="og:url" content="https://www.peclee.com/tools/kivi/">
+<meta property="og:image" content="https://www.peclee.com/assets/share-kivi.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://peclee-evolved.bermitocoffee.chatgpt.site/tools/kivi">
-
+<meta property="og:image:alt" content="KIVI hand grinder">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Peclee, Coffee Tools by a Design Brand">
-<meta name="twitter:description" content="Peclee makes brewing tools that feel as considered as the coffee itself. Kettles, grinders, and scales, designed to be touched every day.">
-<meta name="twitter:image" content="https://peclee-evolved.bermitocoffee.chatgpt.site/assets/og-image.jpg">
+<meta name="twitter:title" content="KIVI hand grinder — Peclee">
+<meta name="twitter:description" content="KIVI pairs a 38 mm conical burr with a stepless dial. Turn it a little at a time to adjust the grind for the way you brew.">
+<meta name="twitter:image" content="https://www.peclee.com/assets/share-kivi.jpg">
+<meta name="twitter:image:alt" content="KIVI hand grinder">
+<script>
+window.pecleeRouteMetadata = (() => {
+  const pages = {"":{"title":["Peclee, Coffee Tools by a Design Brand","بيكلي، أدوات لتحضير القهوة"],"description":["Peclee makes brewing tools that feel as considered as the coffee itself. Explore our kettles, hand grinders and scales.","تصمّم بيكلي أدوات لتحضير القهوة. اكتشف الغلايات والمطاحن اليدوية وموازين القهوة."],"url":"https://www.peclee.com/","image":"https://www.peclee.com/assets/og-image.jpg","imageAlt":["Peclee coffee brewing tools","أدوات بيكلي لتحضير القهوة"]},"tools":{"title":["Coffee brewing tools — Peclee","أدوات تحضير القهوة — بيكلي"],"description":["Explore the ORPHE kettle, KIVI hand grinder, PESO and PESOmini brewing scales. Compare features and find your brewing tool.","اكتشف غلاية أورفي ومطحنة كيفي اليدوية وميزاني بيسو وبيسوميني. قارن بين المزايا واختر الأداة المناسبة."],"url":"https://www.peclee.com/tools/","image":"https://www.peclee.com/assets/og-image.jpg","imageAlt":["Peclee coffee brewing tools","أدوات بيكلي لتحضير القهوة"]},"about":{"title":["Our approach — Peclee","عن بيكلي"],"description":["Discover how Peclee approaches the design of everyday coffee tools and why the way a kettle, grinder or scale feels matters.","تعرّف على نهج بيكلي في تصميم أدوات تحضير القهوة، من ملمس مقبض الغلاية إلى حركة قرص المطحنة."],"url":"https://www.peclee.com/about/","image":"https://www.peclee.com/assets/og-image.jpg","imageAlt":["Peclee coffee brewing tools","أدوات بيكلي لتحضير القهوة"]},"contact":{"title":["Contact Peclee — Coffee tools and wholesale enquiries","تواصل مع بيكلي — استفسارات أدوات القهوة والجملة"],"description":["Get in touch with Peclee about coffee tools, limited releases, stocking the range or wholesale enquiries.","تواصل مع بيكلي للاستفسار عن أدوات تحضير القهوة والإصدارات المحدودة ومنافذ البيع والشراء بالجملة."],"url":"https://www.peclee.com/contact/","image":"https://www.peclee.com/assets/og-image.jpg","imageAlt":["Peclee coffee brewing tools","أدوات بيكلي لتحضير القهوة"]},"tools/orphe":{"title":["ORPHE electric kettle — Peclee","أورفي — غلاية كهربائية من بيكلي"],"description":["ORPHE lets you choose the water temperature and follow it on the display. The narrow gooseneck spout gives you control over where the water lands.","تتيح لك أورفي اختيار حرارة الماء ومتابعتها على الشاشة. وتساعدك فوهتها الرفيعة المنحنية على توجيه الماء بدقة."],"image":"https://www.peclee.com/assets/share-orphe.jpg","imageAlt":["ORPHE electric kettle","غلاية كهربائية أورفي"],"url":"https://www.peclee.com/tools/orphe/"},"tools/kivi":{"title":["KIVI hand grinder — Peclee","كيفي — مطحنة يدوية من بيكلي"],"description":["KIVI pairs a 38 mm conical burr with a stepless dial. Turn it a little at a time to adjust the grind for the way you brew.","تجمع كيفي بين شفرة طحن مخروطية بقطر ٣٨ مم وقرص ضبط متصل. أدر القرص قليلًا في كل مرة حتى تصل إلى درجة الطحن المناسبة لطريقتك."],"image":"https://www.peclee.com/assets/share-kivi.jpg","imageAlt":["KIVI hand grinder","مطحنة يدوية كيفي"],"url":"https://www.peclee.com/tools/kivi/"},"tools/peso":{"title":["PESO brewing scale — Peclee","بيسو — ميزان تحضير من بيكلي"],"description":["PESO gives your dripper or portafilter room on a tempered-glass platform. Follow the timer, flow rate and brew ratio as you pour.","يوفّر سطح بيسو الزجاجي مساحة للقمع أو حامل المرشح. تابع الوقت ومعدل التدفّق ونسبة الماء إلى القهوة أثناء السكب."],"image":"https://www.peclee.com/assets/share-peso.jpg","imageAlt":["PESO brewing scale","ميزان تحضير بيسو"],"url":"https://www.peclee.com/tools/peso/"},"tools/pesomini":{"title":["PESOmini brewing scale — Peclee","بيسوميني — ميزان تحضير من بيكلي"],"description":["At 12 mm high, PESOmini fits beside an espresso machine and packs easily for travel. Its timer, flow-rate display and automatic tare help you follow each brew.","بارتفاع ١٢ مم، يتّسع بيسوميني بجوار آلة الإسبريسو ويسهل حمله في السفر. يساعدك المؤقّت وعرض معدل التدفّق والتصفير التلقائي على متابعة كل تحضير."],"image":"https://www.peclee.com/assets/share-pesomini.jpg","imageAlt":["PESOmini brewing scale","ميزان تحضير بيسوميني"],"url":"https://www.peclee.com/tools/pesomini/"}};
+  return (route, lang) => {
+    const page = pages[route] || pages[''], i = lang === 'ar' ? 1 : 0;
+    document.title = page.title[i];
+    document.querySelector('link[rel="canonical"]').href = page.url;
+    const tags = {
+      description:page.description[i], 'og:type':route.startsWith('tools/') ? 'product' : 'website',
+      'og:title':page.title[i], 'og:description':page.description[i], 'og:url':page.url, 'og:image':page.image,
+      'og:image:alt':page.imageAlt[i], 'twitter:title':page.title[i], 'twitter:description':page.description[i],
+      'twitter:image':page.image, 'twitter:image:alt':page.imageAlt[i]
+    };
+    for (const [name, value] of Object.entries(tags)) {
+      document.querySelector('meta[' + (name.startsWith('og:') ? 'property' : 'name') + '="' + name + '"]').content = value;
+    }
+  };
+})();
+</script>
+<!-- end-route-metadata -->
 <link rel="stylesheet" href="assets/fonts.css">
 <style>
 /* ══════════════════════════════════════════════════════════
@@ -258,6 +280,11 @@ html[dir="rtl"] .tcard .pr{font-family:var(--arab);letter-spacing:0}
   text-transform:uppercase;opacity:.45;direction:ltr}
 html[dir="rtl"] .zones{font-family:var(--arab);letter-spacing:0;font-size:10.5px}
 .zones span{text-align:center}
+.grind-section #range{display:block;width:100%;height:44px;margin:12px 0 0;accent-color:var(--maroon,var(--brick));cursor:pointer}
+.grind-section #range:focus-visible{outline:2px solid var(--maroon,var(--brick));outline-offset:2px}
+.grind-section #d-val{font-size:clamp(2.5rem,5.4vw,5.8rem);line-height:1.2;letter-spacing:-.045em}
+html[dir="rtl"] .grind-section #d-val{letter-spacing:0}
+.grind-section .grind-ends{display:flex;justify-content:space-between;font-size:.875rem;color:var(--ink)}
 .drops{background:var(--ink);color:var(--cream);position:relative;overflow:hidden}
 .drops .wrap{position:relative;z-index:2}
 .drops-glow{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
@@ -326,6 +353,11 @@ html[dir="rtl"] .x{font-family:var(--arab);letter-spacing:0}
 .p-arrow-l{left:14px}
 .p-arrow-r{right:14px}
 .p-arrow[hidden]{display:none}
+html[dir="rtl"] .p-gal,html[dir="rtl"] .lightbox{--arrow-edge:14px}
+html[dir="rtl"] .lightbox{--arrow-edge:clamp(8px,3vw,32px)}
+html[dir="rtl"] :is(.p-gal,.lightbox) .p-arrow-l{left:auto;right:var(--arrow-edge)}
+html[dir="rtl"] :is(.p-gal,.lightbox) .p-arrow-r{right:auto;left:var(--arrow-edge)}
+
 .p-stage{cursor:zoom-in}
 .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:60;display:none;place-items:center;padding:24px}
 .lightbox.open{display:grid}
@@ -599,13 +631,33 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
   .nav-r .right{width:100%;justify-content:space-between}
 }
 </style>
-<link rel="stylesheet" href="evolved.css?v=20261115-r2">
-<link rel="stylesheet" href="spotlight.css?v=20261115-r2">
-<link rel="stylesheet" href="pages.css?v=20261115-r2">
-<link rel="stylesheet" href="refinements.css?v=20261115-r2">
+<link rel="stylesheet" href="evolved.css?v=20261118-r3">
+<link rel="stylesheet" href="spotlight.css?v=20261118-r3">
+<link rel="stylesheet" href="pages.css?v=20261118-r3">
+<link rel="stylesheet" href="refinements.css?v=20261118-r3">
+<style>
+.static-product {padding-top:clamp(100px,14vw,160px);padding-bottom:var(--sec)}
+.static-product-intro {display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(24px,5vw,72px);margin:28px 0 60px}
+.static-product-intro img {width:100%;max-height:480px;object-fit:contain;mix-blend-mode:multiply}
+.static-product-intro .body,.static-buy {margin-top:22px}
+.static-product h2 {margin:40px 0 18px}
+.static-buy {display:flex;flex-wrap:wrap;gap:12px}
+.static-catalog {width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;list-style:none;padding:18px var(--pad)}
+.static-catalog a {display:block}
+.static-catalog img {width:100%;height:auto;aspect-ratio:1;object-fit:contain;mix-blend-mode:multiply}
+@media(max-width:760px){.static-product-intro{grid-template-columns:1fr}.static-catalog{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+<noscript><style>
+.rv {opacity:1!important;transform:none!important}
+.burger,#lang,.tool-toolbar,.spotlight-motion,.spotlight-progress,.grind-section,.nums,.band,#clock,.ft-base #ft-legal {display:none!important}
+.hd nav a:not(.langbtn) {display:inline-flex!important;align-items:center;min-height:36px}
+.hd nav {display:flex!important;gap:12px!important}
+.spotlight {height:auto!important}.spotlight-stage {position:relative!important}
+.rail,.rail-in {overflow:visible!important;display:block!important}
+</style></noscript>
 </head>
-<body class="ready spotlight-home">
-<a href="#main" class="skip-link">Skip to content</a>
+<body class="ready">
+<a href="tools/kivi/#main" class="skip-link" data-en="Skip to content" data-ar="تخطَّ إلى المحتوى">Skip to content</a>
 <header class="hd" id="hd">
   <a href="./" class="logo" aria-label="Peclee">
     <img src="assets/logo-peclee.png" alt="Peclee" class="logo-img">
@@ -617,7 +669,7 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
       <a href="contact" data-nav="contact" data-t="nav3">Contact</a>
       <button class="langbtn" id="lang">عربي</button>
     </nav>
-    <button class="burger" id="bg" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+    <button class="burger" id="bg" aria-controls="sheet" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
   </div>
 </header>
 
@@ -629,9 +681,17 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
 </div>
 
 <main id="main">
-
+<!-- static-content --><article class="static-product wrap" aria-labelledby="product-heading">
+    <a class="text-link" href="tools/">All tools</a>
+    <div class="static-product-intro"><img src="assets/kivi-navy-main.jpg" alt="KIVI Hand grinder">
+      <div><p class="mono">Hand grinder</p><h1 class="xl" id="product-heading">KIVI</h1>
+      <p class="md">Consistency starts at the core.</p><p class="body">KIVI pairs a 38 mm conical burr with a stepless dial. Turn it a little at a time to adjust the grind for the way you brew.</p>
+      <div class="static-buy"><a class="cta fill" href="https://www.noon.com/saudi-en/kivi-manual-coffee-grinder-with-38-mm-cnc-stainless-steel-conical-burr-stepless-grind-adjustment-and-20-g-capacity-midnight-blue/ZEC948F89AF00556057CBZ/p/?o=eeb2268c8f5f49fa&amp;shareId=17e1008c-6832-4305-a670-6bf5a5c98897">Buy Midnight Blue on noon</a> <a class="cta fill" href="https://www.noon.com/saudi-en/kivi-manual-coffee-grinder-with-38-mm-cnc-stainless-steel-conical-burr-stepless-grind-adjustment-and-20-g-capacity-forest-green/Z5BE124C886C7DF849F78Z/p/?o=ccb91409099f7ecc&amp;shareId=0adf0930-e6c2-46c0-a34f-bcdc9a101720">Buy Deep Forest on noon</a></div></div></div>
+    <h2 class="md">Features</h2><ul class="feat"><li><h3>Conical burr</h3><p>A CNC-machined stainless steel burr grinds the beans.</p></li><li><h3>Stepless adjustment</h3><p>Move smoothly between fine and coarse settings.</p></li><li><h3>Manual crank</h3><p>The hand crank needs no power connection.</p></li></ul>
+    <h2 class="md">Specifications</h2><dl class="spec"><div><dt>Burr</dt><dd>38 mm conical stainless steel</dd></div><div><dt>Bean capacity</dt><dd>20 g</dd></div><div><dt>Grind adjustment</dt><dd>Stepless</dd></div><div><dt>Power source</dt><dd>Manual</dd></div></dl>
+  </article><!-- end-static-content -->
 <!-- ══════════ HOME ══════════ -->
-<div class="route" id="v-home">
+<template data-route-view><div class="route" id="v-home">
   <section class="spotlight" id="heroSec" aria-labelledby="spotlight-title">
     <div class="spotlight-stage">
       <div class="spotlight-halo" aria-hidden="true"></div>
@@ -640,19 +700,20 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
         <h1 id="spotlight-title"><span data-t="h_1">For the</span> <span data-t="h_2">love of</span> <span data-t="h_3">brewing</span></h1>
         <p class="spotlight-body" data-t="h_body">Peclee was created for people who enjoy making their own cup of coffee. We believe good coffee doesn't have to be complicated. With the right tools and a little curiosity, anyone can brew something great at home.</p>
       </div>
-      <div class="spotlight-art" role="img" aria-label="ORPHE kettle: from its base to the hand, then a gentle pour" data-scene-art>
-        <div class="spotlight-shadow"></div>
-        <img class="spotlight-rest" src="assets/motion-rest.webp" alt="" fetchpriority="high" width="1024" height="1024">
-        <div class="spotlight-lift"><img class="spotlight-hand" src="assets/motion-hand.webp" alt="" width="1536" height="1024"></div>
-        <img class="spotlight-dripper" src="assets/motion-dripper.webp" alt="" width="1024" height="1024">
+      <div class="spotlight-still" role="img" aria-label="ORPHE kettle on its base" data-scene-art>
+        <img class="spotlight-rest" src="assets/motion-rest.webp" alt="" fetchpriority="high" width="1254" height="1254">
+      </div>
+      <div class="spotlight-art" aria-hidden="true">
+        <div class="spotlight-lift"><img class="spotlight-hand" data-src="assets/motion-hand.webp" alt="" width="1536" height="1024"></div>
+        <img class="spotlight-dripper" data-src="assets/motion-dripper.webp" alt="" width="1164" height="1351">
         <svg class="spotlight-water" viewBox="0 0 1000 700" preserveAspectRatio="none" aria-hidden="true"><path d="M 711 270 C 725 318 733 366 735 422"/><path class="water-glint" d="M 711 270 C 725 318 733 366 735 422"/></svg>
       </div>
       <div class="spotlight-chapter chapter-lift" aria-hidden="true"><span class="mono">01 / ORPHE</span><p data-t="tagline">Coffee, Your Way</p></div>
       <div class="spotlight-chapter chapter-pour" aria-hidden="true"><span class="mono">02 / ORPHE</span><p data-en="Designed for your daily brew" data-ar="صُمّمت لتحضير قهوتك اليومية">Designed for your daily brew</p></div>
       <div class="spotlight-bottom">
         <a href="tools" class="cta spotlight-cta" data-t="h_cta1">See the tools →</a>
-        <a href="#home-tools" class="spotlight-scroll mono" data-en="Scroll to discover ↓" data-ar="مرّر لاكتشاف الأدوات ↓">Scroll to discover ↓</a>
-        <button type="button" class="spotlight-motion mono" id="scene-motion-toggle" aria-pressed="false">Reduce motion</button>
+        <button type="button" class="spotlight-scroll mono" hidden>Lift the kettle ↓</button>
+        <button type="button" class="spotlight-motion mono" id="scene-motion-toggle" aria-pressed="false" hidden>Reduce motion</button>
       </div>
       <div class="spotlight-progress" aria-hidden="true"><i></i></div>
     </div>
@@ -673,7 +734,7 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
 
   <section class="ritual-feature">
     <div class="ritual-photo"><img src="assets/orphe-01.webp" alt="Close-up of the Peclee ORPHE kettle base and temperature display" loading="lazy"><span class="photo-note mono">ORPHE / 600 ML</span></div>
-    <div class="ritual-copy"><p class="mono" data-t="cw_n">01 / The art of the pour</p><h2 data-t="cw_t">Precision.<br>With a softer side.</h2><p class="body" data-t="cw_b">A balanced handle. A steady flow. The right tools make the small details feel effortless.</p><div class="ritual-specs"><span><b>600</b><small data-t="ritual_u">ml capacity</small></span><span><b>FlowSense™</b><small data-t="ritual_flow">A more considered pour</small></span></div><a href="tools/orphe" class="text-link" data-t="cw_cta">Meet ORPHE →</a></div>
+    <div class="ritual-copy"><p class="mono" data-t="cw_n">01 / The art of the pour</p><h2 data-t="cw_t">Precision.<br>With a softer side.</h2><p class="body" data-t="cw_b">A balanced handle. A steady flow. The right tools make the small details feel effortless.</p><div class="ritual-specs"><span><b>600</b><small data-t="ritual_u">ml capacity</small></span><span><b dir="ltr">40–100 °C</b><small data-t="ritual_flow">Temperature range</small></span></div><a href="tools/orphe" class="text-link" data-t="cw_cta">Meet ORPHE →</a></div>
   </section>
   <div class="nums"><div class="track" id="numsT"></div></div>
 
@@ -682,19 +743,17 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
       <div class="eyebrow rv"><h2 class="md" data-t="dl_h">Find your grind</h2><span class="mono section-note" data-t="dl_n">02 / A little less guesswork</span></div>
       <div class="dial-wrap">
         <div class="rv">
-          <p class="body" data-t="dl_b">The KIVI dial moves in clicks, fine to coarse. Drag across to see where each brew method sits, then set it once and repeat it exactly.</p>
+          <p class="body" id="grind-help" data-t="dl_b">KIVI has a stepless dial. Explore how grind size varies by brew method, then fine-tune your grinder to taste.</p>
           <a href="tools/kivi" class="cta" style="margin-top:32px" data-t="dl_cta">KIVI specifications</a>
         </div>
         <div class="grind-object"><img src="assets/kivi-navy-main.jpg" alt="Peclee KIVI hand grinder" loading="lazy"></div>
         <div class="dial rv">
-          <div class="read"><b id="d-val">18</b><span class="mono dim" data-t="dl_u">clicks</span></div>
+          <label for="range" class="mono" data-t="dl_label">Explore grind size</label>
+          <div class="read"><b id="d-val">Medium</b></div>
           <p class="read-m" id="d-name">Pour-over</p>
-          <div class="track-o" id="dial">
-            <div class="ticks" id="ticks"></div><div class="fill-o" id="fill"></div><div class="knob" id="knob"></div>
-            <input type="range" min="1" max="30" value="18" id="range"
-              style="position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:inherit" aria-label="Grind clicks">
-          </div>
-          <div class="zones" id="zones"></div>
+          <input type="range" min="0" max="100" step="1" value="50" id="range"
+                 aria-describedby="grind-help" aria-valuetext="Medium · Pour-over">
+          <div class="grind-ends" aria-hidden="true"><span data-t="dl_fine">Fine</span><span data-t="dl_coarse">Coarse</span></div>
         </div>
       </div>
     </div>
@@ -707,7 +766,7 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
         <div class="blk rv">
           <h3 data-t="wy_1h">Coffee as calm</h3>
           <p class="body" data-t="wy_1a">We don't treat coffee as a science project. We treat it as a moment, something that slows you down rather than speeds you up.</p>
-          <p class="body" data-t="wy_1b">The weight of a kettle in your hand. The click of a grinder dial. Every piece should make you want to brew, not make you anxious about doing it wrong.</p>
+          <p class="body" data-t="wy_1b">The weight of a kettle in your hand. The turn of a grinder handle. Every piece should make you want to brew, not make you anxious about doing it wrong.</p>
         </div>
         <div class="blk rv">
           <h3 data-t="wy_2h">Design that means something</h3>
@@ -731,15 +790,15 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
         <p class="lg rv" data-t="dr_s">Made with artists, architects and studios we admire.</p>
         <div class="rv">
           <p class="body" data-t="dr_b">Alongside the standard line we release limited runs, a new pattern, a new palette, a new form. Not a logo on someone else's product. Something neither of us could have made alone.</p>
-          <a href="mailto:info@peclee.com?subject=Peclee%20Drops" class="cta" style="margin-top:32px" data-t="dr_cta">Ask about the next drop →</a>
+          <a href="mailto:info@peclee.com?subject=Peclee%20Drops" class="cta" style="margin-top:32px" data-t="dr_cta">Ask about upcoming drops</a>
         </div>
       </div>
     </div>
   </section>
-</div>
+</div></template><!-- end-route-view -->
 
 <!-- ══════════ TOOLS ══════════ -->
-<div class="route" id="v-tools">
+<template data-route-view><div class="route" id="v-tools">
   <section class="intro">
     <div class="grid" aria-hidden="true"></div>
     <div class="wrap">
@@ -756,16 +815,16 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
   <section class="pad scale-compare"><div class="wrap"><div class="eyebrow"><h2 class="md" data-t="compare_h">Same precision.<br>Different possibilities.</h2><span class="mono" data-t="compare_k">PESO / PESOmini</span></div><p class="body compare-intro" data-t="compare_b">A little more room on the counter, or a little more room in your bag. Choose the scale that fits your ritual.</p>
   <div class="comparison-scroll"><table class="comparison"><caption class="sr-only" data-t="compare_caption">Compare Peclee brewing scales</caption><thead><tr><th data-t="compare_tool">The details</th><th>PESO</th><th>PESOmini</th></tr></thead><tbody>
   <tr><th scope="row" data-t="compare_for">Made for</th><td data-t="compare_home">Home & café brewing</td><td data-t="compare_travel">Compact setups & travel</td></tr>
-  <tr><th scope="row" data-t="compare_capacity">Maximum capacity</th><td>2000 g</td><td>1500 g</td></tr>
-  <tr><th scope="row" data-t="compare_precision">Precision</th><td>0.1 g</td><td>0.1 g</td></tr>
-  <tr><th scope="row" data-t="compare_size">Dimensions</th><td><span class="ltr">124 × 130 × 23.5 mm</span></td><td><span class="ltr">90 × 80 × 12 mm</span></td></tr>
+  <tr><th scope="row" data-t="compare_capacity">Maximum capacity</th><td data-t="peso_capacity">2000 g</td><td data-t="mini_capacity">1500 g</td></tr>
+  <tr><th scope="row" data-t="compare_precision">Precision</th><td data-t="scale_resolution">0.1 g</td><td data-t="scale_resolution">0.1 g</td></tr>
+  <tr><th scope="row" data-t="compare_size">Length × width × height</th><td><span class="ltr" data-t="peso_dimensions">130 × 124 × 23.5 mm</span></td><td><span class="ltr" data-t="mini_dimensions">90 × 85 × 12 mm</span></td></tr>
   <tr><th scope="row" data-t="compare_charge">Charging</th><td>USB-C</td><td>USB-C</td></tr>
   <tr><th scope="row"><span class="sr-only" data-t="compare_links">Explore each scale</span></th><td><a href="tools/peso" class="text-link" data-t="compare_peso">Explore PESO →</a></td><td><a href="tools/pesomini" class="text-link" data-t="compare_mini">Explore PESOmini →</a></td></tr>
   </tbody></table></div></div></section>
-</div>
+</div></template><!-- end-route-view -->
 
 <!-- ══════════ ABOUT ══════════ -->
-<div class="route" id="v-about">
+<template data-route-view><div class="route" id="v-about">
   <section class="open-sec" id="aopen">
     <div class="pig" aria-hidden="true">
       <div class="pig-field pig-main"></div>
@@ -818,10 +877,10 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
       </div>
     </div>
   </section>
-</div>
+</div></template><!-- end-route-view -->
 
 <!-- ══════════ CONTACT ══════════ -->
-<div class="route" id="v-contact">
+<template data-route-view><div class="route" id="v-contact">
   <section class="ctop">
     <div class="grid" aria-hidden="true"></div>
     <div class="wrap">
@@ -839,11 +898,10 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
   <section style="padding-bottom:clamp(48px,7vw,90px)">
     <div class="wrap chan" id="chan"></div>
   </section>
-</div>
-
+</div></template><!-- end-route-view -->
 </main>
 
-<!-- ══════════ PRODUCT PANEL ══════════ -->
+<template data-route-view><!-- ══════════ PRODUCT PANEL ══════════ -->
 <div class="panel" id="panel" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="p-name" inert>
   <div class="panel-bar">
     <button class="x" id="x"><span data-t="close">Close</span> <span aria-hidden="true">✕</span></button>
@@ -859,7 +917,7 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
       <p class="p-tag" id="p-tagline">···</p>
       <p class="body" id="p-desc" style="margin-bottom:36px">···</p>
       <div class="p-buy">
-        <a href="#" target="_blank" rel="noopener noreferrer" class="cta fill" id="p-buynow" data-t="p_buy">Buy now</a>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="cta fill" id="p-buynow" data-t="p_buy">Buy on Noon</a>
       </div>
       <div class="p-color-block" id="p-color-block" style="margin-top:28px">
         <p class="mono dim" data-t="p_colors" style="margin-bottom:12px">Colors</p>
@@ -880,8 +938,7 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
   <button type="button" class="p-arrow p-arrow-l" id="lb-prev" aria-label="Previous photo">‹</button>
   <div class="lb-stage" id="lb-stage"></div>
   <button type="button" class="p-arrow p-arrow-r" id="lb-next" aria-label="Next photo">›</button>
-</div>
-
+</div></template><!-- end-route-view -->
 <footer class="ft">
   <div class="drops-glow" aria-hidden="true">
     <div class="dglow dglow-a"></div>
@@ -892,10 +949,10 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
   <div class="wrap">
     <div class="ft-news">
       <div>
-        <h4 data-t="nl_h">Hear about drops first</h4>
-        <p class="ft-news-p" data-t="nl_p">Limited editions, new tools, and the occasional brew guide. No spam.</p>
+        <h4 data-t="nl_h">Limited editions</h4>
+        <p class="ft-news-p" data-t="nl_p">Email the Peclee team about upcoming releases and collaborations.</p>
       </div>
-      <a class="cta footer-enquiry" href="mailto:info@peclee.com?subject=Peclee%20Drops" data-t="dr_cta">Ask about the next drop →</a>
+      <a class="cta footer-enquiry" href="mailto:info@peclee.com?subject=Peclee%20Drops" data-t="dr_cta">Ask about upcoming drops</a>
       
     </div>
     <div class="footer-statement" data-t="ft_line">For the love of brewing</div>
@@ -917,7 +974,7 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
         <ul>
           <li><a href="about" data-t="nav2">About</a></li>
           <li><a href="contact" data-t="nav3">Contact</a></li>
-          <li><a href="contact" data-t="ft_trade">Stockists &amp; trade</a></li>
+          <li><a href="mailto:info@peclee.com?subject=Stocking%20Peclee" data-t="ft_trade">Trade &amp; wholesale</a></li>
         </ul>
       </div>
       <div>
@@ -930,6 +987,14 @@ html[dir="rtl"] .ft-form button{font-family:var(--arab);letter-spacing:0;font-si
     </div>
   </div>
 </footer>
+<!-- static-content --><script>
+for (const template of document.querySelectorAll('template[data-route-view]')) {
+  template.replaceWith(template.content);
+}
+document.querySelectorAll('.static-product, .static-catalog').forEach(el => el.remove());
+const skip = document.querySelector('.skip-link');
+if (skip) skip.setAttribute('href', '#main');
+</script><!-- end-static-content -->
 
 <script>
 /* ═══════════════════════════════════════════════════════════
@@ -1013,21 +1078,21 @@ en:{
  h_cta1:'See the tools →',h_cta2:'Our story',
  band:'Most equipment is furniture. Ours are instruments. Peclee exists because the tools you brew with should feel as considered as the coffee itself: slower, quieter, made to be touched every single day. ✳',
  tl_h:'The tools',tl_n:'01 · Drag to explore',tl_cta:'All four tools →',soon:'Coming soon',
- cw_h:'One kettle, three finishes',cw_n:'02 · ORPHE',cw_t:'Control that feels effortless.',
- cw_b:'A balanced handle, FlowSense™ gooseneck flow and a clean modern design help you pour with confidence from the very first brew.',
+ cw_h:'One kettle, two finishes',cw_n:'02 · ORPHE',cw_t:'Control that feels effortless.',
+ cw_b:'The narrow gooseneck spout helps you control the flow over the coffee bed.',
  cw_cta:'ORPHE details',
- dl_h:'Find your grind',dl_n:'02 · KIVI',dl_u:'clicks',dl_cta:'KIVI specifications',
- dl_b:'The KIVI dial moves in clicks, fine to coarse. Drag across to see where each brew method sits, then set it once and repeat it exactly.',
+ dl_h:'Find your grind',dl_n:'02 · KIVI',dl_label:'Explore grind size',dl_fine:'Fine',dl_coarse:'Coarse',dl_cta:'KIVI specifications',
+ dl_b:'KIVI has a stepless dial. Explore how grind size varies by brew method, then fine-tune your grinder to taste.',
  wy_h:'Why we make them',wy_n:'03 · Approach',
  wy_1h:'Coffee as calm',
  wy_1a:"We don't treat coffee as a science project. We treat it as a moment, something that slows you down rather than speeds you up.",
- wy_1b:'The weight of a kettle in your hand. The click of a grinder dial. Every piece should make you want to brew, not make you anxious about doing it wrong.',
+ wy_1b:'The weight of a kettle in your hand. The turn of a grinder handle. Every piece should make you want to brew, not make you anxious about doing it wrong.',
  wy_2h:'Design that means something',
  wy_2a:'Third-wave cafés got everything right, the architecture, the packaging, the ritual. Then you look at the kettle on someone\'s kitchen counter and the story falls apart.',
  wy_2b:"Peclee exists to close that gap. We're a design brand that happens to work in coffee.",
  dr_h:'Drops',dr_n:'04 · Limited editions',dr_s:'Made with artists, architects and studios we admire.',
  dr_b:"Alongside the standard line we release limited runs, a new pattern, a new palette, a new form. Not a logo on someone else's product. Something neither of us could have made alone.",
- dr_cta:'Hear about the next drop',
+ dr_cta:'Ask about upcoming drops',
  tp_l:'The tools · four pieces',tp_h:"Everything you need.<br>Nothing you don't.",
  tp_b:'A kettle, a grinder and two scales. Each one built around usability, durability and thoughtful design, in that order.',
  tp_n:'Move across a product to turn it',tp_wl:'Trade',tp_ws:'Interested in stocking Peclee?',tp_wc:'Talk to us',
@@ -1044,10 +1109,10 @@ en:{
  fm_back:'← Back',fm_next:'Continue',fm_send:'Send it',
  ty_l:'Message received',ty_b:"We've got it. Expect a reply within two working days, sooner if it's a quick one.",
  ty_1:'Enquiry',ty_2:'Replying to',ty_3:'Meanwhile',ty_again:'Send another',ty_thanks:'Thank you, ',
- nl_h:'Hear about drops first',nl_p:'Limited editions, new tools, and the occasional brew guide. No spam.',nl_b:'Join',
- ft_line:'For the love of brewing',ft_brand:'Brand',ft_reach:'Reach us',ft_trade:'Stockists & trade',
+ nl_h:'Limited editions',nl_p:'Email the Peclee team about upcoming releases and collaborations.',nl_b:'Join',
+ ft_line:'For the love of brewing',ft_brand:'Brand',ft_reach:'Reach us',ft_trade:'Trade & wholesale',
  ft_p1:'ORPHE kettle',ft_p2:'KIVI grinder',ft_p3:'PESO scale',ft_p4:'PESOmini scale',
- p_reg:'Register interest',p_buy:'Buy now',p_colors:'Colors',p_spec:'Specifications',
+ p_reg:'Register interest',p_buy:'Buy on Noon',p_colors:'Colors',p_spec:'Specifications',
  open:'Open now, usually a same-day reply',shut:'Closed, back at 9.30',wknd:'Weekend, back Sunday 9.30',
  langBtn:'عربي'
 },
@@ -1061,21 +1126,21 @@ ar:{
  h_cta1:'تعرّف على الأدوات ←',h_cta2:'قصتنا',
  band:'معظم المعدات أثاث. أدواتنا آلات. توجد بيكلي لأن الأدوات التي تحضّر بها قهوتك يجب أن تكون مدروسة بقدر القهوة نفسها: أبطأ، أهدأ، صُنعت لتُلمس كل يوم. ✳',
  tl_h:'الأدوات',tl_n:'٠١ · اسحب للاستكشاف',tl_cta:'جميع الأدوات ←',soon:'قريبًا',
- cw_h:'غلاية واحدة، ثلاثة ألوان',cw_n:'٠٢ · أورفي',cw_t:'تحكم سهل.',
- cw_b:'بمقبض متوازن، وتدفق عنق إوزّة محكوم من FlowSense™، وتصميم حديث ونظيف، تساعدك على السكب بثقة من أول تحضير.',
+ cw_h:'غلاية واحدة، لونان',cw_n:'٠٢ · أورفي',cw_t:'تحكم سهل.',
+ cw_b:'تمنحك الفوهة المنحنية الرفيعة تحكمًا في تدفّق الماء فوق البن.',
  cw_cta:'تفاصيل أورفي',
- dl_h:'اعرف درجة طحنك',dl_n:'٠٢ · كيفي',dl_u:'نقرات',dl_cta:'مواصفات كيفي',
- dl_b:'يتحرك قرص كيفي بالنقرات، من الناعم إلى الخشن. اسحب لترى موضع كل طريقة تحضير، ثم اضبطه مرة واحدة وكرّره بدقة.',
+ dl_h:'اعرف درجة طحنك',dl_n:'٠٢ · كيفي',dl_label:'استكشف درجة الطحن',dl_fine:'ناعم',dl_coarse:'خشن',dl_cta:'مواصفات كيفي',
+ dl_b:'يتيح قرص كيفي ضبطًا متصلًا للطحن. استكشف درجة الطحن الشائعة لكل طريقة تحضير، ثم اضبط مطحنتك بحسب ذوقك.',
  wy_h:'لماذا نصنعها',wy_n:'٠٣ · منهجنا',
  wy_1h:'القهوة لحظة هدوء',
  wy_1a:'لا نتعامل مع القهوة كتجربة علمية، بل كلحظة، شيء يُبطئ خطوتك بدل أن يسرّعها.',
- wy_1b:'ثقل الغلاية في يدك. نقرة قرص المطحنة. كل قطعة يجب أن تجعلك ترغب في التحضير، لا أن تقلق من الخطأ.',
+ wy_1b:'ثقل الغلاية في يدك. دوران مقبض المطحنة. كل قطعة يجب أن تجعلك ترغب في التحضير، لا أن تقلق من الخطأ.',
  wy_2h:'تصميم له معنى',
  wy_2a:'أتقنت مقاهي الموجة الثالثة كل شيء، العمارة، والتغليف، والطقس اليومي. ثم تنظر إلى الغلاية على رخامة المطبخ فتنكسر الحكاية.',
  wy_2b:'وُجدت بيكلي لتسدّ هذه الفجوة. نحن علامة تصميم تعمل في مجال القهوة.',
  dr_h:'إصدارات محدودة',dr_n:'٠٤ · إصدارات محدودة',dr_s:'بالتعاون مع فنانين ومعماريين واستوديوهات نُقدّرها.',
  dr_b:'إلى جانب الخط الأساسي، نُصدر دفعات محدودة، نمط جديد، لوحة ألوان جديدة، شكل جديد. ليس شعارًا على منتج شخص آخر، بل شيء لم يكن أي منا قادرًا على صنعه وحده.',
- dr_cta:'اعرف بالإصدار القادم',
+ dr_cta:'اسأل عن الإصدارات القادمة',
  tp_l:'الأدوات · أربع قطع',tp_h:'كل ما تحتاجه.<br>ولا شيء زائد.',
  tp_b:'غلاية، ومطحنة، وميزانان. كل قطعة مبنية على سهولة الاستخدام والمتانة والتصميم المدروس، بهذا الترتيب.',
  tp_n:'مرّر فوق المنتج لتديره',tp_wl:'التجارة',tp_ws:'مهتم بتوفير بيكلي في متجرك؟',tp_wc:'تحدّث معنا',
@@ -1092,10 +1157,10 @@ ar:{
  fm_back:'→ رجوع',fm_next:'متابعة',fm_send:'إرسال',
  ty_l:'وصلت رسالتك',ty_b:'استلمناها. توقّع ردًا خلال يومي عمل، وأسرع إن كان السؤال سريعًا.',
  ty_1:'نوع الطلب',ty_2:'سنرد على',ty_3:'في الأثناء',ty_again:'أرسل رسالة أخرى',ty_thanks:'شكرًا لك، ',
- nl_h:'كن أول من يعرف',nl_p:'إصدارات محدودة، أدوات جديدة، ودليل تحضير من وقت لآخر. بلا إزعاج.',nl_b:'انضم',
- ft_line:'لعشّاق تحضير القهوة',ft_brand:'العلامة',ft_reach:'للتواصل',ft_trade:'الموزّعون والتجارة',
+ nl_h:'الإصدارات المحدودة',nl_p:'راسل فريق بيكلي للاستفسار عن الإصدارات والتعاونات القادمة.',nl_b:'انضم',
+ ft_line:'لعشّاق تحضير القهوة',ft_brand:'العلامة',ft_reach:'للتواصل',ft_trade:'التجارة والبيع بالجملة',
  ft_p1:'غلاية أورفي',ft_p2:'مطحنة كيفي',ft_p3:'ميزان بيسو',ft_p4:'ميزان بيسوميني',
- p_reg:'سجّل اهتمامك',p_buy:'اشترِ الآن',p_colors:'الألوان',p_spec:'المواصفات',
+ p_reg:'سجّل اهتمامك',p_buy:'اشترِ من نون',p_colors:'الألوان',p_spec:'المواصفات',
  open:'متاحون الآن، نرد عادةً في اليوم نفسه',shut:'مغلق، نعود ٩:٣٠ صباحًا',wknd:'عطلة نهاية الأسبوع، نعود الأحد ٩:٣٠',
  langBtn:'EN'
 }};
@@ -1105,71 +1170,171 @@ const P=[
 {id:'orphe',art:'kettle',c:NAVY,code:'PC ORPHE · 600 ML',buyUrl:'#',
  name:{en:'ORPHE',ar:'أورفي'},kind:{en:'Electric kettle',ar:'غلاية كهربائية'},
  tagline:{en:'Control that feels effortless.',ar:'تحكم سهل.'},
- desc:{en:'Our kettle makes precision feel natural, even on your first pour. A balanced handle, FlowSense™ gooseneck flow and a clean modern design mean you can pour with confidence from the very first brew.',
-       ar:'تجعل غلايتنا الدقة أمرًا طبيعيًا حتى من أول سكب. بمقبض متوازن، وتدفق عنق إوزّة محكوم، وتصميم حديث ونظيف، تساعدك على السكب بثقة من أول تحضير.'},
+ desc:{en:"ORPHE lets you choose the water temperature and follow it on the display. The narrow gooseneck spout gives you control over where the water lands.",
+       ar:"تتيح لك أورفي اختيار حرارة الماء ومتابعتها على الشاشة. وتساعدك فوهتها الرفيعة المنحنية على توجيه الماء بدقة."},
  colors:[
-   {name:{en:'Midnight Blue',ar:'أزرق منتصف الليل'},hex:NAVY,buyUrl:'https://www.noon.com/en-sa/ZBC697B751E5F507D43A1Z/p/?o=dabaa8373441fdcf&shareId=914b67f3-87af-4ea0-af55-9e37ec5f7156',shots:[
+   {name:{en:'Midnight Blue',ar:'أزرق منتصف الليل'},hex:NAVY,buyUrl:'https://www.noon.com/saudi-en/orphe-electric-gooseneck-kettle-for-pour-over-coffee-with-40-to-100-c-temperature-control-keep-warm-digital-display-600ml-midnight-blue/ZBC697B751E5F507D43A1Z/p/?o=dabaa8373441fdcf&shareId=914b67f3-87af-4ea0-af55-9e37ec5f7156',shots:[
      'orphe-navy-main.jpg,Navy · front · full body,kettle,'+NAVY,
      'orphe-navy-front-base.jpg,Navy · on base · temperature display,kettle,'+NAVY,
      'orphe-navy-top.jpg,Navy · top-down · dial detail,kettle,'+NAVY
    ]},
-   {name:{en:'Deep Forest',ar:'أخضر الغابة الداكن'},hex:GREEN,buyUrl:'https://www.noon.com/en-sa/Z0326597E84427EA96FB0Z/p/?o=e7f8e648eb61b51f&shareId=5d3cfaea-0f01-4396-b205-b7803217b14f',shots:[
+   {name:{en:'Deep Forest',ar:'أخضر الغابة الداكن'},hex:GREEN,buyUrl:'https://www.noon.com/saudi-en/orphe-electric-gooseneck-kettle-for-pour-over-coffee-with-40-to-100-c-temperature-control-keep-warm-digital-display-600ml-forest-green/Z0326597E84427EA96FB0Z/p/?o=e7f8e648eb61b51f&shareId=5d3cfaea-0f01-4396-b205-b7803217b14f',shots:[
      'orphe-green-main.jpg,Green · front · full body,kettle,'+GREEN,
      'orphe-green-front-base.jpg,Green · on base · temperature display,kettle,'+GREEN,
      'orphe-green-top.jpg,Green · top-down · dial detail,kettle,'+GREEN
    ]}
  ],
- features:{en:[['FlowSense™ gooseneck','Smooth, consistent flow for accurate pouring.'],['Ergo Grip™','Handle designed for comfort and stability.'],['Strix technology','Keeps water at the sweet spot for your beans.'],['Rapid heating','Brew faster without compromising control.']],
-           ar:[['FlowSense™','تدفق سلس ومتّسق لسكب دقيق.'],['Ergo Grip™','مقبض مصمم للراحة والثبات.'],['Strix','تحافظ على الماء في الدرجة المثالية لحبوبك.'],['تسخين سريع','تحضير أسرع دون التضحية بالتحكم.']]},
- specs:{en:[['Capacity','600 ml'],['Material','Stainless steel with heat-resistant coating'],['Heating type','Electronic'],['Weight','Lightweight, easy-pour design'],['Finishes','Midnight navy · forest green']],
-        ar:[['السعة','٦٠٠ مل'],['المادة','ستانلس ستيل مع طبقة مقاومة للحرارة'],['نوع التسخين','إلكتروني'],['الوزن','خفيف وسهل السكب'],['الألوان','كحلي داكن · أخضر غابة']]}},
+ features:{
+  en:[
+   ["Gooseneck spout", "Pour a thin, steady stream over the coffee bed."],
+   ["Temperature hold", "Keep the water at your chosen temperature between pours."],
+   ["Heat-resistant handle", "The heat-resistant handle gives you a steady grip, and the base has a non-slip foot."],
+   ["Automatic shut-off", "Includes protection against overheating and boiling dry."]
+  ],
+  ar:[
+   ["فوهة منحنية", "اسكب الماء بتدفّق رفيع ومتوازن فوق البن."],
+   ["تثبيت الحرارة", "حافظ على درجة الحرارة التي اخترتها بين السكب والآخر."],
+   ["مقبض مقاوم للحرارة", "يساعد المقبض المقاوم للحرارة والقاعدة المانعة للانزلاق على ثبات الغلاية."],
+   ["إيقاف تلقائي", "تتضمن الغلاية حماية من ارتفاع الحرارة والتشغيل دون ماء."]
+  ]
+ },
+ specs:{
+  en:[
+   ["Capacity", "600 ml"],
+   ["Temperature range", "40–100 °C"],
+   ["Power", "1200 W · 220–240 V · 50/60 Hz"],
+   ["Body", "Food-grade 304 stainless steel"],
+   ["Length × width × height", "270 × 210 × 160 mm"],
+   ["Weight", "940 g"]
+  ],
+  ar:[
+   ["السعة", "٦٠٠ مل"],
+   ["نطاق الحرارة", "٤٠–١٠٠ °م"],
+   ["القدرة والتغذية", "١٢٠٠ واط · ٢٢٠–٢٤٠ فولت · ٥٠/٦٠ هرتز"],
+   ["الهيكل", "فولاذ مقاوم للصدأ من النوع ٣٠٤ المخصص للأغذية"],
+   ["الطول × العرض × الارتفاع", "٢٧٠ × ٢١٠ × ١٦٠ مم"],
+   ["الوزن", "٩٤٠ غرام"]
+  ]
+ }},
 
 {id:'kivi',art:'grinder',c:NAVY,code:'PC KIVI · 38 MM',buyUrl:'#',
  name:{en:'KIVI',ar:'كيفي'},kind:{en:'Hand grinder',ar:'مطحنة يدوية'},
  tagline:{en:'Consistency starts at the core.',ar:'الثبات يبدأ من الأساس.'},
- desc:{en:'Powered by the Flow38™ 38 mm burr, KIVI delivers balanced, even particle distribution with every grind. A stable dual-bearing system and smooth operation make it the grinder for people who want simplicity without sacrificing precision.',
-       ar:'بفضل شفرة Flow38™ مقاس ٣٨ مم، تقدّم كيفي توزيعًا متوازنًا ومتجانسًا لحبيبات القهوة مع كل عملية طحن. نظام التحمّل المزدوج المستقر والأداء السلس يجعلانها مثالية لمن يريد البساطة دون التضحية بالدقة.'},
+ desc:{en:"KIVI pairs a 38 mm conical burr with a stepless dial. Turn it a little at a time to adjust the grind for the way you brew.",
+       ar:"تجمع كيفي بين شفرة طحن مخروطية بقطر ٣٨ مم وقرص ضبط متصل. أدر القرص قليلًا في كل مرة حتى تصل إلى درجة الطحن المناسبة لطريقتك."},
  colors:[
-   {name:{en:'Midnight Blue',ar:'أزرق منتصف الليل'},hex:NAVY,buyUrl:'https://www.noon.com/en-sa/ZEC948F89AF00556057CBZ/p/?o=eeb2268c8f5f49fa&shareId=17e1008c-6832-4305-a670-6bf5a5c98897',shots:['kivi-navy-main.jpg,Navy · front · handle on,grinder,'+NAVY]},
-   {name:{en:'Deep Forest',ar:'أخضر الغابة الداكن'},hex:GREEN,buyUrl:'https://www.noon.com/en-sa/Z5BE124C886C7DF849F78Z/p/?o=ccb91409099f7ecc&shareId=0adf0930-e6c2-46c0-a34f-bcdc9a101720',shots:['kivi-green-main.jpg,Green · front · handle on,grinder,'+GREEN]}
+   {name:{en:'Midnight Blue',ar:'أزرق منتصف الليل'},hex:NAVY,buyUrl:'https://www.noon.com/saudi-en/kivi-manual-coffee-grinder-with-38-mm-cnc-stainless-steel-conical-burr-stepless-grind-adjustment-and-20-g-capacity-midnight-blue/ZEC948F89AF00556057CBZ/p/?o=eeb2268c8f5f49fa&shareId=17e1008c-6832-4305-a670-6bf5a5c98897',shots:['kivi-navy-main.jpg,Navy · front · handle on,grinder,'+NAVY]},
+   {name:{en:'Deep Forest',ar:'أخضر الغابة الداكن'},hex:GREEN,buyUrl:'https://www.noon.com/saudi-en/kivi-manual-coffee-grinder-with-38-mm-cnc-stainless-steel-conical-burr-stepless-grind-adjustment-and-20-g-capacity-forest-green/Z5BE124C886C7DF849F78Z/p/?o=ccb91409099f7ecc&shareId=0adf0930-e6c2-46c0-a34f-bcdc9a101720',shots:['kivi-green-main.jpg,Green · front · handle on,grinder,'+GREEN]}
  ],
- features:{en:[['Flow38™ steel burrs','38 mm stainless steel burr set, engineered for even grinding.'],['Dual-bearing stability','Precision bearings keep the shaft aligned for concentric grinding.'],['Click adjustment','Fine-tune with clear click positions, espresso through French press.'],['Compact build','Lightweight and long-lasting, with a stainless internal chamber.']],
-           ar:[['شفرات Flow38™','طقم شفرات ستانلس ستيل ٣٨ مم، مصمّم لطحن متجانس.'],['ثبات التحمّل المزدوج','محملان دقيقان يحافظان على محاذاة العمود لطحن ناعم ومتوازن.'],['ضبط بالنقرات','اضبط درجة الطحن بدقة، من الإسبريسو إلى الفرنش برس.'],['هيكل مدمج ومتين','خفيف وطويل الأمد، مع حجرة داخلية من الستانلس ستيل.']]},
- specs:{en:[['Burr type','38 mm stainless steel (Flow38™)'],['Materials','PP / 304 stainless steel'],['Weight','350 g'],['Capacity','Approximately 20 g of coffee beans'],['Dimensions','Body 150 × 45 mm · handle 160 mm · burr 38 mm'],['Grind range','Moka 10–14 clicks · pour-over 18–24 · French press 25–27']],
-        ar:[['نوع الشفرة','ستانلس ستيل ٣٨ مم (Flow38™)'],['المواد','PP / ستانلس ستيل ٣٠٤'],['الوزن','٣٥٠ غرام'],['السعة','حوالي ٢٠ غرام من حبوب القهوة'],['الأبعاد','الهيكل ١٥٠ × ٤٥ مم · المقبض ١٦٠ مم · الشفرة ٣٨ مم'],['نطاق الطحن','الموكا ١٠–١٤ نقرة · الفلتر ١٨–٢٤ · الفرنش برس ٢٥–٢٧']]}},
+ features:{
+  en:[
+   ["Conical burr", "A CNC-machined stainless steel burr grinds the beans."],
+   ["Stepless adjustment", "Move smoothly between fine and coarse settings."],
+   ["Manual crank", "The hand crank needs no power connection."]
+  ],
+  ar:[
+   ["شفرة مخروطية", "تطحن الشفرة الفولاذية المخروطية الحبوب بدقة."],
+   ["ضبط متصل", "انتقل بسلاسة بين درجات الطحن الناعم والخشن."],
+   ["مقبض يدوي", "أدر المقبض لطحن البن دون الحاجة إلى الكهرباء."]
+  ]
+ },
+ specs:{
+  en:[
+   ["Burr", "38 mm conical stainless steel"],
+   ["Bean capacity", "20 g"],
+   ["Grind adjustment", "Stepless"],
+   ["Power source", "Manual"]
+  ],
+  ar:[
+   ["شفرة الطحن", "مخروطية من الفولاذ المقاوم للصدأ، قطرها ٣٨ مم"],
+   ["سعة الحبوب", "٢٠ غرام"],
+   ["ضبط الطحن", "متصل"],
+   ["التشغيل", "يدوي"]
+  ]
+ }},
 
-{id:'peso',art:'scale',c:BRICK,code:'PC PESO · 2000 G',buyUrl:'https://www.noon.com/en-sa/Z85BE59C0A116AD86C664Z/p/?o=deccf14d5a732cbf&shareId=8e85a688-740d-466d-beb1-315e613e5d8d',
+{id:'peso',art:'scale',c:BRICK,code:'PC PESO · 2000 G',buyUrl:'https://www.noon.com/saudi-en/peso-digital-coffee-scale-with-timer-0-1g-precision-3-brewing-modes-2000g-capacity/Z85BE59C0A116AD86C664Z/p/?o=deccf14d5a732cbf&shareId=8e85a688-740d-466d-beb1-315e613e5d8d',
  name:{en:'PESO',ar:'بيسو'},kind:{en:'Brewing scale',ar:'ميزان تحضير'},
  tagline:{en:'Brew bigger. Brew smarter.',ar:'حضّر أكثر. حضّر بأذكى طريقة.'},
- desc:{en:'PESO is built for brewers who need more room, more stability and more control. A heat-resistant glass surface, wide platform and rigid ABS frame make it reliable for home brewers and café bars alike.',
-       ar:'صُمّم بيسو لصنّاع القهوة الذين يحتاجون إلى مساحة أكبر وثبات أعلى وتحكم أدق. السطح الزجاجي المقاوم للحرارة والمنصة الواسعة وهيكل ABS القوي يمنحك أداءً موثوقًا في المنزل أو في المقهى.'},
+ desc:{en:"PESO gives your dripper or portafilter room on a tempered-glass platform. Follow the timer, flow rate and brew ratio as you pour.",
+       ar:"يوفّر سطح بيسو الزجاجي مساحة للقمع أو حامل المرشح. تابع الوقت ومعدل التدفّق ونسبة الماء إلى القهوة أثناء السكب."},
  colors:[
-   {name:{en:'Midnight Blue',ar:'أزرق منتصف الليل'},hex:NAVY,shots:['peso-navy-main.jpg,Navy · three-quarter · full scale,scale,'+NAVY]}
+   {name:{en:'Midnight Blue',ar:'أزرق منتصف الليل'},hex:NAVY,shots:['peso-navy-front.webp,Front view with blue silicone pad,scale,'+NAVY,'peso-navy-main.jpg,With and without the blue silicone pad,scale,'+NAVY]}
  ],
- features:{en:[['2000 g capacity','Room for pour-over, immersion brews and café-sized equipment.'],['0.1 g precision','Ultra-accurate readings for consistent extraction.'],['Three modes','Manual weighing, auto-timer, or espresso mode.'],['Glass top + silicone pad','Heat-resistant glass with a grippy pad to hold your brewer.'],['Silent mode','Switch between 1000 g and 2000 g with optional sound control.'],['USB-C charging','600 mAh rechargeable battery for long-lasting use.']],
-           ar:[['سعة ٢٠٠٠ غرام','مثالية للقهوة المقطّرة والتحضير بالغمر ومعدات المقاهي.'],['دقة ٠٫١ غرام','قياسات فائقة الدقة لاستخلاص متناسق.'],['ثلاثة أوضاع','يدوي، تلقائي، أو وضع الإسبريسو.'],['سطح زجاجي + وسادة سيليكون','زجاج مقاوم للحرارة مع وسادة مانعة للانزلاق.'],['وضع الصمت','التبديل بين ١٠٠٠ و٢٠٠٠ غرام مع التحكم بالصوت.'],['شحن USB-C','بطارية ٦٠٠ ملّي أمبير قابلة للشحن.']]},
- specs:{en:[['Maximum capacity','2000 g (switchable weight limit)'],['Precision','0.1 g'],['Materials','ABS body · heat-resistant tempered glass · silicone anti-slip pad'],['Modes','Manual · Auto · Espresso · Power off'],['Body','124 × 130 × 23.5 mm'],['Battery','600 mAh rechargeable lithium'],['Charging','USB Type-C']],
-        ar:[['السعة القصوى','٢٠٠٠ غرام (مع تبديل حد الوزن)'],['الدقة','٠٫١ غرام'],['المواد','هيكل ABS · زجاج مقاوم للحرارة · وسادة سيليكون'],['الأوضاع','يدوي · تلقائي · إسبريسو · إيقاف'],['الأبعاد','١٢٤ × ١٣٠ × ٢٣٫٥ مم'],['البطارية','ليثيوم ٦٠٠ ملّي أمبير'],['الشحن','USB Type-C']]}},
+ features:{
+  en:[
+   ["Three brewing modes", "Choose manual, pour-over or espresso. Timing and tare functions adapt to the mode."],
+   ["Pour feedback", "Watch the flow rate and coffee-to-water ratio as the brew progresses."],
+   ["Removable pad", "A heat-resistant silicone pad covers the tempered-glass platform."]
+  ],
+  ar:[
+   ["ثلاثة أوضاع للتحضير", "اختر الوضع اليدوي أو التقطير أو الإسبريسو. تتغيّر وظائف التوقيت والتصفير بحسب الوضع."],
+   ["متابعة السكب", "تابع معدل التدفّق ونسبة القهوة إلى الماء أثناء التحضير."],
+   ["وسادة قابلة للإزالة", "تحمي وسادة السيليكون المقاومة للحرارة سطح الوزن المصنوع من الزجاج المقسّى."]
+  ]
+ },
+ specs:{
+  en:[
+   ["Weighing range", "0.2–2000 g"],
+   ["Resolution", "0.1 g"],
+   ["Units", "Grams and ounces"],
+   ["Length × width × height", "130 × 124 × 23.5 mm"],
+   ["Weight", "340 g"],
+   ["Battery & charging", "600 mAh rechargeable battery · USB-C"]
+  ],
+  ar:[
+   ["نطاق الوزن", "٠٫٢–٢٠٠٠ غرام"],
+   ["أصغر تدرّج", "٠٫١ غرام"],
+   ["الوحدات", "غرام وأونصة"],
+   ["الطول × العرض × الارتفاع", "١٣٠ × ١٢٤ × ٢٣٫٥ مم"],
+   ["الوزن", "٣٤٠ غرام"],
+   ["البطارية والشحن", "بطارية قابلة للشحن بسعة ٦٠٠ ملّي أمبير ساعة · USB-C"]
+  ]
+ }},
 
-{id:'pesomini',art:'mini',c:GREEN,code:'PC PESOM · 1500 G',buyUrl:'https://www.noon.com/en-sa/Z4FEFA31B147C69695F4DZ/p/?o=f5061598bd5a15fe&shareId=43fe1815-9a49-497b-900a-ac05b1429a98',
+{id:'pesomini',art:'mini',c:GREEN,code:'PC PESOM · 1500 G',buyUrl:'https://www.noon.com/saudi-en/peso-mini-digital-coffee-scale-with-timer-1500-g-0-1-g-precision-for-espresso-and-pour-over-dark-green/Z4FEFA31B147C69695F4DZ/p/?o=f5061598bd5a15fe&shareId=43fe1815-9a49-497b-900a-ac05b1429a98',
  name:{en:'PESOmini',ar:'بيسوميني'},kind:{en:'Brewing scale',ar:'ميزان تحضير'},
  tagline:{en:'Accuracy that fits your pocket.',ar:'دقة تناسب جيبك.'},
- desc:{en:'Designed for brewers who value accuracy without complication, PESOmini combines ultra-precise weighing with intuitive smart modes, all inside a compact, travel-ready frame.',
-       ar:'مصمّم لعشّاق القهوة الذين يقدّرون الدقة دون التعقيد، يجمع بيسوميني بين قياس فائق الدقة وأوضاع ذكية، داخل تصميم مدمج وسهل الحمل.'},
+ desc:{en:"At 12 mm high, PESOmini fits beside an espresso machine and packs easily for travel. Its timer, flow-rate display and automatic tare help you follow each brew.",
+       ar:"بارتفاع ١٢ مم، يتّسع بيسوميني بجوار آلة الإسبريسو ويسهل حمله في السفر. يساعدك المؤقّت وعرض معدل التدفّق والتصفير التلقائي على متابعة كل تحضير."},
  colors:[
    {name:{en:'Deep Forest',ar:'أخضر الغابة الداكن'},hex:GREEN,shots:['pesomini-green-main.jpg,Green · three-quarter,mini,'+GREEN]}
  ],
- features:{en:[['Three smart modes','Normal, auto-timer and espresso extraction.'],['0.1 g precision','Ultra-accurate measurements for dialling in with confidence.'],['G / OZ switch','Swap between grams and ounces with a single touch.'],['Ultra-slim','A 1.2 cm body built for daily brewing and travel.'],['Splash-resistant','Added protection from spills and splashes.'],['Heatproof pad','Protects the surface during hot brewing.']],
-           ar:[['ثلاثة أوضاع ذكية','عادي، تلقائي، ووضع الإسبريسو.'],['دقة ٠٫١ غرام','قياس فائق الدقة لضبط القهوة بكل ثقة.'],['تبديل G / OZ','الانتقال الفوري بين الغرام والأونصة بلمسة واحدة.'],['تصميم نحيف','جسم بسمك ١٫٢ سم للاستخدام اليومي والسفر.'],['مقاوم للرذاذ','حماية إضافية من الانسكابات والرذاذ.'],['وسادة مقاومة للحرارة','تحمي السطح أثناء التحضير الساخن.']]},
- specs:{en:[['Weighing capacity','1000 g / 1500 g (switchable)'],['Precision','0.1 g'],['Modes','Normal · Auto · Espresso'],['Body','90 × 80 × 12 mm'],['Battery','800 mAh rechargeable lithium'],['Charging','USB Type-C']],
-        ar:[['سعة الوزن','١٠٠٠ / ١٥٠٠ غرام (قابلة للتبديل)'],['الدقة','٠٫١ غرام'],['الأوضاع','عادي · تلقائي · إسبريسو'],['الأبعاد','٩٠ × ٨٠ × ١٢ مم'],['البطارية','ليثيوم ٨٠٠ ملّي أمبير'],['الشحن','USB Type-C']]}}];
+ features:{
+  en:[
+   ["Three brewing modes", "Choose manual, pour-over or espresso."],
+   ["Brew readings", "Follow the timer, flow rate and coffee-to-water ratio."],
+   ["Splash-resistant body", "A removable, heat-resistant silicone pad sits on the weighing platform."]
+  ],
+  ar:[
+   ["ثلاثة أوضاع للتحضير", "اختر الوضع اليدوي أو التقطير أو الإسبريسو."],
+   ["قراءات التحضير", "تابع المؤقّت ومعدل التدفّق ونسبة القهوة إلى الماء."],
+   ["هيكل مقاوم للرذاذ", "يمكن إزالة وسادة السيليكون المقاومة للحرارة عن سطح الوزن."]
+  ]
+ },
+ specs:{
+  en:[
+   ["Weighing range", "0.2–1500 g"],
+   ["Resolution", "0.1 g"],
+   ["Length × width × height", "90 × 85 × 12 mm"],
+   ["Weight", "160 g"],
+   ["Battery & charging", "600 mAh rechargeable battery · USB-C"]
+  ],
+  ar:[
+   ["نطاق الوزن", "٠٫٢–١٥٠٠ غرام"],
+   ["أصغر تدرّج", "٠٫١ غرام"],
+   ["الطول × العرض × الارتفاع", "٩٠ × ٨٥ × ١٢ مم"],
+   ["الوزن", "١٦٠ غرام"],
+   ["البطارية والشحن", "بطارية قابلة للشحن بسعة ٦٠٠ ملّي أمبير ساعة · USB-C"]
+  ]
+ }}];
 
 const FIN=[{c:NAVY,f:'orphe-01.webp',n:{en:'Midnight navy',ar:'كحلي داكن'}},
            {c:GREEN,f:'orphe-green-main.jpg',n:{en:'Forest green',ar:'أخضر غابة'}},
            {c:BRICK,f:'orphe-03.webp',n:{en:'Brick red',ar:'أحمر طوبي'}}];
 
 const NUMS=[['600',{en:'ml · ORPHE capacity',ar:'مل · سعة أورفي'}],['2000',{en:'g · PESO maximum',ar:'غرام · أقصى سعة بيسو'}],
-            ['0.1',{en:'g · precision',ar:'غرام · الدقة'}],['38',{en:'mm · Flow38™ burr',ar:'مم · شفرة Flow38™'}],
+            ['0.1',{en:'g · precision',ar:'غرام · الدقة'}],['38',{en:'mm · KIVI conical burr',ar:'مم · شفرة كيفي المخروطية'}],
             ['1.2',{en:'cm · PESOmini thickness',ar:'سم · سماكة بيسوميني'}]];
 
 const CHAPS=[
@@ -1187,10 +1352,10 @@ const CHAPS=[
    'يجب أن يكون التحضير متعة، لا استعراضًا.']]},
  {l:'C',en:['Chapter three','Design as identity, not decoration',
   ['Most brewing equipment brands think about function first and design as an afterthought. Maybe a colour variant. Maybe a collaboration that\'s really just a logo swap.',
-   'We think about design as identity. Every visual choice should feel intentional, from the weight of a handle to the click of a dial.']],
+   'We think about design as identity. Every visual choice should feel intentional, from the weight of a handle to the turn of a dial.']],
   ar:['الفصل الثالث','التصميم هوية، لا زخرفة',
   ['معظم علامات معدات القهوة تفكر في الوظيفة أولًا، ويأتي التصميم لاحقًا. ربما لون مختلف. ربما تعاون ليس أكثر من تبديل شعار.',
-   'نحن نرى التصميم هوية. كل قرار بصري يجب أن يكون مقصودًا، من ثقل المقبض إلى نقرة القرص.']]},
+   'نحن نرى التصميم هوية. كل قرار بصري يجب أن يكون مقصودًا، من ثقل المقبض إلى دوران القرص.']]},
  {l:'L',en:['Chapter four','Drops, not collaborations',
   ['Peclee has its own design language, clean, considered, premium. Alongside it we release limited editions with partners whose philosophy aligns with ours.',
    'We take both visual identities, find the intersection, and make something neither of us could have made alone.']],
@@ -1214,13 +1379,12 @@ const TRIO=[
  {en:['The standard line','Peclee\'s own design language. Minimal, premium and cohesive across the range.'],
   ar:['الخط الأساسي','لغة بيكلي التصميمية الخاصة. بسيطة، فاخرة، ومتناسقة عبر المجموعة.']},
  {en:['Limited drops','Collaborative releases with artists, architects and design-led brands. Collectible objects, not just coffee gear.'],
-  ar:['إصدارات محدودة','إصدارات بالتعاون مع فنانين ومعماريين وعلامات تصميم. قطع تُقتنى، لا مجرد أدوات قهوة.']},
- {en:['How we sound','Confident but unhurried. We don\'t lecture and we don\'t gatekeep. Short sentences. Breathing room.'],
-  ar:['نبرتنا','واثقة دون استعجال. لا نُلقي دروسًا ولا نحتكر المعرفة. جمل قصيرة. مساحة للتنفس.']}];
+  ar:['إصدارات محدودة','إصدارات بالتعاون مع فنانين ومعماريين وعلامات تصميم. قطع تُقتنى، لا مجرد أدوات قهوة.']}];
 
-const ZONES={en:['Espresso','Moka','·','Pour-over','French','·'],ar:['إسبريسو','موكا','·','فلتر','فرنش','·']};
-const METH={en:['Espresso, fine','Moka pot','Between ranges, adjust to taste','Pour-over','French press','Coarser than marked'],
-            ar:['إسبريسو، ناعم','موكا بوت','بين النطاقات، اضبط حسب ذوقك','فلتر','فرنش برس','أخشن من النطاق المحدد']};
+const grindGuide={
+ en:[['Fine','Espresso or moka pot'],['Medium','Pour-over'],['Coarse','French press or cold brew']],
+ ar:[['ناعم','إسبريسو أو موكا'],['متوسط','تقطير'],['خشن','فرنش برس أو كولد برو']]
+};
 
 /* ═══════════ LANGUAGE ═══════════ */
 let L='en';
@@ -1242,7 +1406,7 @@ function render(){
   document.getElementById('rail-in').innerHTML=P.map((p,i)=>{
     const frames=p.colors.map((c,ci)=>{
       const a=c.shots[0].split(',');
-      return `<div class="${ci===0?'on':''}">${SLOT(a[0],'Peclee '+p.name.en,a[1],A[a[2]](a[3]))}</div>`;
+      return `<div class="${ci===0?'on':''}">${SLOT(a[0],productPhotoAlt(p,c,a[0]),a[1],A[a[2]](a[3]))}</div>`;
     }).join('');
     const sw=p.colors.length>1?`<div class="prow-sw" data-role="rail-sw">${p.colors.map((c,ci)=>
       `<button type="button" class="csw${ci===0?' on':''}" data-cidx="${ci}" aria-label="${c.name[L]}" title="${c.name[L]}"><i style="background:${c.hex}"></i></button>`
@@ -1267,24 +1431,22 @@ function render(){
     .map(n=>`<span class="n"><b>${n[0]}</b><span class="mono dim">${n[1][L]}</span></span>`).join('');
 
   /* dial */
-  document.getElementById('zones').innerHTML=ZONES[L].map((z,i)=>
-    `<span style="flex:${[9,5,3,7,3,3][i]}">${z}</span>`).join('');
   drawDial();
 
   /* tools rows */
   document.getElementById('rows').innerHTML=P.map((p,i)=>{
     const s0=p.colors[0].shots[0].split(',');
     return `
-    <div class="prow" data-i="${i}" data-product="${p.id}" role="button" tabindex="0" aria-label="${p.name[L]} — ${p.tagline[L]}">
+    <article class="prow" data-i="${i}" data-product="${p.id}">
       <div class="prow-in">
-        <div class="frames">${SLOT(s0[0],'Peclee '+p.name.en,s0[1],A[s0[2]](s0[3]))}</div>
+        <div class="frames">${SLOT(s0[0],productPhotoAlt(p,p.colors[0],s0[0]),s0[1],A[s0[2]](s0[3]))}</div>
         <div class="prow-label"><span class="mono">${String(i+1).padStart(2,'0')} / ${p.kind[L]}</span><div class="prow-name">${p.name[L]}</div>
         <div class="prow-tag">${p.tagline[L]}</div>
         ${p.colors.length>1?`<div class="prow-sw">${p.colors.map((c,ci)=>
           `<button type="button" class="csw${ci===0?' on':''}" data-cidx="${ci}" aria-label="${c.name[L]}" title="${c.name[L]}"><i style="background:${c.hex}"></i></button>`
-        ).join('')}</div>`:''}<span class="text-link">${L==='ar'?'عرض الأداة ←':'View tool →'}</span></div>
+        ).join('')}</div>`:''}<a class="text-link" href="tools/${p.id}" aria-label="${p.name[L]} — ${p.kind[L]}">${L==='ar'?'عرض الأداة ←':'View tool →'}</a></div>
       </div>
-    </div>`;}).join('');
+    </article>`;}).join('');
   bindRows();
 
   /* about */
@@ -1357,14 +1519,12 @@ function setFin(i){
   [...sw.children].forEach((b,j)=>b.setAttribute('aria-pressed',String(i===j)));
 }
 function drawDial(){
-  const range=document.getElementById('range'),ticks=document.getElementById('ticks');
-  if(!ticks.children.length)ticks.innerHTML=Array.from({length:30},(_,i)=>`<i class="${(i+1)%5===0?'maj':''}"></i>`).join('');
-  const v=+range.value,p=(v-1)/29*100;
-  document.getElementById('d-val').textContent=String(v).padStart(2,'0');
-  const idx=v<=9?0:v<=14?1:v<=17?2:v<=24?3:v<=27?4:5;
-  document.getElementById('d-name').textContent=METH[L][idx];
-  document.getElementById('knob').style.left=p+'%';
-  document.getElementById('fill').style.width=p+'%';
+  const range=document.getElementById('range');
+  const position=Number(range.value);
+  const [texture,method]=grindGuide[L][position<34?0:position<67?1:2];
+  document.getElementById('d-val').textContent=texture;
+  document.getElementById('d-name').textContent=method;
+  range.setAttribute('aria-valuetext',texture+' · '+method);
 }
 document.getElementById('range').addEventListener('input',drawDial);
 
@@ -1375,16 +1535,14 @@ function bindRows(){
     let colorIdx=0;
     const renderShot=()=>{
       const a=p.colors[colorIdx].shots[0].split(',');
-      framesEl.innerHTML=SLOT(a[0],'Peclee '+p.name.en,a[1],A[a[2]](a[3]));
+      framesEl.innerHTML=SLOT(a[0],productPhotoAlt(p,p.colors[colorIdx],a[0]),a[1],A[a[2]](a[3]));
     };
-    const goToProduct=()=>{window.__startColor=colorIdx;nav('/tools/'+p.id)};
+    const productLink=row.querySelector('a.text-link');
     row.addEventListener('click',e=>{
-      if(e.target.closest('.csw'))return;
-      goToProduct();
-    });
-    row.addEventListener('keydown',e=>{
-      if(e.target.closest('.csw'))return;
-      if(e.key==='Enter'||e.key===' '){e.preventDefault();goToProduct();}
+      if(e.target.closest('.csw')||e.defaultPrevented)return;
+      if(e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+      window.__startColor=colorIdx;
+      if(!e.target.closest('a'))nav('tools/'+p.id,productLink);
     });
     row.querySelectorAll('.csw').forEach(b=>{
       b.addEventListener('click',e=>{
@@ -1425,25 +1583,51 @@ const panel=document.getElementById('panel'),stage=document.getElementById('p-st
   lbPrev=document.getElementById('lb-prev'),lbNext=document.getElementById('lb-next'),lbClose=document.getElementById('lb-close');
 let curP=null,curColorIdx=0,curShotIdx=0;
 const curShots=()=>curP.colors[curColorIdx].shots;
+function productPhotoAlt(product,colour,file){
+  const ar=L==='ar';
+  const name=product.name[L];
+  const finish=colour.name[L];
+  let view;
+  if(product.id==='orphe'){
+    if(file.endsWith('-front-base.jpg'))view=ar?'على القاعدة مع شاشة الحرارة':'on the base with the temperature display';
+    else if(file.endsWith('-top.jpg'))view=ar?'من الأعلى مع قرص التحكم':'top view with control dial';
+    else view=ar?'من الأمام مع المقبض والفوهة':'front view with handle and spout';
+  }else if(product.id==='kivi'){
+    view=ar?'من الأمام مع ذراع الطحن':'front view with the crank attached';
+  }else if(product.id==='pesomini'){
+    view=ar?'في راحة اليد مع الوسادة الخضراء':'held in a hand with the green pad fitted';
+  }else if(file==='peso-navy-main.jpg'){
+    view=ar?'ميزانان بجانب بعضهما، الأول بوسادة زرقاء والثاني بسطح زجاجي مكشوف':'two scales, one with a blue pad and one with the glass surface exposed';
+  }else{
+    view=ar?'من الأمام مع الوسادة الزرقاء وشاشة الوزن':'front view with blue pad and weighing display';
+  }
+  return name+' · '+finish+' · '+view;
+}
 function renderGallery(){
   const shots=curShots();
   curShotIdx=0;
   stage.innerHTML=shots.map((s,j)=>{const a=s.split(',');
-    return `<div class="${j===0?'on':''}">${SLOT(a[0],'Peclee '+curP.name.en,a[1],A[a[2]](a[3]))}</div>`}).join('');
+    return `<div class="${j===0?'on':''}">${SLOT(a[0],productPhotoAlt(curP,curP.colors[curColorIdx],a[0]),a[1],A[a[2]](a[3]))}</div>`}).join('');
   const multi=shots.length>1;
   pPrev.hidden=!multi; pNext.hidden=!multi;
+  labelPhoto();
 }
 function renderLbFrame(){
   const shots=curShots();
   lbStage.innerHTML=shots.map((s,j)=>{const a=s.split(',');
-    return `<div class="${j===curShotIdx?'on':''}">${SLOT(a[0],'Peclee '+curP.name.en,a[1],A[a[2]](a[3]))}</div>`}).join('');
+    return `<div class="${j===curShotIdx?'on':''}">${SLOT(a[0],productPhotoAlt(curP,curP.colors[curColorIdx],a[0]),a[1],A[a[2]](a[3]))}</div>`}).join('');
   const multi=shots.length>1;
   lbPrev.hidden=!multi; lbNext.hidden=!multi;
+}
+function labelPhoto(){
+  const alt=stage.children[curShotIdx]?.querySelector('img')?.alt||'';
+  stage.setAttribute('aria-label',(L==='ar'?'تكبير الصورة، ':'Enlarge image, ')+alt);
 }
 function showShot(i){
   const shots=curShots(),n=shots.length;
   curShotIdx=(i+n)%n;
   [...stage.children].forEach((d,k)=>d.classList.toggle('on',k===curShotIdx));
+  labelPhoto();
   if(lightbox.classList.contains('open'))
     [...lbStage.children].forEach((d,k)=>d.classList.toggle('on',k===curShotIdx));
 }
@@ -1465,6 +1649,7 @@ lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox()});
 /* swipe support in lightbox */
 let lbX0=0,lbDX=0,lbDragging=false;
 lbStage.addEventListener('pointerdown',e=>{lbDragging=true;lbX0=e.clientX;lbDX=0});
+lbStage.addEventListener('pointercancel',()=>{lbDragging=false});
 lbStage.addEventListener('pointermove',e=>{if(lbDragging)lbDX=e.clientX-lbX0});
 lbStage.addEventListener('pointerup',()=>{
   if(!lbDragging)return; lbDragging=false;
@@ -1474,10 +1659,14 @@ lbStage.addEventListener('pointerup',()=>{
   }
 });
 addEventListener('keydown',e=>{
-  if(!lightbox.classList.contains('open'))return;
-  if(e.key==='Escape'){e.stopImmediatePropagation();closeLightbox();}
-  if(e.key==='ArrowLeft')showShot(curShotIdx-1);
-  if(e.key==='ArrowRight')showShot(curShotIdx+1);
+  const zoomed=lightbox.classList.contains('open');
+  if(zoomed&&e.key==='Escape'){e.preventDefault();e.stopImmediatePropagation();closeLightbox();return;}
+  if(!zoomed&&(!panel.classList.contains('open')||!e.target.closest('.p-gal')))return;
+  if(e.key==='ArrowLeft'||e.key==='ArrowRight'){
+    e.preventDefault();
+    const increment=e.key==='ArrowRight'?1:-1;
+    showShot(curShotIdx+(L==='ar'?-increment:increment));
+  }
 });
 function fillPanel(p,startColorIdx){
   curP=p; curColorIdx=startColorIdx||0;
@@ -1495,6 +1684,7 @@ function fillPanel(p,startColorIdx){
     ).join('');
     [...cwrap.children].forEach(b=>b.addEventListener('click',()=>{
       curColorIdx=+b.dataset.cidx;
+      history.replaceState({...history.state,pecleeColor:curColorIdx},'');
       [...cwrap.children].forEach(x=>x.classList.toggle('on',x===b));
       renderGallery();
       updateBuyLink();
@@ -1510,11 +1700,25 @@ function fillPanel(p,startColorIdx){
 function updateBuyLink(){
   const c=curP.colors[curColorIdx];
   const url=(c&&c.buyUrl)||curP.buyUrl||'#';
-  document.getElementById('p-buynow').href=url;
+  const buyLink=document.getElementById('p-buynow');
+  buyLink.href=L==='ar' ? url.replace('/saudi-en/','/saudi-ar/') : url;
+  buyLink.hreflang=L==='ar' ? 'ar-SA' : 'en-SA';
 }
 function shutPanel(){panel.classList.remove('open');panel.setAttribute('aria-hidden','true');closeLightbox();document.body.classList.remove('lock')}
-document.getElementById('x').onclick=()=>{nav('/tools')};
-addEventListener('keydown',e=>{if(e.key==='Escape'&&panel.classList.contains('open')&&!lightbox.classList.contains('open'))nav('/tools')});
+let returningFromProduct=false;
+function closeProduct(){
+  if(returningFromProduct)return;
+  if(typeof history.state?.pecleeOrigin==='string'){
+    returningFromProduct=true;
+    history.back();
+  }else{
+    // A product opened from a shared URL has no in-site return entry.
+    history.replaceState({pecleeScroll:0},'',routeURL('tools'));
+    router();
+  }
+}
+document.getElementById('x').onclick=closeProduct;
+addEventListener('keydown',e=>{if(e.key==='Escape'&&panel.classList.contains('open')&&!lightbox.classList.contains('open'))closeProduct()});
 
 /* ═══════════ clock (Riyadh, Sun–Thu) ═══════════ */
 function tick(){
@@ -1559,17 +1763,22 @@ function reveal(){
   document.querySelectorAll('.route.live .rv:not(.in)').forEach(el=>io.observe(el));
 }
 function router(){
+  returningFromProduct=false;
   const raw=currentRoute(),[seg,arg]=raw.split('/');
-  const id=VIEWS[seg]!==undefined?VIEWS[seg]:'v-home';
+  const prod=seg==='tools'&&arg ? P.find(p=>p.id===arg) : null;
+  const background=prod ? (history.state?.pecleeOrigin??'tools') : seg;
+  const id=VIEWS[background]??'v-home';
   document.querySelectorAll('.route').forEach(v=>v.classList.toggle('live',v.id===id));
   document.querySelectorAll('[data-nav]').forEach(a=>a.classList.toggle('on',a.dataset.nav===seg));
   document.getElementById('sheet').classList.remove('open');
   document.getElementById('bg').classList.remove('on');
-  const prod=(seg==='tools'&&arg)?P.find(p=>p.id===arg):null;
-  if(prod)fillPanel(prod,window.__startColor||0); else shutPanel();
-  window.__startColor=0;
-  if(!prod)scrollTo({top:0,left:0,behavior:'instant'});
+  if(prod)fillPanel(prod,history.state?.pecleeColor??0);
+  else {
+    shutPanel();
+    scrollTo({top:history.state?.pecleeScroll??0,left:0,behavior:'instant'});
+  }
   seams(); reveal();
+  window.pecleeRouteMetadata?.(currentRoute(), L);
 }
 function currentRoute(){
   if(location.hash.startsWith('#/'))return location.hash.slice(2).replace(/\/+$/,'');
@@ -1577,20 +1786,32 @@ function currentRoute(){
   const relative=path.startsWith(window.PECLEE_BASE)?path.slice(window.PECLEE_BASE.length):'';
   return relative.replace(/(?:^|\/)index\.html$/,'').replace(/^\/+|\/+$/g,'');
 }
-function nav(p){
+function routeURL(route){
+  if(location.protocol==='file:')return '#/'+route;
+  return window.PECLEE_BASE+(route?route+'/':'');
+}
+let lastProductTrigger=null;
+if('scrollRestoration' in history)history.scrollRestoration='manual';
+function nav(p,trigger){
   const route=p.replace(/^\/+|\/+$/g,'');
-  if(location.protocol==='file:'){
-    const hash='#/'+route;
-    if(location.hash!==hash)location.hash=hash;
+  const origin=currentRoute();
+  if(route===origin){
+    if(!panel.classList.contains('open'))history.replaceState({...history.state,pecleeScroll:0},'');
     router();
     return;
   }
-  const path=window.PECLEE_BASE+(route?route+'/':'');
-  if(location.pathname!==path||location.hash)history.pushState(null,'',path);
+  history.replaceState({...history.state,pecleeScroll:scrollY},'');
+  const next={};
+  if(route.startsWith('tools/')){
+    lastProductTrigger=trigger||document.activeElement;
+    next.pecleeOrigin=origin;
+    next.pecleeColor=window.__startColor||0;
+  }
+  window.__startColor=0;
+  history.pushState(next,'',routeURL(route));
   router();
 }
 addEventListener('popstate',()=>router());
-addEventListener('hashchange',()=>{if(location.hash.startsWith('#/'))router()});
 document.addEventListener('click',e=>{
   if(e.defaultPrevented)return;
   const a=e.target.closest('a');if(!a)return;
@@ -1606,7 +1827,7 @@ document.addEventListener('click',e=>{
   if(url.origin!==location.origin||url.protocol!==location.protocol||!url.pathname.startsWith(window.PECLEE_BASE))return;
   const route=url.pathname.slice(window.PECLEE_BASE.length).replace(/(?:^|\/)index\.html$/,'').replace(/^\/+|\/+$/g,'');
   if(!/^(?:tools(?:\/(?:orphe|kivi|peso|pesomini))?|about|contact)?$/.test(route))return;
-  e.preventDefault();nav(route);
+  e.preventDefault();nav(route,a);
 });
 if(location.protocol!=='file:'&&location.hash.startsWith('#/')){
   const legacy=location.hash.slice(2).replace(/^\/+|\/+$/g,'');
@@ -1617,6 +1838,7 @@ if(location.protocol!=='file:'&&location.hash.startsWith('#/')){
 document.getElementById('lang').addEventListener('click',()=>{
   L=L==='en'?'ar':'en';
   try{localStorage.setItem('peclee-language',L)}catch(_){}
+  if(!panel.classList.contains('open'))history.replaceState({...history.state,pecleeScroll:scrollY},'');
   render(); router();
 });
 const hd=document.getElementById('hd');
@@ -1630,12 +1852,12 @@ bg.addEventListener('click',()=>{
 let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{seams();lightStrip()},250)});
 
 /* Initialisation */
-Object.assign(T.en,{"hero_caption": "Considered tools. Everyday rituals.", "hero_label": "Coffee, your way.", "hero_explore": "Explore the tools", "tools_note": "Four objects. One daily ritual.", "ritual_k": "01 / The art of the pour", "ritual_h": "Precision.<br>With a softer side.", "ritual_b": "A balanced handle. A steady flow. The right tools make the small details feel effortless.", "ritual_u": "ml capacity", "ritual_flow": "A more considered pour", "ritual_cta": "Meet ORPHE →", "grind_note": "02 / A little less guesswork", "why_note": "03 / The Peclee approach", "drop_note": "04 / Room to play", "footer_cta": "Say hello →", "footer_statement": "Coffee, your way.", "back_top": "Back to the beginning ↑", "filter_all": "All tools / 04", "filter_pour": "Pour", "filter_grind": "Grind", "filter_weigh": "Weigh", "compare_h": "Same precision.<br>Different possibilities.", "compare_k": "PESO / PESOmini", "compare_b": "A little more room on the counter, or a little more room in your bag. Choose the scale that fits your ritual.", "compare_caption": "Compare Peclee brewing scales", "compare_tool": "The details", "compare_for": "Made for", "compare_home": "Home & café brewing", "compare_travel": "Compact setups & travel", "compare_capacity": "Maximum capacity", "compare_precision": "Precision", "compare_size": "Dimensions", "compare_charge": "Charging", "compare_links": "Explore each scale", "compare_peso": "Explore PESO →", "compare_mini": "Explore PESOmini →"});
-Object.assign(T.ar,{"hero_caption": "أدوات مدروسة. طقوس يومية.", "hero_label": "القهوة، على طريقتك.", "hero_explore": "اكتشف الأدوات", "tools_note": "أربع أدوات. طقس يومي واحد.", "ritual_k": "٠١ / فن السكب", "ritual_h": "دقة.<br>بلمسة ألطف.", "ritual_b": "مقبض متوازن. تدفق ثابت. الأدوات المناسبة تجعل التفاصيل الصغيرة سهلة وطبيعية.", "ritual_u": "مل سعة", "ritual_flow": "سكب أكثر دقة", "ritual_cta": "تعرّف على أورفي →", "grind_note": "٠٢ / ثقة أكبر في كل تحضير", "why_note": "٠٣ / نهج بيكلي", "drop_note": "٠٤ / مساحة للإبداع", "footer_cta": "قل مرحبًا →", "footer_statement": "القهوة، على طريقتك.", "back_top": "العودة إلى البداية ↑", "filter_all": "جميع الأدوات / ٠٤", "filter_pour": "السكب", "filter_grind": "الطحن", "filter_weigh": "الوزن", "compare_h": "الدقة ذاتها.<br>إمكانات مختلفة.", "compare_k": "بيسو / بيسوميني", "compare_b": "مساحة أوسع على الطاولة، أو مساحة إضافية في حقيبتك. اختر الميزان الذي يناسب طقسك.", "compare_caption": "مقارنة موازين تحضير بيكلي", "compare_tool": "التفاصيل", "compare_for": "مصمّم لأجل", "compare_home": "التحضير المنزلي والمقاهي", "compare_travel": "المساحات الصغيرة والسفر", "compare_capacity": "السعة القصوى", "compare_precision": "الدقة", "compare_size": "الأبعاد", "compare_charge": "الشحن", "compare_links": "اكتشف كل ميزان", "compare_peso": "اكتشف بيسو →", "compare_mini": "اكتشف بيسوميني →"});
+Object.assign(T.en,{"hero_caption": "Considered tools. Everyday rituals.", "hero_label": "Coffee, your way.", "hero_explore": "Explore the tools", "tools_note": "Four objects. One daily ritual.", "ritual_k": "01 / The art of the pour", "ritual_h": "Precision.<br>With a softer side.", "ritual_b": "A balanced handle. A steady flow. The right tools make the small details feel effortless.", "ritual_u": "ml capacity", "ritual_flow": "Temperature range", "ritual_cta": "Meet ORPHE →", "grind_note": "02 / A little less guesswork", "why_note": "03 / The Peclee approach", "drop_note": "04 / Room to play", "footer_cta": "Say hello →", "footer_statement": "Coffee, your way.", "back_top": "Back to the beginning ↑", "filter_all": "All tools / 04", "filter_pour": "Pour", "filter_grind": "Grind", "filter_weigh": "Weigh", "compare_h": "Same precision.<br>Different possibilities.", "compare_k": "PESO / PESOmini", "compare_b": "A little more room on the counter, or a little more room in your bag. Choose the scale that fits your ritual.", "compare_caption": "Compare Peclee brewing scales", "compare_tool": "The details", "compare_for": "Made for", "compare_home": "Home & café brewing", "compare_travel": "Compact setups & travel", "compare_capacity": "Maximum capacity", "compare_precision": "Precision", "compare_size": "Length × width × height", "peso_capacity": "2000 g", "mini_capacity": "1500 g", "scale_resolution": "0.1 g", "peso_dimensions": "130 × 124 × 23.5 mm", "mini_dimensions": "90 × 85 × 12 mm", "compare_charge": "Charging", "compare_links": "Explore each scale", "compare_peso": "Explore PESO →", "compare_mini": "Explore PESOmini →"});
+Object.assign(T.ar,{"hero_caption": "أدوات مدروسة. طقوس يومية.", "hero_label": "القهوة، على طريقتك.", "hero_explore": "اكتشف الأدوات", "tools_note": "أربع أدوات. طقس يومي واحد.", "ritual_k": "٠١ / فن السكب", "ritual_h": "دقة.<br>بلمسة ألطف.", "ritual_b": "مقبض متوازن. تدفق ثابت. الأدوات المناسبة تجعل التفاصيل الصغيرة سهلة وطبيعية.", "ritual_u": "مل سعة", "ritual_flow": "نطاق الحرارة", "ritual_cta": "تعرّف على أورفي →", "grind_note": "٠٢ / ثقة أكبر في كل تحضير", "why_note": "٠٣ / نهج بيكلي", "drop_note": "٠٤ / مساحة للإبداع", "footer_cta": "قل مرحبًا →", "footer_statement": "القهوة، على طريقتك.", "back_top": "العودة إلى البداية ↑", "filter_all": "جميع الأدوات / ٠٤", "filter_pour": "السكب", "filter_grind": "الطحن", "filter_weigh": "الوزن", "compare_h": "الدقة ذاتها.<br>إمكانات مختلفة.", "compare_k": "بيسو / بيسوميني", "compare_b": "مساحة أوسع على الطاولة، أو مساحة إضافية في حقيبتك. اختر الميزان الذي يناسب طقسك.", "compare_caption": "مقارنة موازين تحضير بيكلي", "compare_tool": "التفاصيل", "compare_for": "مصمّم لأجل", "compare_home": "التحضير المنزلي والمقاهي", "compare_travel": "المساحات الصغيرة والسفر", "compare_capacity": "السعة القصوى", "compare_precision": "الدقة", "compare_size": "الطول × العرض × الارتفاع", "peso_capacity": "٢٠٠٠ غرام", "mini_capacity": "١٥٠٠ غرام", "scale_resolution": "٠٫١ غرام", "peso_dimensions": "١٣٠ × ١٢٤ × ٢٣٫٥ مم", "mini_dimensions": "٩٠ × ٨٥ × ١٢ مم", "compare_charge": "الشحن", "compare_links": "اكتشف كل ميزان", "compare_peso": "اكتشف بيسو →", "compare_mini": "اكتشف بيسوميني →"});
 render();
 router();
 </script>
-<script src="enhancements.js?v=20261115-r2"></script>
-<script src="spotlight.js?v=20261115-r2"></script>
+<script src="enhancements.js?v=20261118-r3"></script>
+<script src="spotlight.js?v=20261118-r3"></script>
 </body>
 </html>

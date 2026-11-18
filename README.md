@@ -1,6 +1,6 @@
 # Peclee website — GitHub upload
 
-Package version: **2026-11-15-r2**.
+Package version: **2026-11-18-r3**.
 
 ## Upload the website
 
@@ -19,7 +19,7 @@ Uploading files to GitHub stores the source; it does not by itself confirm that
 the website has been published. Check your host's deployment result afterward.
 GitHub setup reference: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
 
-`version.json` identifies this package. Its `release` must be `2026-11-15-r2`.
+`version.json` identifies this package. Its `release` must be `2026-11-18-r3`.
 
 ## Preview and maintain
 
@@ -32,10 +32,9 @@ copies. After editing the main HTML, run `node scripts/prepare-routes.mjs` to
 refresh the seven direct routes. CSS, JavaScript, fonts, images and motion assets
 are all included. Read `UPDATE-NOTES.md` for this update's scope.
 
-When moving to a different public domain, update the social metadata URLs in
-`index.html` and the corresponding origin used by `scripts/prepare-routes.mjs`,
-then regenerate the routes. The previous publication origin is
-`https://peclee-evolved.bermitocoffee.chatgpt.site`.
+The canonical production domain for search and sharing is www.peclee.com.
+After changing the product catalogue, photo files or public domain, run the route
+generator before re-exporting. Keep existing custom-domain hosting settings.
 
 To create another validated ZIP after editing, run
 `python3 scripts/export-github.py /absolute/path/Peclee-Website.zip`.

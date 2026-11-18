@@ -11,8 +11,8 @@ import tempfile
 from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
 
-VERSION = "2026-11-15-r2"
-ZIP_DATE = (2026, 11, 15, 0, 0, 0)
+VERSION = "2026-11-18-r3"
+ZIP_DATE = (2026, 11, 18, 0, 0, 0)
 REQUIRED = (
     "index.html",
     "refinements.css",
@@ -23,6 +23,9 @@ REQUIRED = (
     "assets/motion-hand.webp",
     "assets/motion-dripper.webp",
     "assets/peso-navy-main.jpg",
+    "assets/peso-navy-front.webp",
+    "robots.txt",
+    "sitemap.xml",
     "assets/pesomini-green-main.jpg",
     "tools/index.html",
     "tools/orphe/index.html",
@@ -35,7 +38,7 @@ REQUIRED = (
 
 README = """# Peclee website — GitHub upload
 
-Package version: **2026-11-15-r2**.
+Package version: **2026-11-18-r3**.
 
 ## Upload the website
 
@@ -54,7 +57,7 @@ Uploading files to GitHub stores the source; it does not by itself confirm that
 the website has been published. Check your host's deployment result afterward.
 GitHub setup reference: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
 
-`version.json` identifies this package. Its `release` must be `2026-11-15-r2`.
+`version.json` identifies this package. Its `release` must be `2026-11-18-r3`.
 
 ## Preview and maintain
 
@@ -67,10 +70,9 @@ copies. After editing the main HTML, run `node scripts/prepare-routes.mjs` to
 refresh the seven direct routes. CSS, JavaScript, fonts, images and motion assets
 are all included. Read `UPDATE-NOTES.md` for this update's scope.
 
-When moving to a different public domain, update the social metadata URLs in
-`index.html` and the corresponding origin used by `scripts/prepare-routes.mjs`,
-then regenerate the routes. The previous publication origin is
-`https://peclee-evolved.bermitocoffee.chatgpt.site`.
+The canonical production domain for search and sharing is www.peclee.com.
+After changing the product catalogue, photo files or public domain, run the route
+generator before re-exporting. Keep existing custom-domain hosting settings.
 
 To create another validated ZIP after editing, run
 `python3 scripts/export-github.py /absolute/path/Peclee-Website.zip`.
@@ -78,24 +80,17 @@ Git history, account credentials, Sites project settings and review screenshots
 are not included.
 """
 
-UPDATE_NOTES = """# Peclee — update 2026-11-15-r2
+UPDATE_NOTES = """# Peclee update · 18 November 2026
 
-- Includes the latest PESO and PESOmini photo-framing correction and the sitewide
-  proportion refinements. Product photographs retain their original geometry
-  and colours; full originals remain available in gallery zoom.
-- Preserves the cream and maroon design, original logo, fonts, product content,
-  English/Arabic interface and product purchase destinations.
-- Retains the maroon Product Spotlight opening and its scroll-controlled kettle,
-  hand and pour sequence. This is layered motion artwork, not a freely rotatable
-  3D model.
-- Places the actual website at the archive root, with base-aware assets and
-  navigation for domain-root hosting and GitHub Pages project subdirectories.
-- Includes cache-versioned frontend resources and `version.json` so this update
-  can be identified after upload.
-
-The newsletter retains its email-enquiry fallback. No email-marketing service
-credentials are included. This archive does not publish or change a hosted site
-by itself; upload and deployment remain separate actions.
+- Updated product specifications and the bilingual grind guide using the exact
+  Peclee product listings on Noon Saudi Arabia.
+- Added a single full-size PESO photo for the product cards and detail page.
+  The original two-view photograph is available in the gallery.
+- Reframed the mobile and desktop opening and its motion controls.
+- Improved product history, Arabic controls, and retailer links.
+- Updated About, trade and limited-edition email enquiries.
+- Included per-page search/social metadata, static product information,
+  sitemap.xml, and robots.txt.
 """
 
 
